@@ -1,24 +1,54 @@
-# README
+# Healthon
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+体脂肪率・筋肉量をもとに階級分され、お互い競い合い切磋琢磨しながらダイエット・筋トレの記録を行うコミュニティサイトです。
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+Healthon ＝Health ＋　Marathon
+ダイエット・筋トレなど自身の健康に真剣に向き合いながら、ライバルと競い合う中で
+（1）より自分の理想に近づいてより自分を好きになって欲しい
+（2）他のMemberから刺激を受けて、モチベーションを上げて継続してほしい
+（3）同じ目標を持つライバルと切磋琢磨しながらダイエットや筋トレを心から楽しんで欲しい
+そのような思いを込めて作成したコミュニティサイトです。
 
-* System dependencies
 
-* Configuration
+### テーマを選んだ理由
+コロナ禍では外出することが制限され、特に1人暮らしの場合、家に1人で引きこもることを余儀なくされました。
+私自身、休みの日も外出もできず友人に会う機会もないと「見た目」に気を使うことがなくなり、体型も崩れ不健康になっていました。
+そんな中、コロナ禍の自粛で健康管理への関心が高まっているとのニュースを見かけたり、
+SNS 上でダイエットや筋トレの報告をするアカウントをたくさん見かけました。
+また、自分自身負けず嫌いなところがあったこと、ポケモン GO で TOP レベルのユーザーになりたいから歩き回って痩せたとのニュースを見かけたことも合わさり、
+ダイエットもライバルや仲間を作り競争意識を持って互いに切磋琢磨したり励まし合うすることでダイエットも楽しめるのではないかと考えたためです。
 
-* Database creation
+### ターゲットユーザ
+＊ストイックにダイエット・筋トレに取り組みたい方
+＊負けず嫌いで、上位に立ちたい意欲が旺盛な方
+＊仲間やライバルと切磋琢磨して自分を磨きたい方
 
-* Database initialization
+### 主な利用シーン
+＊毎日の体質評価レポートを行う時
+＊過去の自分からの成長を把握したい時
+＊仲間やライバルから刺激を受けてモチベーションを上げたいとき
+＊他のメンバーと情報共有したい時
 
-* How to run the test suite
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
+<...>
 
-* Deployment instructions
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1nFZSOheqA1_BgtujNxcfvPnbFlqIYlQ6l4YWg1cfQxA/edit#gid=0>
 
-* ...
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
+- 現状使用予定はありませんが、後に使用する可能性もあります。
