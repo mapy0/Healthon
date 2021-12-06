@@ -8,4 +8,19 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :aim_w, :aim_bf, :aim_mus, :aim_sm, :height, :birth, :age, :sex, :self_introduction, :image_id])
   end
   
+    #退会機能
+    def unsubscribe
+    @member = Member.find(name: params[:name])
+    end
+    
+    def withdrawal
+    @member = Member.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @member.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+  
+  
 end
