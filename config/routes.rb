@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     registrations: 'members/registrations',
     sessions: 'members/sessions',
    }
-
+   
+   
+  root to: 'homes#top'
 
 
   devise_scope :member do
@@ -33,14 +35,14 @@ Rails.application.routes.draw do
   patch '/members/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
 
 
-  root to: 'homes#top'
+
   #静的ページの追加
   get  'homes/about'
   get  'homes/about_me'
   get  'homes/how'
 
   #member関係
-  resources :members, only: [:show, :edit]
+  resources :members, only: [:show, :edit, :update]
 
   #record関係
   resources :records

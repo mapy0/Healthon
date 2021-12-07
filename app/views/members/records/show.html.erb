@@ -7,4 +7,10 @@
   <p>筋肉率：<%= @record.mus %></p>
   <p>骨格筋率：<%= @record.sm %></p>
 
+    <% if @record.member == current_member %>
+    <%= link_to "削除", record_path(@record), method: :delete %>
+    <%= link_to "編集", edit_record_path(@record) %>
+    <% end %>
+
+
 </div>

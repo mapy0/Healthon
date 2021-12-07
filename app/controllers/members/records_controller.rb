@@ -11,6 +11,7 @@ class Members::RecordsController < ApplicationController
     redirect_to records_path
   end
 
+
   def index
     @records = Record.all
   end
@@ -19,14 +20,23 @@ class Members::RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
   
-  def edit
-  end
+ def edit
+   @record = Record.find(params[:id])
+ end
+  
   
   def update
+    @record = Record.find(params[:id])
+    @record.update(record_params)
+    redirect_to record_path(@record.id)
   end
   
   def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+    redirect_to records_path
   end
+    
   
   
   private

@@ -1,1 +1,13 @@
 <h1>Member</h1>
+
+<div>
+  <h3><%= @member.name %></h3>
+  <h3><%= @member.self_introduction %></h3>
+  <%= attachment_image_tag @member, :image, :fill, 100, 100, format: 'jpeg', fallback: "sample-author1.jpg" %>
+</div>
+
+  <% if @member.id == current_member.id %>
+    <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
+  <% end %>
+
+  <%= link_to "Record", new_record_path %>
