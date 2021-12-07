@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     registrations: 'members/registrations',
     sessions: 'members/sessions',
    }
-   
-   
+
+
   root to: 'homes#top'
 
 
@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     post 'profiles', to: 'members/registrations#create_profile'
     get 'aim', to: 'members/registrations#new_aim'
     post 'aim', to: 'members/registrations#create_aim'
-    
 
-    
+
+
   end
 
 
@@ -46,6 +46,9 @@ Rails.application.routes.draw do
 
   #record関係
   resources :records
+
+  #diary関係
+  resources :diaries
 
  end
 

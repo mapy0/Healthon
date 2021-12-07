@@ -14,8 +14,10 @@ class Member < ApplicationRecord
   has_one :profile
   has_one :aim
 
-#その他機能のとのアソシエーション
+ #その他機能のとのアソシエーション
   has_many :records
+  has_many :diaries
+  
          
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。
   # is_deletedがfalseならtrueを返すようにしている

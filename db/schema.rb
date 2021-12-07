@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_060721) do
+ActiveRecord::Schema.define(version: 2021_12_07_191914) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 2021_12_07_060721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "member_id"
+  end
+
+  create_table "diaries", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.date "date", null: false
+    t.string "name", null: false
+    t.integer "calorie", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
@@ -64,6 +81,15 @@ ActiveRecord::Schema.define(version: 2021_12_07_060721) do
     t.float "mus"
     t.float "tbw"
     t.float "sm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.date "date", null: false
+    t.string "name", null: false
+    t.integer "burned_calorie", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
