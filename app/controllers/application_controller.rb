@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :aim_w, :aim_bf, :aim_mus, :aim_sm, :height, :birth, :age, :sex, :self_introduction, :image_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :self_introduction, :image_id])
   end
   
     #退会機能

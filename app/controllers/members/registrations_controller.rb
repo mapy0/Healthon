@@ -1,18 +1,70 @@
 # frozen_string_literal: true
 
 class Members::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
+  
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+#Member 基本情報登録
+ def create
+    @member = Member.new(sign_up_params)
+    unless @member.valid?
+      flash.now[:alert] = @member.errors.full_messages
+      render :new and return
+    end
+    session["devise.regist_data"] = {member: @member.attributes}
+    #passwordはmember.attributeに入っていないので、個別で記述。
+    session["devise.regist_data"][:member]["password"] = params[:member][:password]
+    @profile = @user.build_profile
+    render :new_profile
+ end
+ 
+ 
+  def create_profile
+    @member = Member.new(session["devise.regist_data"]["member"])
+    @profile = Profile.new(profile_params)
+    unless @profile.valid?
+      flash.now[:alert] = @profile.errors.full_messages
+      render :new_profile and return
+    end
+    @member.build_profile(@profile.attributes)
+    session["profile"] = @profile.attributes
+    @aim = @member.build_aim
+    render :new_aim
+  end
+  
+  def create_creditcard
+    @member = Member.new(session["devise.regist_data"]["member"])
+    @profile = Profile.new(session["profile"])
+    @aim = Aim.new(aim_params)
+    unless @aim.valid? #unless不要な気がする
+      flash.now[:alert] = @aim.errors.full_messages
+      render :new_aim and return
+    end
+    @member.build_profile(@profile.attributes)
+    @member.aim(@aim.attributes)
+    @member.save
+    sign_in(:member, @member)
+  end
+  
+  
+  
+  
+  protected
+
+  def profile_params
+    params.require(:profile).permit(:height, :birth, :age, :sex)
+  end
+  
+  def aim_params
+    params.require(:aim).permit(:aim_w, :aim_bf, :aim_mus, :aim_sm)
+  end
+ 
 
   # GET /resource/edit
   # def edit
