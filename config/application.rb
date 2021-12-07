@@ -14,6 +14,9 @@ module Healthon
     # デフォルト言語を日本語に
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

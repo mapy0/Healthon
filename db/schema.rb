@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_050408) do
+ActiveRecord::Schema.define(version: 2021_12_07_060721) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -46,6 +46,26 @@ ActiveRecord::Schema.define(version: 2021_12_07_050408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "member_id"
+  end
+
+  create_table "rec_images", force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.integer "image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.float "weight"
+    t.float "bmi"
+    t.float "bf"
+    t.float "mm"
+    t.float "mus"
+    t.float "tbw"
+    t.float "sm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

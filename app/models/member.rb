@@ -8,6 +8,8 @@ class Member < ApplicationRecord
          
   has_one :profile
   has_one :aim
+  
+  has_many :records
          
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。
   # is_deletedがfalseならtrueを返すようにしている

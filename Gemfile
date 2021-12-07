@@ -61,7 +61,19 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#ユーザー認証
 gem 'devise'
 
+#enum
 gem 'enum_help'
+#国際言語対応
 gem 'rails-i18n', '~> 5.1'
+
+#ファイルのアップロード許可
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+#画像のリサイズ可
+gem "refile-mini_magick"
+#画像のアップロード機能
+gem 'carrierwave'
+#画像を高速でサムネイル化(リサイズ&Crop)
+gem 'mini_magick'

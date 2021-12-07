@@ -1,0 +1,6 @@
+<% @records.each do |record| %>
+<div>
+    <td><%= record.created_at %></td>
+    <td><%= link_to 'Show', record %></td>
+</div>
+<% end %>

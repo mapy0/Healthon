@@ -11,6 +11,15 @@ Rails.application.routes.draw do
     get 'aim', to: 'members/registrations#new_aim'
     post 'aim', to: 'members/registrations#create_aim'
   end
+  
+  
+  #member関係
+  resources :members, only: [:show, :edit]
+  
+  #record関係
+  resources :records
+  
+  
    
    
    # 退会確認画面
@@ -25,8 +34,7 @@ Rails.application.routes.draw do
   get  'homes/about_me'
   get  'homes/how'
 
-  #member関係
-  resources :members, only: [:show, :edit]
+
   
   
    

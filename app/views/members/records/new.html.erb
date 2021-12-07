@@ -1,0 +1,18 @@
+<h1>Record</h1>
+
+<%= form_with model: @mamber, local:true do |f| %>
+  <h4>体重</h4>
+  <%= f.text_field :weight %>
+  <h4>BMI</h4>
+  <%= f.text_field :bmi %>
+  <h4>体脂肪率</h4>
+  <%= f.text_field :bf %>  
+  <h4>筋肉量</h4>
+  <%= f.text_field :mm %>
+  <h4>筋肉率</h4>
+  <%= f.text_field :mus %>
+  <h4>骨格筋率</h4>
+  <%= f.text_field :sm %>
+  
+  <%= f.submit '記録' %>
+<% end %>
