@@ -2,12 +2,15 @@
 
 <%= form_with model: @profile, url: profiles_path, local: true do |f| %>
   <%= render "members/shared/error_messages", resource: @profile %>
+  <%= hidden_field_tag 'member[email]', @member.email %>
+  <%= hidden_field_tag 'member[name]', @member.name %>
+  <%= hidden_field_tag 'member[password]', @member.password %>
 
   <div class="height_field">
     <%= f.label :height %><br />
     <%= f.number_field :height, autofocus: true %>
   </div>
-  
+
  <div class="birth_field">
   <%= f.label :birth %>
   <%= f.date_select(

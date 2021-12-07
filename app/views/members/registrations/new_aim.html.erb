@@ -1,7 +1,17 @@
 <h2>Sign up</h2>
 
-<%= form_with model: @member, url: member_registration_path, local: true do |f| %>
+<%= form_with model: @member, url: aim_path, local: true, method: :post do |f| %>
   <%= render "members/shared/error_messages", resource: @aim %>
+  <!--device member-->
+  <%= hidden_field_tag 'member[email]', @member.email %>
+  <%= hidden_field_tag 'member[name]', @member.name %>
+  <%= hidden_field_tag 'member[password]', @member.password %>
+  <%= hidden_field_tag 'member[password_confirmation]', @member.password_confirmation %>
+  <!--device plofile-->
+  <%= hidden_field_tag 'profile[height]', @profile.height %>
+  <%= hidden_field_tag 'profile[birth]', @profile.birth %>
+  <%= hidden_field_tag 'profile[age]', @profile.age %>
+  <%= hidden_field_tag 'profile[sex]', @profile.sex %>
 
   <div class="aim_w_field">
     <%= f.label :aim_w %><br />
@@ -23,7 +33,7 @@
     <%= f.number_field :aim_sm %>
   </div>
 
-<%= f.submit "registration", class: "btn-default btn-red", url: "aims_path", method: :post %>
+<%#= f.submit "registration", class: "btn-default btn-red", url: "aims_path", method: :post %>
 <%= render "members/shared/links" %>
 <%#= render "/registration/registration_footer" %>
   <div class="actions">

@@ -5,8 +5,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
 
-
-
   # GET /resource/sign_up
   def new
     super
@@ -29,7 +27,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
 
 
   def create_profile
-    @member = Member.new(session["devise.regist_data"]["member"])
+    @member = Member.new(member_params)
     @profile = Profile.new(profile_params)
     unless @profile.valid?
       flash.now[:alert] = @profile.errors.full_messages
@@ -41,24 +39,29 @@ class Members::RegistrationsController < Devise::RegistrationsController
     render :new_aim
   end
 
-  def create_creditcard
-    @member = Member.new(session["devise.regist_data"]["member"])
-    @profile = Profile.new(session["profile"])
-    @aim = Aim.new(aim_params)
-    unless @aim.valid? #unless不要な気がする
-      flash.now[:alert] = @aim.errors.full_messages
-      render :new_aim and return
-    end
+  def create_aim
+    @member = Member.new(member_params)
+    @profile = Profile.new(profile_params)
+    # @aim = Aim.new(aim_params)
+    # unless @aim.valid? #unless不要な気がする
+    #   flash.now[:alert] = @aim.errors.full_messages
+    #   render :new_aim and return
+    # end
     @member.build_profile(@profile.attributes)
-    @member.aim(@aim.attributes)
+    # @member.aim(@aim.attributes)
     @member.save
-    sign_in(:member, @member)
+    # sign_in(:member, @member)
+    redirect_to member_path(@member.id)
   end
 
 
 
 
   protected
+
+  def member_params
+    params.require(:member).permit(:email, :password, :name, :password_confirmation)
+  end
 
   def profile_params
     params.require(:profile).permit(:height, :birth, :age, :sex)

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     @member = Member.find(name: params[:name])
     end
     
-    def withdrawal
+  def withdrawal
     @member = Member.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @member.update(is_deleted: true)

@@ -9,7 +9,6 @@
   </div>
 
 
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -28,14 +27,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-<!--  <div class="actions">-->
-<!--    <%#= f.submit "Sign up" %>-->
-<!--  </div>-->
-<!--<%# end %>-->
-
-<%#= render "members/shared/links" %>
-
 <%= f.submit 'next', class: "btn-default btn-red", url: "profile_path" %>
 <%= render "members/shared/links" %>
-  <%#= render "registration_footer" %>
+
 <% end %>

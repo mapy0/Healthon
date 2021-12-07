@@ -2,7 +2,7 @@
 
 class Members::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
 
   # GET /resource/sign_in
   # def new
@@ -25,13 +25,22 @@ class Members::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
-  before_action :member_state, only: [:create]
+
+  # before_action :member_path, only: [:create]
+
+    def after_sign_out_path_for(resource)
+        root_path
+    end
+
+    def after_sign_in_path_for(resource)
+	      member_path(resource)
+    end
 
 
+
+  protected
 
   # 退会の有無判断するメソッド
-  protected
   # 会員の論理削除のための記述。退会後は、同じアカウントの利用不可。
   def reject_member
      ## 【処理内容1】 入力されたemailからアカウントを1件取得
@@ -46,6 +55,6 @@ class Members::SessionsController < Devise::SessionsController
        flash[:notice] = "項目を入力してください"
     end
   end
-  
-  
+
+
 end
