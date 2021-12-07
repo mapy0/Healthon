@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class Members::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
-  
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+
+
+
+
   # GET /resource/sign_up
   def new
     super
@@ -20,11 +23,11 @@ class Members::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {member: @member.attributes}
     #passwordはmember.attributeに入っていないので、個別で記述。
     session["devise.regist_data"][:member]["password"] = params[:member][:password]
-    @profile = @user.build_profile
+    @profile = @member.build_profile
     render :new_profile
  end
- 
- 
+
+
   def create_profile
     @member = Member.new(session["devise.regist_data"]["member"])
     @profile = Profile.new(profile_params)
@@ -37,7 +40,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
     @aim = @member.build_aim
     render :new_aim
   end
-  
+
   def create_creditcard
     @member = Member.new(session["devise.regist_data"]["member"])
     @profile = Profile.new(session["profile"])
@@ -51,20 +54,20 @@ class Members::RegistrationsController < Devise::RegistrationsController
     @member.save
     sign_in(:member, @member)
   end
-  
-  
-  
-  
+
+
+
+
   protected
 
   def profile_params
     params.require(:profile).permit(:height, :birth, :age, :sex)
   end
-  
+
   def aim_params
     params.require(:aim).permit(:aim_w, :aim_bf, :aim_mus, :aim_sm)
   end
- 
+
 
   # GET /resource/edit
   # def edit

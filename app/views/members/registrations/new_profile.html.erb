@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_with model: @profile, url: profile_path, local: true do |f| %>
+<%= form_with model: @profile, url: profiles_path, local: true do |f| %>
   <%= render "members/shared/error_messages", resource: @profile %>
 
   <div class="height_field">
@@ -13,23 +13,23 @@
   <%= f.date_select(
         :birth,
         use_month_numbers: true,
-        start_year: 1930,
-        end_year: (Time.now.year - 18),
+        start_year: 1950,
+        end_year: (Time.now.year - 10),
         default: Date.new(1990, 1, 1),
-        date_separator: '%s'),
-        '年 ', '月 ') + '日' %>
-　</div>
-　
-　<div class="age_field">
-　   <%= f.label :age %><br />
-    <%= f.number_field :age, autofocus: true %>
-　</div>
+        date_separator: '/')
+   %>
+</div>
 
-　<div class="sex_field">
-　  <%= f.radio_button :sex, 0, checked: true %>非公開
-　  <%= f.radio_button :sex, 1 %>男性
-　  <%= f.radio_button :sex, 2 %>女性
-　  <%= f.radio_button :sex, 3 %>その他
+ <div class="age_field">
+   <%= f.label :age %><br />
+   <%= f.number_field :age, autofocus: true %>
+ </div>
+
+ <div class="sex_field">
+   <%= f.radio_button :sex, 0, checked: true %>非公開
+   <%= f.radio_button :sex, 1 %>男性
+   <%= f.radio_button :sex, 2 %>女性
+   <%= f.radio_button :sex, 3 %>その他
  </div>
 
 <%= f.submit 'next', class: "btn-default btn-red", url: "aim_path" %>
