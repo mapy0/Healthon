@@ -84,5 +84,8 @@ gem 'jquery-rails'
 
 #グラフ作成
 gem 'chart-js-rails', '~> 0.1.4'
+gem 'chartkick'
+gem 'groupdate'
+
 #Railsのコントローラからグラフに値を渡す
 gem 'gon', '~> 6.2.0' 

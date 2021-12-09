@@ -13,11 +13,29 @@ class Members::RecordsController < ApplicationController
 
 
   def index
-    @records = Record.all
-     gon.chart_label = Record.pluck(:date);
-     gon.chart_data_w = Record.pluck(:weight);
-     gon.chart_data_bf= Record.pluck(:bf);
+    @records = Record.all.order(date: "ASC")
+     gon.chart_label = Record.pluck(:date)
+     gon.chart_data_w = Record.pluck(:weight)
+     gon.chart_data_bf= Record.pluck(:bf)
+
+    @record_dates = []
+    @record_weight = []
+    @record_bf = []
+    @records.each do |record|
+    @record_dates.push(record.date.strftime("%m月 %d日"))
+    @record_weight.push(record.weight)
+    @record_bf.push(record.bf)
+    end
+
+    # # ここから追記
+    # @cumulative = []
+    # sum=0
+    # @chartdatas.each do |a|
+    #   sum = sum + a
+    #   @cumulative << sum
+    # end
   end
+
 
   def show
     @record = Record.find(params[:id])
@@ -45,7 +63,7 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm)
+    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date)
   end
 
 

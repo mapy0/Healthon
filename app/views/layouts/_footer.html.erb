@@ -12,15 +12,15 @@
     <%= link_to "マイページ", member_path(current_member), class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Diary", diary_path, class: "nav-link" %>
+    <%= link_to "Diary", diaries_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Record", record_path, class: "nav-link" %>
+    <%= link_to "Record", records_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link" %>
   </li>
-  
+
   https://maxst.icons8.com/vue-static/landings/animated-icons/icons/handshake/handshake.json
 
   <% else %>

@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   devise_scope :member do
 
-  #Login後の遷移先変更
-   #get "members/:id" => "members#show", as: :mypage
 
     get 'profiles', to: 'members/registrations#new_profile'
     post 'profiles', to: 'members/registrations#create_profile'

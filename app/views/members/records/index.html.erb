@@ -1,10 +1,36 @@
 
 <h1>ChartSample</h1>
 
-<canvas id="chart" width="200" height="100"></canvas>
-<script>draw_graph();</script>
+<!--<canvas id="chart" width="200" height="100"></canvas>-->
+<!--<script>draw_graph();</script>-->
+<div style="width:800px; height:500px;">
+<canvas id="myChart"></canvas>
+</div>
 
-
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [<% @record_dates.each do |date|%>
+            "<%= date %>",
+            <% end %>],
+            datasets: [{
+                label: "日別投稿数",
+                data: <%= @record_weight %>,
+                backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                borderColor: 'rgba(255, 80, 120, 1.0)',
+                fill: false
+            },{ //ここから追記
+                label: "累積投稿数",
+                data: <%= @record_bf %>, // 縦軸にとる累積投稿数データを埋め込む
+                backgroundColor: 'rgba(255, 80, 120, 0.2)',
+                borderColor: 'rgba(255, 80, 120, 1.0)',
+                type: 'line', // 'line'でグラフタイプを折線グラフに指定
+            }]
+        },
+    });
+</script>
 
 <% @records.each do |record| %>
 <div>

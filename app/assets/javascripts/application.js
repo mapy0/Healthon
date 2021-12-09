@@ -15,8 +15,12 @@
 //= require bootstrap-sprockets
 
 //= require Chart.min
+
+//= require chartkick
+//= require Chart.bundle
 //
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+

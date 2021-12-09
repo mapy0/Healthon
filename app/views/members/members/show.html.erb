@@ -1,75 +1,71 @@
 <div class="container-fluid">
-  
+
 <div class="row">
   <div class="col-sm-8">
     <div class="row">
-      <div class="col-sm-3">
-       <%= attachment_image_tag @member, :image, :fill, 100, 100, format: 'jpeg', fallback: "sample-author1.jpg" %>
+      <div class="col-sm-2 rounded-circle">
+       <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
       </div>
-      
-      <div class="col-sm-5">
-        <div class="row">
-          
+
+      <div class="col-sm-7">
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <%= @member.name %>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               Follow
             </div>
-           </div>
-           
+          </div>
+
            <div class="row">
-              <div class="row">
-               <div class="col-sm-2">
+               <div class="col-sm-3">
                Follow
                </div>
-               <div class="col-sm-2">
+               <div class="col-sm-3">
                Folloer
               </div>
-             </div>
+          </div>
              <div class="row">
-              <div class="col-sm-2">
+              <div class="col-sm-3">
                Follow数
                </div>
-               <div class="col-sm-2">
+               <div class="col-sm-3">
                Folloer数
               </div>
              </div>
            </div>
          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-3">
+       </div>
+      
+
+    <div class="col-sm-2">
       <div class="row">Edit</div>
       <div class="row">Diary</div>
       <div class="row">Others</div>
     </div>
 </div>
-    
+
   <div class="row">
     <div class="col-sm-8">
        <%= @member.self_introduction %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-sm-11">
        RANK表示
     </div>
   </div>
-  
+
     <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-6">
        Graph
     </div>
-    <div class="col-sm-7">
+     <div class="col-sm-6">
        Defferent
     </div>
   </div>
-  
+
     <div class="row">
     <div class="col-sm-6">
        NewPost Diary
@@ -84,9 +80,9 @@
     </div>
   </div>
 
-  
-  
-   
+
+
+
 
   <% if @member.id == current_member.id %>
     <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
@@ -94,5 +90,5 @@
 
   <%= link_to "Record", new_record_path %>
   <%= link_to "Diary", new_diary_path %>
-  
+
   </div>
