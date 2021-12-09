@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_191914) do
+ActiveRecord::Schema.define(version: 2021_12_08_212201) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_191914) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_191914) do
     t.float "sm"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
   end
 
   create_table "workouts", force: :cascade do |t|

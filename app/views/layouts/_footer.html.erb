@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+<footer class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav ml-auto">
+    <% if member_signed_in? %>
+
+  <li class="nav-item">
+    <%= link_to "マイページ", member_path(current_member), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Diary", diary_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Record", record_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link" %>
+  </li>
+  
+  https://maxst.icons8.com/vue-static/landings/animated-icons/icons/handshake/handshake.json
+
+  <% else %>
+  <% end %>
+  </ul>
+  </div>
+  </footer>
+</nav>

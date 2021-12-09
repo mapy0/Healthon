@@ -2,7 +2,8 @@
 
 <%= form_with model:@record, url: records_path, local:true do |f| %>
 
-
+  <h4>測定日</h4>
+  <%= f.datetime_field :date %>
   <h4>体重</h4>
   <%= f.text_field :weight %>
   <h4>BMI</h4>

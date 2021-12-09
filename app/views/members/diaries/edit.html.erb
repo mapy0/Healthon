@@ -1,6 +1,7 @@
 <h2>日記</h2>
 <%= form_with model:@diary, local:true do |f| %>
-  
+  <h4>日付</h4>
+  <%= f.datetime_field :date %>
   <h4>タイトル</h4>
   <%= f.text_field :title %>
   <h4>本文</h4>

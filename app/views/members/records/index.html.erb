@@ -1,13 +1,14 @@
 
-<h1>ChartSample#index</h1>
+<h1>ChartSample</h1>
 
-<canvas id="myChart" width="10" height="10"></canvas>
+<canvas id="chart" width="200" height="100"></canvas>
 <script>draw_graph();</script>
+
 
 
 <% @records.each do |record| %>
 <div>
-    <td><%= record.created_at %></td>
+    <td><%= record.date %></td>
     <td><%= link_to 'Show', record %></td>
 </div>
 <% end %>
