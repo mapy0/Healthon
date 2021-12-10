@@ -14,9 +14,10 @@ class Members::RecordsController < ApplicationController
 
   def index
     @records = Record.all.order(date: "ASC")
-     gon.chart_label = Record.pluck(:date)
-     gon.chart_data_w = Record.pluck(:weight)
-     gon.chart_data_bf= Record.pluck(:bf)
+    # Coffee使用中止
+    # gon.chart_label = Record.pluck(:date)
+    # gon.chart_data_w = Record.pluck(:weight)
+    # gon.chart_data_bf= Record.pluck(:bf)
 
     @record_dates = []
     @record_weight = []
@@ -26,14 +27,7 @@ class Members::RecordsController < ApplicationController
     @record_weight.push(record.weight)
     @record_bf.push(record.bf)
     end
-
-    # # ここから追記
-    # @cumulative = []
-    # sum=0
-    # @chartdatas.each do |a|
-    #   sum = sum + a
-    #   @cumulative << sum
-    # end
+    
   end
 
 

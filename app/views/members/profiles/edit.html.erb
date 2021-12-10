@@ -1,18 +1,15 @@
-<h2>Sign up</h2>
+<h2>Profile 編集</h2>
 
-<%= form_with model: @profile, url: profiles_path, local: true do |f| %>
-  <%= render "members/shared/error_messages", resource: @profile %>
-  <%= hidden_field_tag 'member[email]', @member.email %>
-  <%= hidden_field_tag 'member[name]', @member.name %>
-  <%= hidden_field_tag 'member[password]', @member.password %>
-  <%= hidden_field_tag 'member[password_confirmation]', @member.password_confirmation %>
+<%= form_with model:@profile, url: profiles_path, local: true do |f| %>
 
-  <div class="height_field">
+<div class="height_field">
+    現在<%= @profile.height %>
     <%= f.label :height %><br />
     <%= f.number_field :height, autofocus: true %>
   </div>
 
  <div class="birth_field">
+   現在<%= @profile.birth %>
   <%= f.label :birth %>
   <%= f.date_select(
         :birth,
@@ -25,20 +22,18 @@
 </div>
 
  <div class="age_field">
+   現在<%= @profile.age %>
    <%= f.label :age %><br />
    <%= f.number_field :age, autofocus: true %>
  </div>
 
  <div class="sex_field">
+   現在<%= @profile.sex %>
    <%= f.radio_button :sex, 0, checked: true %>非公開
    <%= f.radio_button :sex, 1 %>男性
    <%= f.radio_button :sex, 2 %>女性
    <%= f.radio_button :sex, 3 %>その他
  </div>
 
-<%= f.submit 'next', class: "btn-default btn-red", url: "aim_path" %>
-  <%#= render "registration_footer" %>
-  <%= render "members/shared/links" %>
+  <%= f.submit "保存" %>
 <% end %>
-
-

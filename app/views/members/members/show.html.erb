@@ -39,7 +39,28 @@
       
 
     <div class="col-sm-2">
-      <div class="row">Edit</div>
+      <div class="row">
+          
+          
+       <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+       </div>
+
+     <nav class="globalMenuSp">
+      <ul>
+        <%= link_to "Profile<", edit_profile_path(@member) %>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Member Infomation</a></li>
+        <li><a href="#">Aim</a></li>
+      </ul>
+     </nav>
+       
+       
+      </div>
+      
+      
       <div class="row">Diary</div>
       <div class="row">Others</div>
     </div>
@@ -92,3 +113,12 @@
   <%= link_to "Diary", new_diary_path %>
 
   </div>
+  
+  
+
+ <%= @member.profile.id %>
+ <%= @member.profile.height %>
+  <%= @member.profile.birth %>
+
+  
+  

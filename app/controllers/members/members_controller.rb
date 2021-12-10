@@ -8,8 +8,8 @@ class Members::MembersController < ApplicationController
  def edit
    @member = Member.find(params[:id])
  end
-  
-  
+
+
   def update
     @member = Member.find(params[:id])
     @member.update(member_params)
@@ -21,7 +21,7 @@ class Members::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:name, :image, :self_introduction)
   end
-  
-  
-  
+
+
+
 end

@@ -80,7 +80,9 @@ gem 'mini_magick'
 
 #Bootstrap
 gem 'bootstrap', '~> 4.5'
+#jquery
 gem 'jquery-rails'
+
 
 #グラフ作成
 gem 'chart-js-rails', '~> 0.1.4'

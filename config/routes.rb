@@ -41,12 +41,16 @@ Rails.application.routes.draw do
 
   #member関係
   resources :members, only: [:show, :edit, :update]
+    #profile
+    resources :profiles, only: [:show, :edit, :update]
 
   #record関係
   resources :records
 
   #diary関係
   resources :diaries
+  
+  
 
  end
 

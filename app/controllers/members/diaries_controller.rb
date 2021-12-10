@@ -2,15 +2,25 @@ class Members::DiariesController < ApplicationController
 
   def new
    @diary = Diary.new
+   @diary.images.new
   end
+  
 
   def create
     @diary = Diary.new(diary_params)
     @diary.member_id = current_member.id
-    @diary.save
+    
+    if @diary.save
     redirect_to diaries_path
+    else
+      unless @diary.images.present?
+       @diary.images.new
+        render 'new'
+      else
+        render 'new'
+      end
+    end
   end
-
 
   def index
     @diaries = Diary.all
@@ -42,7 +52,8 @@ class Members::DiariesController < ApplicationController
   private
 
   def diary_params
-    params.require(:diary).permit(:title, :body)
+    params.require(:diary).permit(:title, :body, dir_images_attributes: [:dir_image, :id]).merge(member_id: current_member.id)
   end
+
 
 end

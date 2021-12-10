@@ -36,22 +36,23 @@ class Members::RegistrationsController < Devise::RegistrationsController
     @member.build_profile(@profile.attributes)
     session["profile"] = @profile.attributes
     @aim = @member.build_aim
+
+    puts "------------------------------------"
+    Rails.logger.debug @aim.inspect
+    puts "------------------------------------"
+
     render :new_aim
   end
 
   def create_aim
     @member = Member.new(member_params)
     @profile = Profile.new(profile_params)
-    # @aim = Aim.new(aim_params)
-    # unless @aim.valid? #unless不要な気がする
-    #   flash.now[:alert] = @aim.errors.full_messages
-    #   render :new_aim and return
-    # end
     @member.build_profile(@profile.attributes)
     # @member.aim(@aim.attributes)
-    @member.save
+    @member.save!
     # sign_in(:member, @member)
-    redirect_to member_path(@member.id)
+     redirect_to member_path(@member.id)
+
   end
 
 
