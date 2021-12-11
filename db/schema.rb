@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_214823) do
+ActiveRecord::Schema.define(version: 2021_12_11_102050) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_214823) do
     t.integer "member_id", null: false
     t.date "date", null: false
     t.string "title", null: false
-    t.text "bo"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

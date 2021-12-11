@@ -1,4 +1,9 @@
 <div>
+  <% @diary.dia_images.each do |t| %>
+    <%= attachment_image_tag t, :image, size: "300x300", class: "diary_image rounded" %>
+    <% #= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
+  <% end %>
+
   <p>記録日：<%= @diary.date %></p>
   <p>タイトル：<%= @diary.title %></p>
   <p>本文：<%= @diary.body %></p>

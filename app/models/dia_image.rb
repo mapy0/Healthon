@@ -7,5 +7,6 @@ class DiaImage < ApplicationRecord
   #画像投稿許可：refile使用
   attachment :image
   
+  #mount_uploader :file, DiaImageUploader
   
 end

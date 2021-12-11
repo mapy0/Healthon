@@ -9,9 +9,10 @@ class Members::DiariesController < ApplicationController
 
 
   def create
-    @diary = Diary.new(diary_params)
+    @diary = Diary.new(diary_params["diary"])
     @diary.member_id = current_member.id
 
+    binding.pry
     if @diary.save
      redirect_to diaries_path
     end
@@ -24,6 +25,7 @@ class Members::DiariesController < ApplicationController
 
   def show
     @diary = Diary.find(params[:id])
+    #binding.pry
   end
 
  def edit
@@ -58,14 +60,20 @@ class Members::DiariesController < ApplicationController
 end
 
   private
-  def diary_params
-    params.permit(
-      :title,
-      :body,
-      dia_images_attributes: [:image_id],
-    )
-    .merge(member_id: current_member.id)
-  end
+  # def diary_params
+  #   params.permit(
+  #     :title,
+  #     :body,
+  #     dia_images_attributes: [:image_id],
+  #   )
+  #   .merge(member_id: current_member.id)
+  # end
+
+def diary_params
+  #params.permit(:title, :body, :date, { images: [] })
+  params.permit(diary: [:date, :body, :title, dia_images_images: []])
+end
+
 
 
 
