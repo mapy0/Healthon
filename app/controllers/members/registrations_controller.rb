@@ -34,24 +34,24 @@ class Members::RegistrationsController < Devise::RegistrationsController
       render :new_profile and return
     end
     @member.build_profile(@profile.attributes)
-    session["profile"] = @profile.attributes
+    session[:profile] = @profile.attributes
     @aim = @member.build_aim
-
-    puts "------------------------------------"
-    Rails.logger.debug @aim.inspect
-    puts "------------------------------------"
-
     render :new_aim
   end
 
   def create_aim
     @member = Member.new(member_params)
-    @profile = Profile.new(profile_params)
-    @member.build_profile(@profile.attributes)
-    # @member.aim(@aim.attributes)
+    @member.build_profile(profile_params)
+    @member.build_aim(aim_params)
     @member.save!
-    # sign_in(:member, @member)
+     sign_in(:member, @member)
      redirect_to member_path(@member.id)
+
+    puts "---------------check--------------------"
+    Rails.logger.debug @member.aim.inspect
+    Rails.logger.debug @member.profile.inspect
+    puts "---------------check---------------------"
+
 
   end
 

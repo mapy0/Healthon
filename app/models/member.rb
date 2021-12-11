@@ -15,8 +15,8 @@ class Member < ApplicationRecord
   has_one :aim
 
  #その他機能のとのアソシエーション
-  has_many :records
-  has_many :diaries
+  has_many :records, dependent: :destroy
+  has_many :diaries, dependent: :destroy
   
          
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。

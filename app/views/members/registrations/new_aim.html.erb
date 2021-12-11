@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_with model: @member, url: aim_path, local: true, method: :post do |f| %>
+<%= form_with model: @aim, url: aim_path, local: true, method: :post do |f| %>
   <%= render "members/shared/error_messages", resource: @aim %>
   <!--device member-->
   <%= hidden_field_tag 'member[email]', @member.email %>
