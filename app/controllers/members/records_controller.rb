@@ -2,10 +2,11 @@ class Members::RecordsController < ApplicationController
 
   def new
    @record = Record.new
+   @record.rec_images.build
   end
 
   def create
-    @record = Record.new(record_params)
+    @record = Record.new(record_params["record"])
     @record.member_id = current_member.id
     @record.save
     redirect_to records_path
@@ -27,7 +28,7 @@ class Members::RecordsController < ApplicationController
     @record_weight.push(record.weight)
     @record_bf.push(record.bf)
     end
-    
+
   end
 
 
@@ -57,7 +58,7 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date)
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: []])
   end
 
 

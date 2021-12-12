@@ -14,16 +14,12 @@ Rails.application.routes.draw do
 
     get 'profiles', to: 'members/registrations#new_profile'
     post 'profiles', to: 'members/registrations#create_profile'
-    get 'aim', to: 'members/registrations#new_aim'
-    post 'aim', to: 'members/registrations#create_aim'
+    get 'aims', to: 'members/registrations#new_aim'
+    post 'aims', to: 'members/registrations#create_aim'
 
 
 
   end
-
-
-
-
 
  scope module: :members do
 
@@ -43,14 +39,16 @@ Rails.application.routes.draw do
   resources :members, only: [:show, :edit, :update]
     #profile
     resources :profiles, only: [:show, :edit, :update]
+    #aim
+    resources :aims, only: [:show, :edit, :update]
 
   #record関係
   resources :records
 
   #diary関係
   resources :diaries
-  
-  
+
+
 
  end
 

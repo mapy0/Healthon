@@ -1,15 +1,14 @@
 <h2>Profile 編集</h2>
 
-<%= form_with model:@profile, url: profiles_path, local: true do |f| %>
+<%= form_with model:@profile, url: profile_path, local: true do |f| %>
+
 
 <div class="height_field">
-    現在<%= @profile.height %>
     <%= f.label :height %><br />
     <%= f.number_field :height, autofocus: true %>
   </div>
 
  <div class="birth_field">
-   現在<%= @profile.birth %>
   <%= f.label :birth %>
   <%= f.date_select(
         :birth,
@@ -22,13 +21,11 @@
 </div>
 
  <div class="age_field">
-   現在<%= @profile.age %>
    <%= f.label :age %><br />
    <%= f.number_field :age, autofocus: true %>
  </div>
 
  <div class="sex_field">
-   現在<%= @profile.sex %>
    <%= f.radio_button :sex, 0, checked: true %>非公開
    <%= f.radio_button :sex, 1 %>男性
    <%= f.radio_button :sex, 2 %>女性

@@ -1,13 +1,13 @@
 <h2>Sign up</h2>
 
-<%= form_with model: @aim, url: aim_path, local: true, method: :post do |f| %>
+<%= form_with model: @aim, url: aims_path, local: true, method: :post do |f| %>
   <%= render "members/shared/error_messages", resource: @aim %>
   <!--device member-->
   <%= hidden_field_tag 'member[email]', @member.email %>
   <%= hidden_field_tag 'member[name]', @member.name %>
   <%= hidden_field_tag 'member[password]', @member.password %>
   <%= hidden_field_tag 'member[password_confirmation]', @member.password_confirmation %>
-  
+
   <!--device plofile-->
   <%= hidden_field_tag 'profile[height]', @profile.height %>
   <%= hidden_field_tag 'profile[birth]', @profile.birth %>

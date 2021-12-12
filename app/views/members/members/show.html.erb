@@ -50,12 +50,13 @@
 
      <nav class="globalMenuSp">
       <ul>
-        <%= link_to "Profile<", edit_profile_path(@member) %>
-        <li><a href="#">Profile</a></li>
+        <%= link_to "Profile", edit_profile_path(@member) %>
+        
         <li><a href="#">Member Infomation</a></li>
-        <li><a href="#">Aim</a></li>
+        <%= link_to "Aim", edit_aim_path(@member) %>
       </ul>
      </nav>
+
 
 
       </div>

@@ -6,6 +6,11 @@
   <p>筋肉量：<%= @record.mm %></p>
   <p>筋肉率：<%= @record.mus %></p>
   <p>骨格筋率：<%= @record.sm %></p>
+  
+    <% @record.rec_images.each do |t| %>
+    <!--Refile特有の記述↓-->
+    <%= attachment_image_tag t, :image, size: "300x300", class: "record_image rounded" %>
+    <% end %>
 
     <% if @record.member == current_member %>
     <%= link_to "削除", record_path(@record), method: :delete %>

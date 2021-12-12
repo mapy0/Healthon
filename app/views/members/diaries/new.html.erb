@@ -8,23 +8,7 @@
   <h4>本文</h4>
   <%= f.text_area :body %>
 
-  <%#= f.fields_for :image_ids do |image_id| %>
-  <%#= image_id.file_field :image_id, multiple: true %> 
-  <%# f.file_field :images, multiple: true %>
-  <%# end %>
-  
-  <% #byebug %>
-  
   <%= f.attachment_field :dia_images_images, multiple: true %>
-  
-  <!--Add image form-->
-  <%#= f.fields_for :image_ids do |f_img| %>
-    <%#= f_img.file_field :name, class: "hidden image_upload" %>
-  <%#end %>
-
-  
-  
-  
   
   <%= f.submit '投稿' %>
 <% end %>

@@ -1,0 +1,26 @@
+<h2>Aim 編集<</h2>
+
+<%= form_with model:@aim, url: aim_path, local: true,method: :patch do |f| %>
+
+  <div class="aim_w_field">
+    <%= f.label :aim_w %><br />
+    <%= f.number_field :aim_w %>
+  </div>
+
+  <div class="aim_bf_field">
+    <%= f.label :aim_bf %><br />
+    <%= f.number_field :aim_bf %>
+  </div>
+
+   <div class="aim_mus_field">
+    <%= f.label :aim_mus %><br />
+    <%= f.number_field :aim_mus %>
+  </div>
+
+  <div class="aim_sm_field">
+    <%= f.label :aim_sm %><br />
+    <%= f.number_field :aim_sm %>
+  </div>
+
+    <%= f.submit "保存" %>
+<% end %>
