@@ -1,6 +1,6 @@
 <h1>Record</h1>
 
-<%= form_with model: @record, url: records_path, local:true do |f| %>
+<%= form_with model: @record, url: member_records_path, local:true do |f| %>
 
   <h4>測定日</h4>
   <%= f.datetime_field :date %>

@@ -15,7 +15,8 @@ class Members::DiariesController < ApplicationController
     end
 
     def index
-      @diaries = Diary.all
+      @member = Member.find(params[:id])
+      @diaries = where(member_id: @member.id)
     end
 
     def show

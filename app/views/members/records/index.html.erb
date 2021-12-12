@@ -1,7 +1,8 @@
+
 <% @records.each do |record| %>
 <div>
     <td><%= record.date %></td>
-    <td><%= link_to 'Show', record %></td>
+    <td><%= link_to 'Show', member_record_path(id: record.member_id)%></td>
 </div>
 <% end %>
 
@@ -29,7 +30,7 @@
                 backgroundColor: 'rgba(255, 80, 120, 1.0)',
                 borderColor: 'rgba(255, 80, 120, 1.0)',
                 fill: false
-            },{ 
+            },{
                 label: "体脂肪率",
                 data: <%= @record_bf %>, //縦軸データ埋込
                 backgroundColor: 'rgba(255, 80, 120, 0.2)',

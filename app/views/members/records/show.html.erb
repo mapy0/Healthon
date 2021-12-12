@@ -13,8 +13,8 @@
     <% end %>
 
     <% if @record.member == current_member %>
-    <%= link_to "削除", record_path(@record), method: :delete %>
-    <%= link_to "編集", edit_record_path(@record) %>
+    <%= link_to "削除", member_record_path(@record), method: :delete %>
+    <%= link_to "編集", edit_member_record_path(@record) %>
     <% end %>
 
 

@@ -36,14 +36,14 @@ Rails.application.routes.draw do
   get  'homes/how'
 
   #member関係
-  resources :members, only: [:show, :edit, :update]
+  resources :members, only: [:show, :edit, :update] do
+    #record関係
+    resources :records
+  end
     #profile
     resources :profiles, only: [:show, :edit, :update]
     #aim
     resources :aims, only: [:show, :edit, :update]
-
-  #record関係
-  resources :records
 
   #diary関係
   resources :diaries

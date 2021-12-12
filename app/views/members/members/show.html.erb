@@ -51,7 +51,7 @@
      <nav class="globalMenuSp">
       <ul>
         <%= link_to "Profile", edit_profile_path(@member) %>
-        
+
         <li><a href="#">Member Infomation</a></li>
         <%= link_to "Aim", edit_aim_path(@member) %>
       </ul>
@@ -110,7 +110,7 @@
     <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
   <% end %>
 
-  <%= link_to "Record", new_record_path %>
+  <%= link_to "Record", new_member_record_path(@member) %>
   <%= link_to "Diary", new_diary_path %>
 
   </div>

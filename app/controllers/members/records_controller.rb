@@ -8,13 +8,19 @@ class Members::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params["record"])
     @record.member_id = current_member.id
-    @record.save
-    redirect_to records_path
+    @record.save!
+    redirect_to member_records_path
   end
 
 
   def index
-    @records = Record.all.order(date: "ASC")
+    @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
+    # @member = Member.find(params[:id])
+    # @records = @member.record.order(date: “ASC”)
+    # @records = Record.all
+
+
+    # @records = Record.all.order(date: "ASC")
     # Coffee使用中止
     # gon.chart_label = Record.pluck(:date)
     # gon.chart_data_w = Record.pluck(:weight)
@@ -24,9 +30,9 @@ class Members::RecordsController < ApplicationController
     @record_weight = []
     @record_bf = []
     @records.each do |record|
-    @record_dates.push(record.date.strftime("%m月 %d日"))
-    @record_weight.push(record.weight)
-    @record_bf.push(record.bf)
+      @record_dates.push(record.date.strftime("%m月 %d日"))
+      @record_weight.push(record.weight)
+      @record_bf.push(record.bf)
     end
 
   end
@@ -44,13 +50,13 @@ class Members::RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
     @record.update(record_params)
-    redirect_to record_path(@record.id)
+    redirect_to member_record_path(@record.id)
   end
 
   def destroy
     @record = Record.find(params[:id])
     @record.destroy
-    redirect_to records_path
+    redirect_to member_records_path
   end
 
 
@@ -58,7 +64,7 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: []])
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, :member_id, rec_images_images: []])
   end
 
 
