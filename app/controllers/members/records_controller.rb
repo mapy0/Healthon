@@ -15,12 +15,6 @@ class Members::RecordsController < ApplicationController
 
   def index
     @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
-    # @member = Member.find(params[:id])
-    # @records = @member.record.order(date: “ASC”)
-    # @records = Record.all
-
-
-    # @records = Record.all.order(date: "ASC")
     # Coffee使用中止
     # gon.chart_label = Record.pluck(:date)
     # gon.chart_data_w = Record.pluck(:weight)
@@ -64,7 +58,7 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, :member_id, rec_images_images: []])
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: []])
   end
 
 

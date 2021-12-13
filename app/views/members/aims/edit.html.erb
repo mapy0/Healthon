@@ -1,6 +1,6 @@
 <h2>Aim 編集<</h2>
 
-<%= form_with model:@aim, url: aim_path, local: true,method: :patch do |f| %>
+<%= form_with model:@aim, url: aim_path(@aim.id), local: true,method: :patch do |f| %>
 
   <div class="aim_w_field">
     <%= f.label :aim_w %><br />

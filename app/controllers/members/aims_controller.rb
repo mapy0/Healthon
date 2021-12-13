@@ -9,7 +9,7 @@ class Members::AimsController < ApplicationController
     @member = current_member
     @aim = @member.aim
     @aim.update(aim_params)
-    redirect_to edit_profile_path(@aim.id)#redirect先は考えること
+    redirect_to edit_aim_path(@aim.id)
   end
 
 
