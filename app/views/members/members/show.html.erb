@@ -1,10 +1,12 @@
-<div class="container-fluid">
-
+<div class="bg_wrap">
+<div class="bg_space container-fluid">
 <div class="row">
   <div class="col-sm-8">
     <div class="row">
       <div class="col-sm-2 rounded-circle">
        <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+
+
       </div>
 
       <div class="col-sm-7">
@@ -114,6 +116,10 @@
   <%= link_to "Diary", new_diary_path %>
 
   </div>
+  <%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>
+</div>
+
+
 
 
 

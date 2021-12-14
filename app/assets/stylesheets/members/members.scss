@@ -102,3 +102,49 @@ nav.globalMenuSp.active {
   opacity: 100;
 
 }
+
+
+/* 背景を動画に */
+.video-wrap {
+  	position: relative;
+}
+p {
+	font-family: serif;
+	color: #333;
+	font-size: 400%;
+	position: absolute;
+	left: 10%;
+	top: 50px;
+	z-index: 1;
+}
+
+.bg_wrap {
+    position: relative;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bg_wrap p,
+.bg_wrap ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.bg_wrap video,
+.bg_wrap img {
+    width:100%;
+}
+.bg_wrap .bg_space {
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    z-index: 1;
+    margin:0;
+    padding-top:0px;
+}
+.bg_wrap .bg_space ul{
+    text-align: right;
+    font-size:16px;
+    padding: 0 20px 0 0;
+}
