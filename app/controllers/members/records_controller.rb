@@ -3,6 +3,7 @@ class Members::RecordsController < ApplicationController
   def new
    @record = Record.new
    @record.rec_images.build
+   @meal = @record.meals.build
   end
 
   def create
@@ -58,9 +59,8 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: []])
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [], 
+    meals_attributes:[:id, :record_id, :my_meal_id, :date, :name, :calorie, :_destroy]] ).merge(member_id: current_member.id)
   end
-
-
 
 end

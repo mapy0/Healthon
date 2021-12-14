@@ -92,3 +92,6 @@ gem 'groupdate'
 
 #Railsのコントローラからグラフに値を渡す
 gem 'gon', '~> 6.2.0' 
+
+#動的フォーム
+gem 'cocoon'
