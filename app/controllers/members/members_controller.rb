@@ -3,6 +3,16 @@ class Members::MembersController < ApplicationController
 
  def show
    @member = Member.find(params[:id])
+   
+   @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
+    @record_dates = []
+    @record_weight = []
+    @record_bf = []
+    @records.each do |record|
+      @record_dates.push(record.date.strftime("%m月 %d日"))
+      @record_weight.push(record.weight)
+      @record_bf.push(record.bf)
+    end
  end
 
  def edit

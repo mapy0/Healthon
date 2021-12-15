@@ -1,0 +1,32 @@
+<!--Coffee使用中止-->
+<!--<canvas id="chart" width="200" height="100"></canvas>-->
+<!--<script>draw_graph();</script>-->
+
+
+<canvas id="myChart"></canvas>
+</div>
+
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [<% @record_dates.each do |date|%>
+            "<%= date %>",
+            <% end %>],
+            datasets: [{
+                label: "体重",
+                data: <%= @record_weight %>,
+                backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                borderColor: 'rgba(255, 80, 120, 1.0)',
+                fill: false
+            },{
+                label: "体脂肪率",
+                data: <%= @record_bf %>, //縦軸データ埋込
+                backgroundColor: 'rgba(255, 80, 120, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 0.2)',
+                type: 'line'
+            }]
+        },
+    });
+</script>

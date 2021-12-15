@@ -1,9 +1,9 @@
 <div class="bg_wrap">
 <div class="bg_space container-fluid">
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-8 ml-5">
     <div class="row">
-      <div class="col-sm-2 rounded-circle">
+      <div class="col-sm-2 rounded" style="background-color:#ffffffd9">
        <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
 
 
@@ -43,25 +43,33 @@
     <div class="col-sm-2">
       <div class="row">
 
-
+       <div class="row">
        <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
        </div>
+       </div>
 
+     <div class="row">
      <nav class="globalMenuSp">
+      <% if @member.id == current_member.id %>
       <ul>
+        <div class="row">
         <%= link_to "Profile", edit_profile_path(@member) %>
-
-        <li><a href="#">Member Infomation</a></li>
+        </div>
+        <div class="row">
+        <%= link_to "Member Infomation", edit_member_path(@member) %>
+        </div>
+        <div class="row">
         <%= link_to "Aim", edit_aim_path(@member) %>
+        </div>
       </ul>
+       <% end %>
      </nav>
+    </div>
 
-
-
-      </div>
+  </div>
 
 
       <div class="row">Diary</div>
@@ -83,7 +91,9 @@
 
     <div class="row">
     <div class="col-sm-6">
-       Graph
+      <h5>Transition Chart</h5>
+       <div style="width:500px; height:300px; background-color:#ffffffbf">
+       <%= render 'members/records/mychart' %>
     </div>
      <div class="col-sm-6">
        Defferent
@@ -104,13 +114,6 @@
     </div>
   </div>
 
-
-
-
-
-  <% if @member.id == current_member.id %>
-    <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
-  <% end %>
 
   <%= link_to "Record", new_member_record_path(@member) %>
   <%= link_to "Diary", new_diary_path %>
