@@ -4,10 +4,12 @@ class Members::RecordsController < ApplicationController
    @record = Record.new
    @record.rec_images.build
    @meal = @record.meals.build
+  #TODO: @my_meals = current_member.my_meals 後に実装予定
   end
 
   def create
     @record = Record.new(record_params["record"])
+    # byebug
     @record.member_id = current_member.id
     @record.save!
     redirect_to member_records_path
@@ -21,6 +23,7 @@ class Members::RecordsController < ApplicationController
     # gon.chart_data_w = Record.pluck(:weight)
     # gon.chart_data_bf= Record.pluck(:bf)
 
+    #image複数枚登録にあたって
     @record_dates = []
     @record_weight = []
     @record_bf = []
@@ -59,8 +62,10 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [], 
-    meals_attributes:[:id, :record_id, :my_meal_id, :date, :name, :calorie, :_destroy]] ).merge(member_id: current_member.id)
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+    meals_attributes:[:id, :record_id, :my_meal_id, :date, :name, :calorie, :_destroy]] )
+    # params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+    # meals_attributes:[:id, :record_id, :my_meal_id, :date, :name, :calorie, :_destroy]] ).merge(member_id: current_member.id)
   end
 
 end

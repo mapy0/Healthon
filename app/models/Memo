@@ -1,0 +1,84 @@
+
+
+  def new
+   @record = Record.new
+   @record.rec_images.build
+   @meal = @record.meals.build
+  end
+
+  def create
+    @record = Record.new(record_params["record"])
+    @record.member_id = current_member.id
+　@record.meal=Record.meal.new(meal_params[“meal”])
+
+
+    @record.save!
+    redirect_to member_records_path
+  end
+
+
+# new 画面から渡ってきたデータを @meal に入れる
+  if params[:record][:rec_meal] == "1"
+    if MyMeal.exists?(name: params[:meal][:registered])
+# registered は viwe で定義
+      @meal.name = MyMeal.find(params[:meal][:registered]).thing
+      @meal.calorie = Address.find(params[:meal][:registered]).carorie
+    else
+      render :new
+    end
+
+  elsif params[:order][:address_number] == “2”
+# view で定義している rec_meal が”2”だったときの処理
+    meal_new = current_customer.addresses.new(address_params)
+    if meal_new.save
+    else
+      render :new
+# 渡ってくるデータは手入力で新規追加する。入力不足の場合は new に戻す
+    end
+  else
+    redirect_to index 
+  end
+
+
+
+
+
+
+_meal.html.erb
+
+<!-- 登録されたmymealから選ぶ場合 -->
+  <%= f.radio_button :rec_meal, 1 %>
+  <%= f.label :rec_mealr_1, “Myアイテムから選ぶ” %>
+  <%= f.collection_select(:registered, current_customer.my_meals.all, :id, :thing%>
+
+
+
+<%= f.radio_button :rec_meal, 2 %>
+
+<div class="nested-fields">
+  <table>
+    <tr>
+      <!--td class="td-fixed-select”>
+      <!--/td-->
+      <td class="td-fixed-select">
+      <%= f.text_field :name, class: "meals-name",id:"meal-name", size: 30 %>
+      </td>
+      <td class="td-fixed-spoon">
+        <span class="box-spoon" id='spoon-auto' data-spoon='0'></span>
+      </td>
+      <td class="td-fixed-amount">
+        <%#= f.number_field :amount, class:"ingredients-amount",id:"ingredient-amount", min:"0",step:"0.1"%>
+        <%= f.text_field :calorie, class: "meals-calorie",id:"meal-calorie", size: 4 %>　kcal
+      </td>
+      <td class="td-fixed-unit">
+        <span class="box-unit" id='unit-auto' data-unit='0'></span>
+      </td>
+      
+      
+      <td class="td-fixed-delete">
+        <%= link_to_remove_association "削除", f %>
+
+      </td>
+    </tr>
+  </table>
+</div>

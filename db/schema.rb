@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_12_14_001919) do
   end
 
   create_table "my_meals", force: :cascade do |t|
+    t.integer "member_id", null: false
     t.string "thing"
     t.integer "calorie"
     t.datetime "created_at", null: false

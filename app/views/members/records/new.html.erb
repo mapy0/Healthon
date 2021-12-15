@@ -6,7 +6,15 @@
 
 <div class="row justify-content-center">
    <div class="col-sm6 mr-5">
-    <%= form_with model: @record, url: member_records_path, local:true do |f| %>
+    <!--< %= @my_meals.each do |my_meal| %>-->
+    <!--  my_meal-->
+    <!--< % end %>-->
+    <!--<script>-->
+    <!--  $(document).funciton() {-->
+    <!--    document.getElementbyId('itemlistname_0');-->
+    <!--  }-->
+    <!--</script>-->
+    <%= form_with model:@record, url: member_records_path, local:true do |f| %>
 
     <h5>測定日</h5>
     <%= f.date_field :date %>
@@ -38,17 +46,18 @@
        </div>
        <!-- １）追加ボタンの記述 -->
        <div class="add-botton-box">
-         <%= link_to_add_association "追加ボタン", f, :meals,
-         class: 'add_fields',
-         id: 'add-btn',
-         data: {
-         association_insertion_node: '#detail-association-insertion-point',
-         association_insertion_method: 'after'
-          } %>
+         <%= link_to_add_association "追加", f, :meals,
+           class: 'add_fields',
+           id: 'add-btn',
+           data: {
+             association_insertion_node: '#detail-association-insertion-point',
+             # association_insertion_method: 'append'
+           }
+         %>
           <div id="detail-association-insertion-point"></div>
-           <%= f.fields_for :meals do |form| %>
-           <%= render "meal_fields", f: form %>
-         <% end %>
+           <%= f.fields_for :meals do |meal| %>
+             <%= render "meal_fields", f: meal %>
+           <% end %>
       </div>
     </div>
    </div>
@@ -58,7 +67,7 @@
      </div>
     </div>
 </div>
-   
+
  </div>
 </div>
 
