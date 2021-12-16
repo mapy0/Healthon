@@ -1,5 +1,5 @@
 class Members::CirclesController < ApplicationController
-  
+
   def new
     @circle = Circle.new
     #@circle.members << current_member
@@ -23,15 +23,16 @@ class Members::CirclesController < ApplicationController
     @circle_lists_none = "Circleに参加していません"
   end
 
-  # def show
-  #   # @circle = Circle.find_by(id: params[:id])
+   def show
+     @circle = Circle.find(params[:id])
+     #@circle = Circle.find_by(id: params[:id])
 
-  #   # if !@circle.members.include?(current_member)
-  #   #   @circle.members << current_member
-  #   # end
-  #   # @cir_comments = CirComment.where(circle_id: @circle.id).all
-  # end
-  
+    # if !@circle.members.include?(current_member)
+    #   @circle.members << current_member
+    # end
+    # @cir_comments = CirComment.where(circle_id: @circle.id).all
+  end
+
 
   private
   def circle_params
@@ -42,7 +43,7 @@ class Members::CirclesController < ApplicationController
   def cir_comment_params
     params.require(:cir_comment).permit(:comment)
   end
-  
+
 
 end
 

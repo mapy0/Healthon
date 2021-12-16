@@ -11,6 +11,10 @@
     <%#= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
   <% end %>
 
+
+
+
+
     <% if @diary.member == current_member %>
     <%= link_to "削除", diary_path(@diary), method: :delete %>
     <%= link_to "編集", edit_diary_path(@diary) %>

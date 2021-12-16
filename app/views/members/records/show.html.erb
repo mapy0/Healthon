@@ -7,9 +7,14 @@
   <p>筋肉率：<%= @record.mus %></p>
   <p>骨格筋率：<%= @record.sm %></p>
   
+    <% @record.meals.each do |meal| %>
+    <p><%= meal.name %></p>
+    <p><%= meal.calorie %></p>
+
+     <% end %>
+  
     <% @record.rec_images.each do |t| %>
     <!--Refile特有の記述↓-->
-    
     <%= attachment_image_tag t, :image, size: "300x300", class: "record_image rounded" %>
     <%#= image_tag t.image.to_s,width:300,height:300,class: "record_image rounded" %>
     <% end %>

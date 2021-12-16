@@ -15,13 +15,20 @@
   <% if @circle_joininig == [] %>
      <%= @circle_lists_none %>
   <% else %>
+  
+  <div class="circle_list">
+    <ul class="circle_list_table">
      <% @circles.each do |circle| %>
-      <div>
-        <td><%= circle.name %></td>
-        <td><%#= link_to 'Show', circle %></td>
-      </div>
-    <% end %>
+       <% if circle.member_ids.include?(current_member.id)%>
+        <li class="circle_list_table_each_group">
+          <%= link_to circle do%>
+           <%= circle.name %>
+          <% end %>  
+          <%= circle.member_ids.count %>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
+   </div>
   <% end %>
-
-
 </div>
