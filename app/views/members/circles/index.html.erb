@@ -1,0 +1,27 @@
+<div class="circle">
+　<h1>Circle一覧</h1>
+　 <div class="circle_search">
+　   <div class="circle_search_form">
+　     <%= form_with url: circles_path do |f| %>
+　     <%= f.text_field :keyword, pleaseholder: "Circle 検索", class: "circle_search_form_input" %>
+　     <%= f.submit 'Search!' %>
+　     <% end %>
+　   </div>
+　 </div>
+　 <div class="circle_new">
+　   <%= link_to "Create Circle", new_circle_path %>
+   </div>
+
+  <% if @circle_joininig == [] %>
+     <%= @circle_lists_none %>
+  <% else %>
+     <% @circles.each do |circle| %>
+      <div>
+        <td><%= circle.name %></td>
+        <td><%#= link_to 'Show', circle %></td>
+      </div>
+    <% end %>
+  <% end %>
+
+
+</div>

@@ -14,10 +14,15 @@ class Member < ApplicationRecord
   has_one :profile
   has_one :aim
 
- #その他機能のとのアソシエーション
+ #Record関連アソシエーション
   has_many :records, dependent: :destroy
-  has_many :diaries, dependent: :destroy
   has_many :my_meals, dependent: :destroy
+  
+  #Diary関連アソシエーション
+  has_many :diaries, dependent: :destroy
+  
+  #Circle関連アソシエーション
+  has_many :circles, through: :circle_members
   
          
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。

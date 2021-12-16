@@ -1,0 +1,18 @@
+<h1> Circle 新規作成<h1>
+  
+  <%= form_with model: @circle, url: circles_path, local:true do |f| %>
+ <!--circle_membersテーブルに作成したmemberの情報を送信-->
+ <!--text_field_tag (テキストボックス名, 初期文字列, {オプション1, オプション2,,,})-->
+ <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
+ 
+  <h4>Circle名</h4>
+  <%= f.text_field :name %>
+  <h4>Circleの説明</h4>
+  <%= f.text_area :infomation %>
+  <h4>上限人数</h4>
+  <%= f.text_field :maximam_member %>
+  <h4>image</h4>
+  <%= f.attachment_field :image %>
+  
+  <%= f.submit 'Create!' %>
+<% end %>

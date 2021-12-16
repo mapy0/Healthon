@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_001919) do
+ActiveRecord::Schema.define(version: 2021_12_16_011851) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -20,6 +20,30 @@ ActiveRecord::Schema.define(version: 2021_12_14_001919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "member_id"
+  end
+
+  create_table "cir_comments", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "circle_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "circle_members", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "circle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "circles", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "infomation"
+    t.integer "maximam_member"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dia_images", force: :cascade do |t|

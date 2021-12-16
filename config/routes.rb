@@ -47,7 +47,9 @@ Rails.application.routes.draw do
 
   #diary関係
   resources :diaries
-
+  
+  #circle関係
+  resources :circles
 
 
  end
