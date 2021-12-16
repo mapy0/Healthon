@@ -1,7 +1,7 @@
 class CircleMember < ApplicationRecord
-  
+
   belongs_to :circle
-  belongs_to :mem
-  
-  
+  belongs_to :member
+
+
 end

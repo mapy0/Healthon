@@ -6,9 +6,10 @@ class Members::CirclesController < ApplicationController
   end
 
    def create
-     @circle = Circle.new(circle_params["circle"])
+     @circle = Circle.new(circle_params)
     # @circle.member_ids = current_member.id
       if @circle.save!
+        CircleMember.create!(member_id: current_member.id, circle: @circle)
         redirect_to circles_path, notice: 'Create Sucsess :)!!'
       else
         render :new, alert: 'Create false :('
