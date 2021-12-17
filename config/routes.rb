@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
 
   root to: 'homes#top'
-
+  #circle comment 非同期用
+  mount ActionCable.server => '/cable'
+  
 
   devise_scope :member do
 
@@ -49,7 +51,9 @@ Rails.application.routes.draw do
   resources :diaries
   
   #circle関係
-  resources :circles
+  resources :circles do
+    resources :cir_comments, only: [:index, :create, :destroy]
+  end
 
 
  end

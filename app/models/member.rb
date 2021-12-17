@@ -23,6 +23,7 @@ class Member < ApplicationRecord
   
   #Circle関連アソシエーション
   has_many :circles, through: :circle_members
+  has_many :cir_comments, dependent: :destroy
   
          
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。

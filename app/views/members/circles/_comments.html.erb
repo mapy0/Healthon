@@ -1,0 +1,5 @@
+<% @circle.cir_comments.each do |cir_comment| %>
+  <%=cir_comment.member.name %>
+  <%= cir_comment.created_at.strftime('%Y/%m/%d') %>
+  <%= cir_comment.comment %>
+<% end %>

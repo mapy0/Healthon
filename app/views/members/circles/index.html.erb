@@ -19,7 +19,7 @@
   <div class="circle_list">
     <ul class="circle_list_table">
      <% @circles.each do |circle| %>
-       <% if circle.circle_members.map(&:id).include?(current_member.id)%>
+       <%# if circle.circle_members.map(&:id).include?(current_member.id)%> <!--全体・自分の所属しているもののみで分ける-->
         <li class="circle_list_table_each_group">
           <%= link_to circle do%>
            <%= circle.name %>
@@ -27,7 +27,7 @@
           <%= circle.member_ids.count %>
         </li>
         <% end %>
-      <% end %>
+      <%# end %>
     </ul>
    </div>
   <% end %>

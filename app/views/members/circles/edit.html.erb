@@ -1,0 +1,20 @@
+<h1> Circle 編集<h1>
+  
+  <%= form_with model:@circle, url: circle_path(@circle.id), local:true do |f| %>
+ <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
+ 
+  <h4>Circle名</h4>
+  <%= f.text_field :name %>
+  <h4>Circleの説明</h4>
+  <%= f.text_area :infomation %>
+  <h4>上限人数</h4>
+  <%= f.text_field :maximam_member %>
+  <h4>image</h4>
+  <%= f.attachment_field :image %>
+  
+  <%= f.submit 'Edit!' %>
+<% end %>
+
+<%= link_to circle_path(@circle) do%>
+<<
+<% end %>

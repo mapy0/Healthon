@@ -5,11 +5,50 @@
       <<<
       <% end %>
     </span>
+    
+    <div class="circle_icon">
+     <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+    </div>   
     <span class="circle_show_name">
       <%= @circle.name %>
     </span>
+    <div class="member_icon">
+      参加中！
+      <% @members.each do |member| %>
+      <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+      <% end %>
+    </div>  
+    
+    
   </div>
-  
-  <div class="circle_show_information"
-  
+
+  <%#= if !@circle.infomation.nil? %>
+    <!--<div class="chat-group-show__none">-->
+    <!--Let's tailk together!!-->
+    <!--</div>-->
+  <%# else %>
+    <div class="circle_show_information">
+      <span class="circle_infomation_content">
+      <%= @circle.infomation %>
+     </span>
+    </div>
+  <%# end %>
+  <%= link_to '編集', edit_circle_path(@circle) %>
+  <%= link_to "削除", circle_path(@circle), method: :delete %>
+
+  <div class="circle_talk_in">
+    talk
+  </div>
+</div>
+
+<div class="circle_chat" id="comments">
+<%= render 'comments' %>
+</div>
+
+
+<div id="chat_input">
+<%= form_with(model:[@circle, @cir_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "whrite your comment" %>
+  <%= f.submit "GO!" id="button" %>
+<% end %>
 </div>
