@@ -27,10 +27,12 @@
           </div>
              <div class="row">
               <div class="col-sm-3">
-               Follow数
+                  <%= link_to followings_member_path do %>
+                   <%=@member.followings.count%>
+                   <% end %>
                </div>
                <div class="col-sm-3">
-               Folloer数
+               <%#=@member.followers.count%>
               </div>
              </div>
            </div>

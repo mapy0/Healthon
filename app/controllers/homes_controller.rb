@@ -6,10 +6,10 @@ class HomesController < ApplicationController
   def about
   end
   
-  def about_me
-  end
+  # def about_me
+  # end
   
-  def how
-  end
+  # def how
+  # end
   
 end

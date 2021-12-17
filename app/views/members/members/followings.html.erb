@@ -1,0 +1,15 @@
+<h1>Follow</h1>
+
+<table>
+  <% @followings.each do |member| %>
+    <tr>
+      <td>
+      <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+      </td>
+      <td><%= link_to member.name, member_path(member) %></td>
+      <td><%#= member.infomation %></td> <!--なぜできない-->
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "<<", member_path(@member) %>

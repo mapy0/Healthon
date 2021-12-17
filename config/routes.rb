@@ -5,11 +5,17 @@ Rails.application.routes.draw do
     sessions: 'members/sessions',
    }
 
-
   root to: 'homes#top'
+  
+  #静的ページの追加
+  get  'homes/about'
+  # get  'homes#about_me'
+  # get  'homes#how'
+  
+  
   #circle comment 非同期用
   mount ActionCable.server => '/cable'
-  
+
 
   devise_scope :member do
 
@@ -31,30 +37,35 @@ Rails.application.routes.draw do
   patch '/members/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
 
 
-
-  #静的ページの追加
-  get  'homes/about'
-  get  'homes/about_me'
-  get  'homes/how'
-
   #member関係
   resources :members, only: [:show, :edit, :update] do
     #record関係
     resources :records
+    #follow数表示のため
+    member do
+      get :followings, :followers
+    end
+
   end
+  
     #profile
     resources :profiles, only: [:show, :edit, :update]
     #aim
     resources :aims, only: [:show, :edit, :update]
 
+    #Follow関連
+    resources :relationships, only: [:create, :destroy]
+
+
   #diary関係
   resources :diaries
-  
+
   #circle関係
   resources :circles do
-    resources :cir_comments, only: [:index, :create, :destroy]      
+    resources :cir_comments, only: [:index, :create, :destroy]
     get "join" => "circles#join" #circle参加機能
   end
+
 
 
  end

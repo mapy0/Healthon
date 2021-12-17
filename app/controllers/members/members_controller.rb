@@ -1,5 +1,6 @@
 class Members::MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :set_member, only: %I[show edit update destroy followings followers]
 
  def show
    @member = Member.find(params[:id])
@@ -25,6 +26,28 @@ class Members::MembersController < ApplicationController
     @member.update(member_params)
     redirect_to member_path(@member.id)
   end
+  
+  
+  def followings
+    @followings = @member.followings
+  end
+
+  def followers
+    @followers = @member.member_members #follower_id カラムがないしこれでは取得できていない
+  end
+
+  private
+
+  def set_member
+    @member = Member.find(params[:id])
+  end
+  
+  
+  
+  
+  
+  
+  
 
   private
 
