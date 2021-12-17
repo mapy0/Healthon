@@ -13,7 +13,7 @@
               <%= @member.name %>
             </div>
             <div class="col-sm-3">
-              Follow
+              <%= render 'members/relationships/follow_button', member: @member %>
             </div>
           </div>
 
@@ -22,7 +22,7 @@
                Follow
                </div>
                <div class="col-sm-3">
-               Folloer
+               Follower
               </div>
           </div>
              <div class="row">
