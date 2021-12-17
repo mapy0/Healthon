@@ -52,7 +52,8 @@ Rails.application.routes.draw do
   
   #circle関係
   resources :circles do
-    resources :cir_comments, only: [:index, :create, :destroy]
+    resources :cir_comments, only: [:index, :create, :destroy]      
+    get "join" => "circles#join" #circle参加機能
   end
 
 

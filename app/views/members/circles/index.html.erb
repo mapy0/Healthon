@@ -24,7 +24,7 @@
           <%= link_to circle do%>
            <%= circle.name %>
           <% end %>
-          <%= circle.member_ids.count %>
+          <%= circle.member_ids.count - 1%> <!--Onerが重複してカウントされるため-1-->
         </li>
         <% end %>
       <%# end %>

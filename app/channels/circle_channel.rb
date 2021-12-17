@@ -9,7 +9,8 @@ class CircleChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-   CirComment.create!(comment: data['comment'])
-   ActionCable.server.broadcast 'circle_channel', data['comment']
+   comment = CirComment.create!(comment: data['comment'])
+   template = ApplicationController.renderer.render(partial: 'comments/comment', locals:{comment: comment})
+   ActionCable.server.broadcast 'circle_channel', template
   end
 end

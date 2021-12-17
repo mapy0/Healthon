@@ -9,6 +9,8 @@ class Members::CirCommentsController < ApplicationController
   end
 
   def destroy
+    CirComment.find_by(id: params[:id]).destroy
+    redirect_to circle_path(params[:circle_id])
   end
 
   private

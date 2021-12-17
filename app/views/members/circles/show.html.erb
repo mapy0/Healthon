@@ -1,54 +1,77 @@
 <div class="circle_show">
-  <div class="show_group">
-    <span class="back_to_circle_index">
+    <div class="show_group">
+      <span class="back_to_circle_index">
       <%= link_to circles_path do %>
       <<<
       <% end %>
-    </span>
+      </span>
     
-    <div class="circle_icon">
-     <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-    </div>   
-    <span class="circle_show_name">
+      <div class="circle_icon">
+      アイコン
+      <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+      </div>   
+      
+      <span class="circle_show_name">
+      サークル名
       <%= @circle.name %>
-    </span>
-    <div class="member_icon">
-      参加中！
+      </span>
+      
+      <span class="circle_owner_name">
+      作成者
+      <%= @circle.members ? @circle.members.name : "不明" %>が
+  　　<i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %>に作成</i>
+      
+      
+      <div class="member_icon">
+      参加中のメンバー！
       <% @members.each do |member| %>
       <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
       <% end %>
-    </div>  
-    
-    
+      </div>  
   </div>
-
+  
   <%#= if !@circle.infomation.nil? %>
-    <!--<div class="chat-group-show__none">-->
-    <!--Let's tailk together!!-->
-    <!--</div>-->
+  <!--<div class="chat-group-show__none">-->
+  <!--Let's tailk together!!-->
+  <!--</div>-->
   <%# else %>
     <div class="circle_show_information">
       <span class="circle_infomation_content">
+        説明
       <%= @circle.infomation %>
-     </span>
+      </span>
     </div>
   <%# end %>
-  <%= link_to '編集', edit_circle_path(@circle) %>
-  <%= link_to "削除", circle_path(@circle), method: :delete %>
+  
+  <% if @circle.owner_id == current_member.id %>
+    <%= link_to 'Edit', edit_circle_path(@circle), class: "btn btn-sm btn-success" %>
+    
+    <% elsif @circle.members.include?(current_member) %>
+    <%= link_to 'Leave this group', circle_path(@circle), method: :delete, class: "btn btn-sm btn-danger" %>
+    
+    <% else %>
+    <%= link_to 'Join this group', circle_join_path(@circle), class: "btn btn-sm btn-success" %>
+              <% end %>
+  
+  
+  
+  
+    
+    <%= link_to "削除", circle_path(@circle), method: :delete %>
+</div>
 
-  <div class="circle_talk_in">
+ <div class="circle_talk_in">
     talk
-  </div>
-</div>
-
+ </div>
 <div class="circle_chat" id="comments">
-<%= render 'comments' %>
+  <%= render 'comments' %>
 </div>
-
 
 <div id="chat_input">
 <%= form_with(model:[@circle, @cir_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "whrite your comment" %>
-  <%= f.submit "GO!" id="button" %>
+<%= f.text_area :comment, rows:'5',placeholder: "whrite your comment" %>
+  <div id="button">
+  <%= f.submit "GO!"%>
+  </div>
 <% end %>
 </div>

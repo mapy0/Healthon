@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_16_011851) do
+ActiveRecord::Schema.define(version: 2021_12_17_090409) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_12_16_011851) do
   create_table "circles", force: :cascade do |t|
     t.string "name", null: false
     t.text "infomation"
+    t.integer "owner_id"
     t.integer "maximam_member"
     t.string "image_id"
     t.datetime "created_at", null: false
@@ -125,6 +126,16 @@ ActiveRecord::Schema.define(version: 2021_12_16_011851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["member_id", "follow_id"], name: "index_relationships_on_member_id_and_follow_id", unique: true
+    t.index ["member_id"], name: "index_relationships_on_member_id"
   end
 
   create_table "workouts", force: :cascade do |t|
