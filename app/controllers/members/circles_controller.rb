@@ -27,6 +27,8 @@ class Members::CirclesController < ApplicationController
     @circle = Circle.find(params[:id])
     @members = Member.find(@circle.member_ids)
     @cir_comment = CirComment.new
+    @owner = Member.find(@circle.owner_id)
+    
 
      #@circle = Circle.find_by(id: params[:id])
 

@@ -13,12 +13,14 @@
 
       <span class="circle_show_name">
       サークル名
-      <%= @circle.name %>
+      <%= @circle.name%>
       </span>
 
       <span class="circle_owner_name">
       作成者
-      <%= @circle.members ? @circle.members.name : "不明" %>が
+      <% if @circle.members.include? @circle.members.name : "不明" %>
+      <%#= else %>
+      <%= @owner.name %>が
   　　<i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %>に作成</i>
 
 

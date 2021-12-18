@@ -4,8 +4,8 @@ class Members::MembersController < ApplicationController
 
  def show
    @member = Member.find(params[:id])
-   
-   @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
+
+   @records = Record.where(member_id: params[:id]).order(date: "ASC")
     @record_dates = []
     @record_weight = []
     @record_bf = []
@@ -26,14 +26,14 @@ class Members::MembersController < ApplicationController
     @member.update(member_params)
     redirect_to member_path(@member.id)
   end
-  
-  
+
+
   def followings
     @followings = @member.followings
   end
 
   def followers
-    @followers = @member.member_members #follower_id カラムがないしこれでは取得できていない
+    @followers = @member.followers #follower_id カラムがないしこれでは取得できていない
   end
 
   private
@@ -41,13 +41,13 @@ class Members::MembersController < ApplicationController
   def set_member
     @member = Member.find(params[:id])
   end
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
 
   private
 

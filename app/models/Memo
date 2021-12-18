@@ -1,4 +1,4 @@
-
+  
 
   def new
    @record = Record.new

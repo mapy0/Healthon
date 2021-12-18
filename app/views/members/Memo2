@@ -1,0 +1,72 @@
+テーブル名	Communities								
+									
+No	カラム名	    PK	FK	データ型	Not Null	DEFAULT	備考
+1	id	             ◯		integer	◯		
+2	name	   			string			
+3	update_date			datetime	◯	now	
+4	registration_date		datetime	◯	now	
+
+
+モデルについて
+MemberとCommunityを
+Community:has many members
+Member:belongs to Communityのようにアソシエーションをかける
+
+
+community.rb
+class Community < ApplicationRecord
+
+has many members
+
+Communityの指定をするために、Groupにname を定義してそれで指定。   
+CommunityA, CommunityB, CommunityC, CommunityD, CommunityE, CommunityF, CommunityG, CommunityH, CommunityI, CommunityJ, CommunityK = 
+%w[community_a, community_b ,community_c, community_d, community_f, community_g, community_h, community_i, community_j, community_k].
+map{|name| find_by(name: name) }
+
+
+community_a,community_b,,,,,の配列のnameに書くnameを探してきてCommunityA,CommunityB,,,,に展開（代入）する？
+
+
+ Condition = [[0,14,CommunityA], [14,16,CommunityB], [16,18,CommunityC],[18,20,CommunityD],[22,24,CommunityE],[24,26,CommunityF],[26,28,CommunityG],[28,30,CommunityH],[30,32,CommunityI],[32,35,CommunityJ],[35,100,CommunityK]]
+ Condition？わからない…。
+
+
+  def self.sort member
+    Condition.each{ | ge,lt,community | 
+  Member.where("bf >= ? and f< ?",ge,lt).update_all(community_id:community.id) 
+}
+  end
+
+
+
+Groupはseedで作成し、バッチ処理はwheneverを用いるとして、
+
+
+config/schedule.rb
+env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
+set :output, 'log/cron.log' # ログの出力先ファイルを設定
+set :environment, :development, :Healthon # 環境を設定
+
+every :sunday, at: '0am' do
+  # 「Community」モデルの、「self.sort member」メソッドを実行
+  runner Community.self.sort member
+end
+
+
+
+class CommunitiesController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_correct_member, only: [:edit, :update]
+
+
+  def show
+    @community= Community.find(params[:id])
+    @members = Member.find(@community.member_ids)
+    @com_comment = ComComment.new
+  end
+
+ private
+
+  def community_params
+    params.require(:community).permit(:name, :introduction, :image)
+  end

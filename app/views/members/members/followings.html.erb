@@ -4,10 +4,10 @@
   <% @followings.each do |member| %>
     <tr>
       <td>
-      <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+      <%= attachment_image_tag member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
       </td>
       <td><%= link_to member.name, member_path(member) %></td>
-      <td><%#= member.infomation %></td> <!--なぜできない-->
+      <td><%= member.self_introduction %></td>
     </tr>
   <% end %>
 </table>
