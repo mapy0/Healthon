@@ -32,8 +32,26 @@ community_a,community_b,,,,,の配列のnameに書くnameを探してきてCommu
 
 
   def self.sort member
+  
+  
+  SELECT
+    user_id, bf
+FROM
+    records
+    INNER JOIN (SELECT
+                    user_id,
+                    MAX(date) AS max_date
+                FROM
+                    records
+                GROUP BY
+                    user_id) AS max_table
+    ON max_table.user_id = records.user_id
+       AND max_table.date = records.date;
+  
+  
+  
     Condition.each{ | ge,lt,community | 
-  Member.where("bf >= ? and f< ?",ge,lt).update_all(community_id:community.id) 
+   where("bf >= ? and bf< ? and date max " ,ge,lt ).update_all(community_id:community.id) 
 }
   end
 
