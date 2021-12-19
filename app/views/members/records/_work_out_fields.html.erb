@@ -1,0 +1,19 @@
+<div class="nested-fields">
+
+       <% current_date = Date.current %>
+       <div class="field">
+         <%= f.text_field :name, class: "workoutss-name", id: "meals-name", size: 30 %>
+       </div>
+
+      <div class="field">
+         <%#= f.number_field :amount, class:"ingredients-amount",id:"ingredient-amount", min:"0",step:"0.1"%>
+         <%= f.text_field :burned_calorie, class: "burned_calorie", id: "workouts-burned_calorie", size: 4 %>　kcal
+      </div>
+
+      <!--hidden_fieldは削除して、日付の入力をさせる?-->
+      <%= f.hidden_field :date, value: current_date %>
+        <span class="box-unit" id='unit-auto' data-unit='0'></span>
+
+        <%= link_to_remove_association "削除", f %>
+
+</div>

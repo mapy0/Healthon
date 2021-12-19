@@ -95,3 +95,9 @@ gem 'gon', '~> 6.2.0'
 
 #動的フォーム
 gem 'cocoon'
+
+#MySQLを利用するために必要なgem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

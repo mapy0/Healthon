@@ -32,13 +32,15 @@ class Member < ApplicationRecord
   has_many :circles, through: :circle_members
   has_many :cir_comments, dependent: :destroy
 
+  #Community関連アソシエーション
+  has_one :community
 
 
   #Follow関連アソシエーションと定義
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow #自身がFollowしているMember
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_relationships, source: :member #自身がFollowされているMember
+  has_many :followers, through: :reverse_of_relationships, source: :member#自身がFollowされているMember
 
 
 
