@@ -21,6 +21,6 @@
 set :output, 'log/crontab.log'
 set :environment, ENV['RAILS_ENV']
 
-every 1.minute do
-  rake "whenever_test:test"
-end
+# every 1.minute do
+#   rake "whenever_test:test"
+# end
