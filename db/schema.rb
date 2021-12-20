@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_032212) do
+ActiveRecord::Schema.define(version: 2021_12_20_092442) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(version: 2021_12_19_032212) do
 
   create_table "communities", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dia_comments", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "diary_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dia_goods", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "diary_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

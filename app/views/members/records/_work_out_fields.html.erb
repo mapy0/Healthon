@@ -2,10 +2,11 @@
 
        <% current_date = Date.current %>
        <div class="field">
-         <%= f.text_field :name, class: "workouts-name", id: "workouts-name", size: 30 %>
+         <%= f.text_field :name, class: "workoutss-name", id: "meals-name", size: 30 %>
        </div>
 
       <div class="field">
+         <%#= f.number_field :amount, class:"ingredients-amount",id:"ingredient-amount", min:"0",step:"0.1"%>
          <%= f.text_field :burned_calorie, class: "burned_calorie", id: "workouts-burned_calorie", size: 4 %>　kcal
       </div>
 

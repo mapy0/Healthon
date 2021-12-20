@@ -27,6 +27,8 @@ class Member < ApplicationRecord
 
   #Diary関連アソシエーション
   has_many :diaries, dependent: :destroy
+  has_many :dia_comments, dependent: :destroy
+  has_many :dia_goods, dependent: :destroy
 
   #Circle関連アソシエーション
   has_many :circles, through: :circle_members

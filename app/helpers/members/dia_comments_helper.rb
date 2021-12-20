@@ -1,0 +1,2 @@
+module Members::DiaCommentsHelper
+end

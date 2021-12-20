@@ -15,19 +15,20 @@
  @import "bootstrap";
  @import "members/*";
  @import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500&family=Zen+Maru+Gothic&display=swap');
- 
- 
+
+
 // body {
 //   background-image: image-url("hoge.jpg");
 // } *デプロイ後でも画像が読み込まれて表示できるように
- 
- *{ 
+
+ *{
    font-family: 'Kaisei Opti', serif;
    font-family: 'Zen Maru Gothic', sans-serif;
  }
- 
+
  body{
- margin:0;
+ margin: 0;
+ padding: 0;
 }
 
 footer {
@@ -95,7 +96,7 @@ footer {
 .top_link{
   text-decoration: none;
   color: #fff ;
-  text-decoration:none 
+  text-decoration:none
 }
 
 .top_link:hover {

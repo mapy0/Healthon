@@ -6,13 +6,13 @@ Rails.application.routes.draw do
    }
 
   root to: 'homes#top'
-  
+
   #静的ページの追加
   get  'homes/about'
   # get  'homes#about_me'
   # get  'homes#how'
-  
-  
+
+
   #circle comment 非同期用
   mount ActionCable.server => '/cable'
 
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     end
 
   end
-  
+
     #profile
     resources :profiles, only: [:show, :edit, :update]
     #aim
@@ -57,8 +57,11 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
 
 
-  #diary関係
-  resources :diaries
+    #diary関係
+    resources :diaries do
+      resource :dia_goods, only: [:create, :destroy]
+      resources :dia_comments, only: [:create, :destroy]
+    end
 
   #circle関係
   resources :circles do

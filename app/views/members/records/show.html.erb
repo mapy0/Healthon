@@ -10,14 +10,8 @@
     <% @record.meals.each do |meal| %>
     <p><%= meal.name %></p>
     <p><%= meal.calorie %></p>
+
      <% end %>
-     
-    <% @record.workouts.each do |workout| %>
-    <p><%= workout.name %></p>
-    <p><%= workout.burned_calorie %></p>
-     <% end %>
-     
-     
   
     <% @record.rec_images.each do |t| %>
     <!--Refile特有の記述↓-->

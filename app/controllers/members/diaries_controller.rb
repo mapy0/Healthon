@@ -21,6 +21,7 @@ class Members::DiariesController < ApplicationController
 
     def show
       @diary = Diary.find(params[:id])
+      @dia_comment = DiaComment.new
     end
 
     def edit
