@@ -12,7 +12,25 @@
   <% end %>
 
 
-
+  <div>
+  <p>コメント件数：<%= @diary.dia_comments.count %></p>
+  <% @diary.dia_comments.each do |dia_comment| %>
+    <%= dia_comment.member.image %>
+    <%= dia_comment.member.name %>
+    <%= dia_comment.created_at.strftime('%Y/%m/%d') %><%= dia_comment.comment %>
+     <% if dia_comment.member == current_member %>
+    <div>
+      <%= link_to "削除", diary_dia_comment_path(dia_comment.diary, dia_comment), method: :delete %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <div>
+  <%= form_with(model:[@diary, @dia_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
+    <%= f.submit "送信" %>
+  <% end %>
+  </div>
 
 
     <% if @diary.member == current_member %>

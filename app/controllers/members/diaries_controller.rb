@@ -4,7 +4,7 @@ class Members::DiariesController < ApplicationController
      @diary = Diary.new(diary_params)
      @diary.dia_images.build
    end
- 
+
 
     def create
      @diary = Diary.new(diary_params["diary"])
@@ -15,8 +15,12 @@ class Members::DiariesController < ApplicationController
     end
 
     def index
-      @member = Member.find(params[:id])
-      @diaries = where(member_id: @member.id)
+      if params[:member_id].blank?
+        @member = Member.find(current_member.id)
+      else
+        @member = Member.find(params[:member_id])
+      end
+      @diaries = Diary.where(member_id: @member.id)
     end
 
     def show
@@ -48,5 +52,5 @@ class Members::DiariesController < ApplicationController
   def diary_params
     params.permit(diary: [:date, :body, :title, dia_images_images: []])
   end
-  
+
 end

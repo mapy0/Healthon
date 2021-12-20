@@ -1,6 +1,19 @@
 <% @diaries.each do |diary| %>
 <div>
-    <td><%= diary.date %></td>
-    <td><%= link_to 'Show', diary %></td>
+    <table>
+        <td><%= diary.date %></td>
+        <td><%= diary.title %></td>
+         <td><%= link_to "#{diary.dia_comments.count} Comment" %><td>
+        <td><%= link_to 'Show', diary %></td>
+    </table>
 </div>
 <% end %>
+
+<h2>UsersDiary--></h2>
+<ul>
+    <% Member.all.each do |member| %>
+        <li>
+            <%= link_to "#{member.name} Diary", diaries_path(member_id: member.id) %>
+        </li>
+    <% end %>
+</ul>
