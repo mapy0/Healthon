@@ -11,7 +11,7 @@ connected: function() {
 
   received: function(comment) {
     console.log(comment)
-    const comments = document.getElementById('comments')
+    var comments = document.getElementById('comments')
     comments.innerHTML += comment.message
     //# Called when there's incoming data on the websocket for this channel
   },
@@ -25,14 +25,14 @@ connected: function() {
 });
 
 document.addEventListener('DOMContentLoaded', function(){
- const input = document.getElementById('chat-input')
- const circle = document.getElementById('circle_id')
- const member = document.getElementById('member_id')
- const button = document.getElementById('button')
+ var input = document.getElementById('chat-input')
+ var circle = document.getElementById('circle_id')
+ var member = document.getElementById('member_id')
+ var button = document.getElementById('button')
  button.addEventListener('click', function(){
-  const comment = input.value
-  const circle_id = circle.value
-  const member_id = member.value
+  var comment = input.value
+  var circle_id = circle.value
+  var member_id = member.value
   App.circle.speak(comment, circle_id, member_id)
 
   input.value = ""
