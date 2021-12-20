@@ -1,6 +1,5 @@
 class RemoveDetailsMembers < ActiveRecord::Migration[5.2]
   def change
-    remove_column :members, :title, :string
     remove_column :members, :aim_w, :float
     remove_column :members, :aim_bf, :float
     remove_column :members, :aim_mus, :float
