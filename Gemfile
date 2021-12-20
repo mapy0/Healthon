@@ -101,3 +101,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+#バッチ処理
+gem 'whenever', require: false
+

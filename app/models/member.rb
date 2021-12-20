@@ -33,7 +33,7 @@ class Member < ApplicationRecord
   has_many :cir_comments, dependent: :destroy
 
   #Community関連アソシエーション
-  has_one :community
+  belongs_to :community, optional: true
 
 
   #Follow関連アソシエーションと定義
