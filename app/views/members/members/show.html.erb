@@ -117,8 +117,14 @@
   </div>
 
 
-  <%= link_to "Record", new_member_record_path(@member) %>
+  <%= link_to "Record", new_record_path %>
   <%= link_to "Diary", new_diary_path %>
+  <li>
+    <%= link_to "#{@member.name} Diary", diaries_path(member_id: @member.id) %>
+  </li>
+    <li>
+    <%= link_to "#{@member.name} Record", records_path(member_id: @member.id) %>
+  </li>
 
   </div>
   <%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>

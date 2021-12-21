@@ -4,7 +4,7 @@
   <p>記録日：<%= @diary.date %></p>
   <p>タイトル：<%= @diary.title %></p>
   <p>本文：<%= @diary.body %></p>
-  
+
     <% @diary.dia_images.each do |t| %>
     <!--Refile特有の記述↓-->
     <%= attachment_image_tag t, :image, size: "300x300", class: "diary_image rounded" %>
@@ -13,9 +13,9 @@
 
 
   <div>
-  <p>コメント件数：<%= @diary.dia_comments.count %></p>
+  <p><i class="far fa-comment"></i><%= @diary.dia_comments.count %></p>
   <% @diary.dia_comments.each do |dia_comment| %>
-    <%= dia_comment.member.image %>
+      <%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
     <%= dia_comment.member.name %>
     <%= dia_comment.created_at.strftime('%Y/%m/%d') %><%= dia_comment.comment %>
      <% if dia_comment.member == current_member %>
@@ -31,6 +31,26 @@
     <%= f.submit "送信" %>
   <% end %>
   </div>
+
+   <% if @diary.gooded_by?(current_member) %>
+    <p>
+      <%= link_to diary_dia_goods_path(@diary), method: :delete do %>
+        <i class="fas fa-thumbs-up"></i> <%= @diary.dia_goods.count %> 
+      <% end %>いいね
+    </p>
+    <% else %>
+    <p>
+      <%= link_to diary_dia_goods_path(@diary), method: :post do %>
+        <i class="far fa-thumbs-up"></i><%= @diary.dia_goods.count %> 
+      <% end %>いいね
+    </p>
+  <% end %>
+
+
+
+
+
+
 
 
     <% if @diary.member == current_member %>

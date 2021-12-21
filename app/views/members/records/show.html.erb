@@ -19,9 +19,47 @@
     <%#= image_tag t.image.to_s,width:300,height:300,class: "record_image rounded" %>
     <% end %>
 
+
+
+<div>
+  <p><i class="far fa-comment"></i><%= @record.rec_comments.count %></p>
+  <% @record.rec_comments.each do |rec_comment| %>
+      <%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+    <%= rec_comment.member.name %>
+    <%= rec_comment.created_at.strftime('%Y/%m/%d') %><%= rec_comment.comment %>
+     <% if rec_comment.member == current_member %>
+    <div>
+      <%= link_to "削除", record_rec_comment_path(rec_comment.record, rec_comment), method: :delete %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <div>
+    
+  <%= form_with(model:[@record, @rec_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
+    <%= f.submit "送信" %>
+  <% end %>
+  </div>
+
+   <% if @record.gooded_by?(current_member) %>
+    <p>
+      <%= link_to record_rec_goods_path(@record), method: :delete do %>
+        <i class="fas fa-thumbs-up"></i> <%= @record.rec_goods.count %> 
+      <% end %>いいね
+    </p>
+    <% else %>
+    <p>
+      <%= link_to record_rec_goods_path(@record), method: :post do %>
+        <i class="far fa-thumbs-up"></i><%= @record.rec_goods.count %> 
+      <% end %>いいね
+    </p>
+  <% end %>
+
+
     <% if @record.member == current_member %>
-    <%= link_to "削除", member_record_path(@record), method: :delete %>
-    <%= link_to "編集", edit_member_record_path(@record) %>
+    <%= link_to "削除", record_path(@record), method: :delete %>
+    <%= link_to "編集", edit_record_path(@record) %>
     <% end %>
 
 

@@ -3,12 +3,9 @@ class Members::DiaCommentsController < ApplicationController
   def create
     diary = Diary.find(params[:diary_id])
     comment = current_member.dia_comments.new(dia_comment_params)
-    comment.diary_id = diary.id
+    comment.diary_id = member.diary.id
     comment.save
     redirect_to diary_path(diary)
-    
-    
-    
   end
 
   def destroy

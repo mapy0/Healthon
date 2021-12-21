@@ -37,16 +37,30 @@ Rails.application.routes.draw do
   patch '/members/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
 
 
+  # #member関係
+  # resources :members, only: [:show, :edit, :update] do
+  #   #record関係
+  #   resources :records do
+  #     resource :rec_goods, only: [:create, :destroy]
+  #     resources :rec_comments, only: [:create, :destroy]
+  #   end
+
+
   #member関係
   resources :members, only: [:show, :edit, :update] do
-    #record関係
-    resources :records
     #follow数表示のため
     member do
       get :followings, :followers
     end
 
   end
+  
+     #record関係
+    resources :records do
+      resource :rec_goods, only: [:create, :destroy]
+      resources :rec_comments, only: [:create, :destroy]
+    end
+  
 
     #profile
     resources :profiles, only: [:show, :edit, :update]

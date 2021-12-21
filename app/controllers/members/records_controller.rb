@@ -11,12 +11,20 @@ class Members::RecordsController < ApplicationController
     @record = Record.new(record_params["record"])
     @record.member_id = current_member.id
     @record.save!
-    redirect_to member_records_path
+    redirect_to records_path
   end
-
-
+  
+  
   def index
-    @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
+  if params[:member_id].blank?
+      @member = Member.find(current_member.id)
+  else
+      @member = Member.find(params[:member_id])
+  end
+      
+  @records = Record.where(member_id: @member.id).order(date: "ASC")
+
+    # @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
     # Coffee使用中止
     # gon.chart_label = Record.pluck(:date)
     # gon.chart_data_w = Record.pluck(:weight)
@@ -36,7 +44,9 @@ class Members::RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
+    @rec_comment = RecComment.new
   end
+  
 
  def edit
    @record = Record.find(params[:id])
@@ -46,16 +56,14 @@ class Members::RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
     @record.update(record_params)
-    redirect_to member_record_path(@record.id)
+    redirect_to record_path(@record.id)
   end
-
+  
   def destroy
     @record = Record.find(params[:id])
     @record.destroy
-    redirect_to member_records_path
+    redirect_to records_path
   end
-
-
 
   private
 
@@ -66,4 +74,5 @@ class Members::RecordsController < ApplicationController
   end
   
 end
+
 

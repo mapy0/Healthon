@@ -3,7 +3,7 @@
 <% @records.each do |record| %>
 <div>
     <td><%= record.date %></td>
-    <td><%= link_to 'Show', member_record_path(member_id: record.member_id, id: record.id)%></td>
+    <td><%= link_to 'Show', record_path(id: record.id)%></td>
 </div>
 <% end %>
 
