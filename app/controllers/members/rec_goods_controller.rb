@@ -1,4 +1,4 @@
-class Members::RacGoodsController < ApplicationController
+class Members::RecGoodsController < ApplicationController
 
   def create
     record = Record.find(params[:record_id])

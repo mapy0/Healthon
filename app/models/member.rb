@@ -10,13 +10,6 @@ class Member < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: true
 
-  #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。
-  # is_validがfalseならtrueを返すようにしている
-  def active_for_authentication?
-    super && (is_valid == false)
-  end
-
-
  #Member情報モデル関連付け
   has_one :profile
   has_one :aim

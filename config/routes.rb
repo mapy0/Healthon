@@ -1,22 +1,22 @@
 Rails.application.routes.draw do
-  
+
   root to: 'homes#top'
-  
+
   devise_for :members, controllers: {
     registrations: 'members/registrations',
     sessions: 'members/sessions',
    }
-   
+
   get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
   patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_member'
-  put 'withdraw/:name' => 'mems#withdraw' 
-  
+  put 'withdraw/:name' => 'members#withdraw'
+
   # # 退会確認画面
   # get '/members/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
   # # 論理削除用のルーティング
   # patch '/members/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
-   
-  
+
+
 
   #静的ページの追加
   get  'homes/about'
@@ -58,13 +58,13 @@ Rails.application.routes.draw do
     end
 
   end
-  
+
      #record関係
     resources :records do
       resource :rec_goods, only: [:create, :destroy]
       resources :rec_comments, only: [:create, :destroy]
     end
-  
+
 
     #profile
     resources :profiles, only: [:show, :edit, :update]

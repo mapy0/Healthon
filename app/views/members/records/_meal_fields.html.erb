@@ -17,6 +17,10 @@
          <%= f.text_field :calorie, class: "meals-calorie", id: "meals-calorie", size: 4 %>　kcal
       </div>
 
+      <div class="field">
+        <%= f.time_field :time %>
+      </div>
+
       <!--hidden_fieldは削除して、日付の入力をさせる-->
       <%= f.hidden_field :date, value: current_date %>
         <span class="box-unit" id='unit-auto' data-unit='0'></span>

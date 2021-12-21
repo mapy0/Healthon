@@ -13,7 +13,7 @@ class Members::MembersController < ApplicationController
       @record_dates.push(record.date.strftime("%m月 %d日"))
       @record_weight.push(record.weight)
       @record_bf.push(record.bf)
-      
+
     @last_record = @member.records.order(date: :asc).last
     end
  end

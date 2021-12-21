@@ -2,6 +2,7 @@
 
 class Members::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_member, only: [:create]
 
 
   # GET /resource/sign_in
@@ -43,16 +44,23 @@ class Members::SessionsController < Devise::SessionsController
   # 退会の有無判断するメソッド
   # 会員の論理削除のための記述。退会後は、同じアカウントの利用不可。
   def reject_member
-     ## 【処理内容1】 入力されたemailからアカウントを1件取得
-     @member = Member.find_by(email: params[:member][:email])
+    ## 【処理内容1】 入力されたemailからアカウントを1件取得
+    # @member = Member.find_by(email: params[:member][:email])
     ## アカウントを取得できなかった場合、このメソッドを終了する
-    return if !@member
+    # return if !@member
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @member.valid_password?(params[:member][:password]) && (@member.is_valid == false)
-       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_member_registration
-    else
-       flash[:notice] = "項目を入力してください"
+    # if @member.valid_password?(params[:member][:password]) && @member.is_valid
+    #   redirect_to member_path(@member)
+    # else
+    #   flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+    #   redirect_to new_member_registration_path
+    # end
+
+    @member = Member.find_by(email: params[:member][:email])
+    if @member
+      if @member.valid_password?(params[:member][:password]) && !@member.is_valid
+        redirect_to new_member_session_path
+      end
     end
   end
 

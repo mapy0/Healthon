@@ -8,9 +8,12 @@
   <p>骨格筋率：<%= @record.sm %></p>
 
     <% @record.meals.each do |meal| %>
-    <p><%= meal.name %></p>
-    <p><%= meal.calorie %>kcal</p>
-     <% end %>
+      <p><%= meal.name %></p>
+      <p><%= meal.calorie %>kcal</p>
+      <% unless meal.time.blank? %>
+        <p><%= meal.time.strftime('%H:%M') %></p>
+      <% end %>
+    <% end %>
 
 
     <% @record.workouts.each do |workout| %>
