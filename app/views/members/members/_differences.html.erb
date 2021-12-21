@@ -6,13 +6,49 @@
     <th>to reach</th>
     <th></th>
   </tr>
+  <% if @last_record.nil? %>
+    <tr style="color:#e4746c">
+    <th>weight</th>
+    <td><%= @member.aim.aim_w %>kg</td>
+    <td>Nothing</td>
+    <td>your</td>
+  </tr>
+  <tr style="color:#ec5c55">
+    <th>Body fat</th>
+    <td><%= @member.aim.aim_bf %>%</td>
+    <td>data!! </td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Muscle</th>
+    <td><%= @member.aim.aim_mus %>kg</td>
+    <td>Why not</td>
+    <td> ;)!!</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Skeletal muscle</th>
+    <td><%= @member.aim.aim_sm%>%</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+ 
+  
+ </table>
+  <% else %>
   <tr style="color:#e4746c">
     <th>weight</th>
-    <td><%= @member.aim.aim_w %></td>
-    <td><%= @last_record.weight unless @last_record.nil? %>kg</td>
-    <td><%= (@last_record.weight  -  @member.aim.aim_w) unless @last_record.nil? %>kg</td>
+    <td><%= @member.aim.aim_w %>kg</td>
+    <td><%= @last_record.weight%>kg</td>
+    <td><%= @last_record.weight  -  @member.aim.aim_w%>kg</td>
     <td>
-      <% if !@last_record.nil? && (@last_record.weight  -  @member.aim.aim_w) <= 0 %>
+      <% if  (@last_record.weight  -  @member.aim.aim_w) <= 0 %>
         <i class="fab fa-angellist"></i>
       <% end %>
     </td>
@@ -20,26 +56,39 @@
   </tr>
   <tr style="color:#ec5c55">
     <th>Body fat</th>
-    <td><%= @member.aim.aim_bf %></td>
-    <td><%= @last_record.bf unless @last_record.nil? %>kg</td>
-    <td><%= (@last_record.bf  -  @member.aim.aim_bf) unless @last_record.nil? %>kg</td>
-    <td></td>
+    <td><%= @member.aim.aim_bf %>%</td>
+    <td><%= @last_record.bf %>%</td>
+    <td><%= @last_record.bf  -  @member.aim.aim_bf %>%</td>
+     <td>
+      <% if  (@last_record.bf  -  @member.aim.aim_bf) <= 0 %>
+        <i class="fab fa-angellist"></i>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
     <th>Muscle</th>
-    <td><%= @member.aim.aim_mus %></td>
-    <td><%= @last_record.mus unless @last_record.nil? %>kg</td>
-    <td><%= (@last_record.mus  -  @member.aim.aim_mus) unless @last_record.nil? %>kg</td>
-    <td></td>
+    <td><%= @member.aim.aim_mus %>kg</td>
+    <td><%= @last_record.mus %>kg</td>
+    <td><%= @last_record.mus  -  @member.aim.aim_mus %>kg</td>
+     <td>
+      <% if  (@last_record.mus  -  @member.aim.aim_mus) <= 0 %>
+        <i class="fab fa-angellist"></i>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
     <th>Skeletal muscle</th>
-    <td><%= @member.aim.aim_sm%></td>
-    <td><%= @last_record.sm unless @last_record.nil? %>kg</td>
-    <td><%= (@last_record.sm  -  @member.aim.aim_sm) unless @last_record.nil? %>kg</td>
-    <td></td>
+    <td><%= @member.aim.aim_sm%>%</td>
+    <td><%= @last_record.sm %>%</td>
+    <td><%= @last_record.sm  -  @member.aim.aim_sm %>%</td>
+    <td>
+      <% if  (@last_record.sm  -  @member.aim.aim_sm) <= 0 %>
+        <i class="fab fa-angellist"></i>
+      <% end %>
+    </td>
   </tr>
-
 </table>
+<% end %>
+

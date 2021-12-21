@@ -23,6 +23,7 @@ class Members::RecordsController < ApplicationController
   end
 
   @records = Record.where(member_id: @member.id).order(date: "ASC")
+  @last_record = @member.records.order(date: :asc).last
 
     # @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
     # Coffee使用中止
@@ -72,10 +73,17 @@ class Members::RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
     meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
-    workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
+    workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]]).merge(member_id: current_member.id)
   end
+  
+  # def record_params
+  #   params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+  #   meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
+  #   workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
+  # end こちらにするとNewが入らず、上にするとEditができない
+  
 
 end
 

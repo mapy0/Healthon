@@ -4,7 +4,7 @@
    <h1>Record</h1>
  </div>
 
-<div class="row justify-content-center">
+  <div class="row justify-content-center">
    <div class="col-sm6 mr-5">
     <%= form_with model:@record, url: record_path(@record.id), local:true do |f| %>
 
@@ -52,18 +52,33 @@
            <% end %>
       </div>
     </div>
-   </div>
+     <div class="forms-item">
+      <h5>Workout</h5>
+    </div>
+              <!-- １）追加ボタンの記述 -->
+    <div class="add-botton-box link">
+        <%= link_to_add_association "追加", f, :workouts,
+          class: 'add_fields',
+          id: 'add-btn',
+          data: {
+          association_insertion_node: '#detail-association-insertion-pointWO',
+          }
+          %>
+    <div id="detail-association-insertion-pointWO">
+       <%= f.fields_for :workouts do |workout| %>
+       <%= render "workout_fields", f: workout %>
+       <% end %>
+    </div>
+   </div>    
+  </div>
     <div class="row">
      <div class="col-sm-2 mt-4">
       <%= f.attachment_field :rec_images_images, multiple: true %>
      </div>
     </div>
-</div>
-
+  </div>
  </div>
 </div>
-
-
 
 <div class="row justify-content-center">
    <div class="col-sm3 mt-4">
@@ -73,3 +88,6 @@
 <% end %>
 </div>
 
+  <li class="nav-item">
+    <%= link_to "←Back", records_path(member_id: current_member), class: "nav-link" %>
+  </li>
