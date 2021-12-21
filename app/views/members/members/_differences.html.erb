@@ -1,0 +1,42 @@
+<table class="differences rounded" style="width:450px; height:300px; background-color:#607c8cbf">
+  <tr style="color:#544c7c">
+    <th></th>
+    <th>Aim</th>
+    <th>Now</th>
+    <th>to reach</th>
+    <th></th>
+  </tr>
+  <tr style="color:#e4746c">
+    <th>weight</th>
+    <td><%= @member.aim.aim_w %></td>
+    <td><%= @last_record.weight %>kg</td>
+    <td><%= @last_record.weight  -  @member.aim.aim_w %>kg</td>
+    <td><%#= if (@last_record.weight  -  @member.aim.aim_w) <= 0 %>
+    <i class="fab fa-angellist"></i></td>
+    <td></td>
+  </tr>
+  <tr style="color:#ec5c55">
+    <th>Body fat</th>
+    <td><%= @member.aim.aim_bf %></td>
+    <td><%= @last_record.bf %>kg</td>
+    <td><%= @last_record.bf  -  @member.aim.aim_bf %>kg</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <th>Muscle</th>
+    <td><%= @member.aim.aim_mus %></td>
+    <td><%= @last_record.mus %>kg</td>
+    <td><%= @last_record.mus  -  @member.aim.aim_mus %>kg</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <th>Skeletal muscle</th>
+    <td><%= @member.aim.aim_sm%></td>
+    <td><%= @last_record.sm %>kg</td>
+    <td><%= @last_record.sm  -  @member.aim.aim_sm %>kg</td>
+    <td></td>
+  </tr>
+  
+</table>

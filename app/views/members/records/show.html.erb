@@ -6,13 +6,19 @@
   <p>筋肉量：<%= @record.mm %></p>
   <p>筋肉率：<%= @record.mus %></p>
   <p>骨格筋率：<%= @record.sm %></p>
-  
+
     <% @record.meals.each do |meal| %>
     <p><%= meal.name %></p>
-    <p><%= meal.calorie %></p>
-
+    <p><%= meal.calorie %>kcal</p>
      <% end %>
-  
+
+
+    <% @record.workouts.each do |workout| %>
+    <p><%= workout.name %></p>
+    <p><%= workout.burned_calorie %>kcal</p>
+     <% end %>
+
+
     <% @record.rec_images.each do |t| %>
     <!--Refile特有の記述↓-->
     <%= attachment_image_tag t, :image, size: "300x300", class: "record_image rounded" %>
@@ -35,7 +41,7 @@
   <% end %>
   </div>
   <div>
-    
+
   <%= form_with(model:[@record, @rec_comment], local: true) do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
     <%= f.submit "送信" %>
@@ -45,13 +51,13 @@
    <% if @record.gooded_by?(current_member) %>
     <p>
       <%= link_to record_rec_goods_path(@record), method: :delete do %>
-        <i class="fas fa-thumbs-up"></i> <%= @record.rec_goods.count %> 
+        <i class="fas fa-thumbs-up"></i> <%= @record.rec_goods.count %>
       <% end %>いいね
     </p>
     <% else %>
     <p>
       <%= link_to record_rec_goods_path(@record), method: :post do %>
-        <i class="far fa-thumbs-up"></i><%= @record.rec_goods.count %> 
+        <i class="far fa-thumbs-up"></i><%= @record.rec_goods.count %>
       <% end %>いいね
     </p>
   <% end %>

@@ -11,9 +11,9 @@ class Member < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   #ログイン時に退会済みMemberが同一アカウントでログイン出来ないよう制約。
-  # is_deletedがfalseならtrueを返すようにしている
+  # is_validがfalseならtrueを返すようにしている
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (is_valid == false)
   end
 
 

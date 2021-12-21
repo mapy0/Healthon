@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_150201) do
+ActiveRecord::Schema.define(version: 2021_12_21_064050) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_150201) do
     t.boolean "is_deleted", default: false
     t.string "self_introduction"
     t.string "image_id"
+    t.boolean "is_valid", default: true, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

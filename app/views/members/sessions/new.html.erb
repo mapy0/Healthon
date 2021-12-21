@@ -1,14 +1,15 @@
-<h2>Log in</h2>
+<div class="login">
+  <h2 class="active"> sign in </h2>
 
 <%= form_with model: @member, url: member_session_path, local: true do |f| %>
-  <div class="field">
+  <div class="field border: none">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login_fild" %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "login_fild" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -24,3 +25,7 @@
 <% end %>
 
 <%= render "members/shared/links" %>
+
+</div>
+
+

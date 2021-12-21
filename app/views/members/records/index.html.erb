@@ -3,10 +3,14 @@
 <% @records.each do |record| %>
 <div>
     <td><%= record.date %></td>
-    <td><%= link_to 'Show', record_path(id: record.id)%></td>
+    <td><%= link_to 'Show',record_path(id: record.id)%></td>
 </div>
 <% end %>
 
 
 <div style="width:800px; height:500px; background-color:#ffffffbf">
 <%= render 'mychart' %>
+
+<div style="width:800px; height:500px; background-color:#ffffffbf">
+<%= render 'mychart2' %>
+

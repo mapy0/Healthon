@@ -61,6 +61,28 @@
                   <% end %>
                 </div>
               </div>
+              <div class="forms-item">
+                
+               <h5>Workout</h5>
+              </div>
+              <!-- １）追加ボタンの記述 -->
+              <div class="add-botton-box link">
+                <%= link_to_add_association "追加", f, :workouts,
+                 class: 'add_fields',
+                 id: 'add-btn',
+                 data: {
+                   association_insertion_node: '#detail-association-insertion-pointWO',
+                   # association_insertion_method: 'append'
+                    }
+                 %>
+                <div id="detail-association-insertion-pointWO">
+                  <%= f.fields_for :workouts do |workout| %>
+                   <%= render "workout_fields", f: workout %>
+                  <% end %>
+                </div>
+              </div>
+              
+              
             </div>
           </div>
         </div>
