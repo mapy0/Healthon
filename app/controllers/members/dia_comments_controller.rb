@@ -2,15 +2,17 @@ class Members::DiaCommentsController < ApplicationController
 
   def create
     @diary = Diary.find(params[:diary_id])
+    @dia_comment = DiaComment.new
     @comment = @diary.dia_comments.build(dia_comment_params)
     @comment.member_id = current_member.id
     @comment.save
-    redirect_to diary_path(@diary)
+    #redirect_to diary_path(@diary)
   end
 
   def destroy
-    Diary.find_by(id: params[:id]).destroy
-    redirect_to diary_path(params[:diary_id])
+    @diary = Diary.find(params[:diary_id])
+    DiaComment.find_by(id: params[:id],diary_id:params[:diary_id]).destroy
+    #redirect_to diary_path(params[:diary_id])
   end
 
 

@@ -10,42 +10,40 @@
     <%= attachment_image_tag t, :image, size: "300x300", class: "diary_image rounded" %>
     <%#= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
   <% end %>
-  
-  
-    
+
+
+
 　<div id="good_buttons_<%= @diary.id %>">
 　　<%= render "members/dia_goods/goods", diary: @diary %>
 　</div>
 
 
-  <div>
-  <p><i class="far fa-comment"></i><%= @diary.dia_comments.count %></p>
-  <% @diary.dia_comments.each do |dia_comment| %>
-      <%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-    <%= dia_comment.member.name %>
-    <%= dia_comment.created_at.strftime('%Y/%m/%d') %><%= dia_comment.comment %>
-     <% if dia_comment.member == current_member %>
-    <div>
-      <%= link_to "削除", diary_dia_comment_path(dia_comment.diary, dia_comment), method: :delete %>
-    </div>
-    <% end %>
-  <% end %>
-  </div>
-  
   <div class="row">
+  <div id="comment_create_<%= @diary.id %>">
+  <%= render partial: 'members/dia_comments/post', locals: { comment: @comment, diary: @diary } %>
+
+  </div>
+  </div>
+
 
     <% if member_signed_in? %>
         <div class="comment-create">
             <h3 class="text-left">Comment</h3>
-        <div id="comment_create<%= @diary.id %>">
-            <%#= render 'members/dia_comments/comment',diary: @diary %>
+  <div>
+  <%= form_with(model:[@diary, @dia_comment], remote: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
+    <%= f.submit "送信" %>
+  <% end %>
+  </div>
+
+
         </div>
     <% end %>
 </div>
 
-  
-  
-  
+
+
+
 
 
     <% if @diary.member == current_member %>

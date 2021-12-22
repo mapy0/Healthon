@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 2021_12_21_105631) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_deleted", default: false
     t.string "self_introduction"
     t.string "image_id"
     t.boolean "is_valid", default: true, null: false

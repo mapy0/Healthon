@@ -54,7 +54,7 @@
        </div>
 
      <div class="row">
-     <nav class="globalMenuSp">
+     <nav class="globalMenuSp col-md-4 offset-md-8">
       <% if @member.id == current_member.id %>
       <ul>
         <div class="row">
@@ -95,9 +95,9 @@
     <div class="col-sm-6">
       <h5>Transition Chart</h5>
 
-       <%= render 'members/records/mychart' %>
+       <%#= render 'members/records/mychart' %>
        <%#= render 'members/records/mychart2' %>
-       <%#= render 'members/records/mychart3' %>
+       <%= render 'members/records/mychart3' %>
     </div>
      <div class="col-sm-6">
        Deffereces
@@ -128,12 +128,12 @@
   <li>
     <%= link_to "#{@member.name} Record", records_path(member_id: @member.id) %>
   </li>
-  
+
   <li>
     <%= link_to "退会する", confirm_unsubscribe_path(@member) %>
   </li>
-  
-  
+
+
 
   </div>
   <%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>

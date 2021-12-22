@@ -59,6 +59,7 @@
 }
 
 nav.globalMenuSp {
+  display: none;
   position: fixed;
   z-index : 2;
   top  : 0;
@@ -92,7 +93,7 @@ nav.globalMenuSp ul li:hover{
 }
 
 nav.globalMenuSp ul li a {
-  display: block;
+  display: none;
   color: #fff;
   padding: 1em 0;
   text-decoration :none;
