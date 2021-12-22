@@ -5,15 +5,20 @@ class Record < ApplicationRecord
   has_many :workouts, dependent: :destroy
   has_many :meals, dependent: :destroy
   has_many :rec_images, dependent: :destroy
-  
+
   accepts_nested_attributes_for :meals, allow_destroy: true
   accepts_nested_attributes_for :workouts, allow_destroy: true
   accepts_attachments_for :rec_images, attachment: :image
-  
+
+  #同一日の記録を重複させないようなバリデーション
+  validates :date, presence: true, uniqueness: { scope: :member_id }
+
+
+
   def gooded_by?(member)
     rec_goods.where(member_id: member.id).exists?
   end
-  
+
 
   def get_date_current
     Date.current

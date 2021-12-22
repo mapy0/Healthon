@@ -9,10 +9,14 @@ class Members::MembersController < ApplicationController
     @record_dates = []
     @record_weight = []
     @record_bf = []
+    @record_mus = []
+    @record_sm = []
     @records.each do |record|
       @record_dates.push(record.date.strftime("%m月 %d日"))
       @record_weight.push(record.weight)
       @record_bf.push(record.bf)
+      @record_mus.push(record.mus)
+      @record_sm.push(record.sm)
 
     @last_record = @member.records.order(date: :asc).last
     end

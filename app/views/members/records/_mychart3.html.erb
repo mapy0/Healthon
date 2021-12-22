@@ -1,0 +1,72 @@
+<div class="container">
+  <ul class="tab-list">
+    <li class="tab box-active">Weigth & Fat</li>
+    <li class="tab">Muscle</li>
+  </ul>
+  
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+        <div class="rounded" style="width:500px; height:300px; background-color:#ffffffbf">
+          <canvas id="myChart"></canvas>
+        </div>
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [<% @record_dates.each do |date|%>
+                "<%= date %>",
+                <% end %>],
+                datasets: [{
+                    label: "体重",
+                    data: <%= @record_weight %>,
+                    backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                    borderColor: 'rgba(255, 80, 120, 1.0)',
+                    fill: false
+                },{
+                    label: "体脂肪率",
+                    data: <%= @record_bf %>, //縦軸データ埋込
+                    backgroundColor: 'rgba(255, 80, 120, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 0.2)',
+                    type: 'line'
+                }]
+            },
+            });
+        </script>
+
+    </div>
+    <div class="tabbox">
+        <div class="rounded" style="width:500px; height:300px; background-color:#ffffffbf">
+            <canvas id="myChart2"></canvas>
+        </div>
+
+        <script>
+            var ctx = document.getElementById("myChart2").getContext('2d');
+            var myChart2 = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [<% @record_dates.each do |date|%>
+                "<%= date %>",
+                <% end %>],
+                datasets: [{
+                    label: "筋肉量",
+                    data: <%= @record_mus %>,
+                    backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                    borderColor: 'rgba(255, 80, 120, 1.0)',
+                    fill: false
+                },{
+                    label: "骨格筋率",
+                    data: <%= @record_sm %>, //縦軸データ埋込
+                    backgroundColor: 'rgba(255, 80, 120, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 0.2)',
+                    type: 'line'
+                }]
+            },
+        });
+        </script>
+
+    </div>
+  </div>
+</div>
+
+
