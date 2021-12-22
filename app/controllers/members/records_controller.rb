@@ -8,7 +8,7 @@ class Members::RecordsController < ApplicationController
   end
 
   def create
-    @record = Record.new(record_params["record"])
+    @record = Record.new(record_params)
     @record.member_id = current_member.id
     @record.save!
     redirect_to records_path
@@ -61,7 +61,8 @@ class Members::RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
     @record.update(record_params)
-    redirect_to record_path(@record.id)
+    redirect_to records_path
+    #redirect_to record_path(@record.id)
   end
 
   def destroy
@@ -72,17 +73,17 @@ class Members::RecordsController < ApplicationController
 
   private
 
-  def record_params
-    params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
-    meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
-    workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]]).merge(member_id: current_member.id)
-  end
-  
   # def record_params
-  #   params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+  #   params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
   #   meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
-  #   workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
-  # end こちらにするとNewが入らず、上にするとEditができない
+  #   workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]]).merge(member_id: current_member.id)
+  # end
+  
+  def record_params
+    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+    meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
+    workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
+  end #こちらにするとNewが入らず、上にするとEditができない
   
 
 end
