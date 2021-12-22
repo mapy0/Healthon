@@ -1,0 +1,13 @@
+ <% if @diary.gooded_by?(current_member) %>
+    <p>
+      <%= link_to diary_dia_goods_path(@diary), method: :delete, remote: true do %>
+        <i class="fas fa-thumbs-up"></i> <%= @diary.dia_goods.count %> 
+      <% end %>いいね
+    </p>
+    <% else %>
+    <p>
+      <%= link_to diary_dia_goods_path(@diary), method: :post, remote: true do %>
+        <i class="far fa-thumbs-up"></i><%= @diary.dia_goods.count %> 
+      <% end %>いいね
+    </p>
+  <% end %>

@@ -26,6 +26,7 @@ class Members::DiariesController < ApplicationController
     def show
       @diary = Diary.find(params[:id])
       @dia_comment = DiaComment.new
+      @comments = @diary.dia_comments.order(created_at: :desc)
     end
 
     def edit

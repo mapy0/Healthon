@@ -10,6 +10,12 @@
     <%= attachment_image_tag t, :image, size: "300x300", class: "diary_image rounded" %>
     <%#= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
   <% end %>
+  
+  
+    
+　<div id="good_buttons_<%= @diary.id %>">
+　　<%= render "members/dia_goods/goods", diary: @diary %>
+　</div>
 
 
   <div>
@@ -25,32 +31,21 @@
     <% end %>
   <% end %>
   </div>
-  <div>
-  <%= form_with(model:[@diary, @dia_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
-    <%= f.submit "送信" %>
-  <% end %>
-  </div>
+  
+  <div class="row">
 
-   <% if @diary.gooded_by?(current_member) %>
-    <p>
-      <%= link_to diary_dia_goods_path(@diary), method: :delete do %>
-        <i class="fas fa-thumbs-up"></i> <%= @diary.dia_goods.count %> 
-      <% end %>いいね
-    </p>
-    <% else %>
-    <p>
-      <%= link_to diary_dia_goods_path(@diary), method: :post do %>
-        <i class="far fa-thumbs-up"></i><%= @diary.dia_goods.count %> 
-      <% end %>いいね
-    </p>
-  <% end %>
+    <% if member_signed_in? %>
+        <div class="comment-create">
+            <h3 class="text-left">Comment</h3>
+        <div id="comment_create<%= @diary.id %>">
+            <%#= render 'members/dia_comments/comment',diary: @diary %>
+        </div>
+    <% end %>
+</div>
 
-
-
-
-
-
+  
+  
+  
 
 
     <% if @diary.member == current_member %>
