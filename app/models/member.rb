@@ -19,6 +19,7 @@ class Member < ApplicationRecord
   has_many :my_meals, dependent: :destroy
   has_many :rec_comments, dependent: :destroy
   has_many :rec_goods, dependent: :destroy
+  has_many :workouts, through: :records
 
   #Diary関連アソシエーション
   has_many :diaries, dependent: :destroy

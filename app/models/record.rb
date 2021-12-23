@@ -11,7 +11,7 @@ class Record < ApplicationRecord
   accepts_attachments_for :rec_images, attachment: :image
 
   #同一日の記録を重複させないようなバリデーション
-  validates :date, presence: true, uniqueness: { scope: :member_id }
+  #validates :date, presence: true, uniqueness: { scope: :member_id }
 
 
 

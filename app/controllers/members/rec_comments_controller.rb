@@ -1,7 +1,7 @@
 class Members::RecCommentsController < ApplicationController
-  
+
   def create
-    @record = Record.find(params[:diary_id])
+    @record = Record.find(params[:record_id])
     @rec_comment = RecComment.new
     @comment = @record.rec_comments.build(rec_comment_params)
     @comment.member_id = current_member.id

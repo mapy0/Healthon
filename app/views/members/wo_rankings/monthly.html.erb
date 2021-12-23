@@ -1,62 +1,71 @@
 <!--メインタイトルは、controllerの変数を参照して動的に作成-->
-<% @page_title = "ランキング【#{@target_month.year.to_s}年{@target_month.month}月度】" %>
-<div class="col-md-6 mx-auto"> 
-	<div class="form-inline mb-3 justify-content-around"> 
+<!--<%# @page_title = "ランキング【#{@target_month.year.to_s}年{@target_month.month}月度】" %>-->
+<!--<div class="col-md-6 mx-auto"> -->
+<!--	<div class="form-inline mb-3 justify-content-around"> -->
 <!--<ボタンの作成controllerにパラメータを渡す-->
-		<%= link_to  wo_rankings_monthly_path(pre_preview: @target_month), do %>
-        <i class="fa fa-chevron-leht"></i>
-		 <%end%> 
-		<span class="ml-2 mr-2 lead">
-			 <strong> <%=@page_title %> </strong>
-		</span> 
+<!--		<%#= link_to  wo_rankings_monthly_path(pre_preview: @target_month), do %>-->
+<!--        <i class="fa fa-chevron-leht"></i>-->
+<!--		 <%#end%> -->
+<!--		<span class="ml-2 mr-2 lead">-->
+<!--			 <strong> <#%=@page_title %> </strong>-->
+<!--		</span> -->
 <!--<ボタンの作成controllerにパラメータを渡す-->
-		<%= link_to wo_rankings_monthly_path(next_preview: @target_month), do %>
-      <i class="fa fa-chevron-leht"></i>
-		 <%end%> 
-	</div>
-	<div class="text-center"> 
+<!--		<%#= link_to wo_rankings_monthly_path(next_preview: @target_month), do %>-->
+<!--      <i class="fa fa-chevron-leht"></i>-->
+<!--		 <%#end%> -->
+<!--	</div>-->
+<!--	<div class="text-center"> -->
     <!--もし期間中に自分の実績があれば、順位を表示する-->
-		<% if @my_rank == 0 %>
-      <th>あなたはこの期間の実績がありません</th>
-		<% else %>
-			<%("あなたの順位は #{@wo_ranks.size}人中") %> 
-			<strong> <%=(" #{@my_rank}位 ") %> </strong>
-			<%= ("です") %>
-		 <% end %>
-	</div> 
-	
-	<table class="table table-hover table-bordered"> 
-		<theard class="thead-light"> 
-			<tr class="text-center"> 
-				<th>Ranking</th>
-				<th>neme</th>
-				<th>total</th>
-			</tr>
-		</thead>
-		<tbody> 
+<!--		<%# if @my_rank == 0 %>-->
+<!--      <th>あなたはこの期間の実績がありません</th>-->
+<!--		<%# else %>-->
+<!--			<%#("あなたの順位は #{@wo_ranks.size}人中") %> -->
+<!--			<strong> <%#=(" #{@my_rank}位 ") %> </strong>-->
+<!--			<%#= ("です") %>-->
+<!--		 <%# end %>-->
+<!--	</div> -->
+
+<!--	<table class="table table-hover table-bordered"> -->
+<!--		<theard class="thead-light"> -->
+<!--			<tr class="text-center"> -->
+<!--				<th>Ranking</th>-->
+<!--				<th>neme</th>-->
+<!--				<th>total</th>-->
+<!--			</tr>-->
+<!--		</thead>-->
+<!--		<tbody> -->
    <!--ランキングは１００位までとし、１００位までループ-->
-			<% @wo_ranks.limit(100).each_with_index do |rank,i| %>
-			<tr> 
-				<td class="text-center">
+<!--			<%# @wo_ranks.limit(100).each_with_index do |rank,i| %>-->
+<!--			<tr> -->
+<!--				<td class="text-center">-->
    <!--１位〜３位の場合は、順位に王冠を表示する-->
-					<% if wo_rank.rank_number != 1 && wo_rank.rank_number != 2 && wo_rank.rank_number != 3 %>
-						<%= (wo_rank.rank_number) %>
-			 		<% end %>
-					<%= (wo_rank_image(wo_rank.rank_number) %> 
-				</td>
-				<div class="form-inline"> 
-					<% member = Member.find(wo_rank.member.id) %>
-				<td>
-					<% link_to(member_path(member)) do %><
-					  <% member.name%>
-					<% end %>
-				</td>
-		</div>
-		<td class="text-right">
-		 <%=format("%.1f",rank.study_total))) %> 
-		</td>
-	</tr>
-	<% end %>
-</tbody>
-</table>
-</div>
+<!--					<%# if wo_rank.rank_number != 1 && wo_rank.rank_number != 2 && wo_rank.rank_number != 3 %>-->
+<!--						<%#= (wo_rank.rank_number) %>-->
+<!--			 		<%# end %>-->
+<!--					<%#= (wo_rank_image(wo_rank.rank_number) %> -->
+<!--				</td>-->
+<!--				<div class="form-inline"> -->
+<!--					<%# member = Member.find(wo_rank.member.id) %>-->
+<!--				<td>-->
+<!--					<%# link_to(member_path(member)) do %><-->
+<!--					  <%# member.name%>-->
+<!--					<%# end %>-->
+<!--				</td>-->
+<!--		</div>-->
+<!--		<td class="text-right">-->
+<!--		 <%#=format("%.1f",rank.study_total))) %> -->
+<!--		</td>-->
+<!--	</tr>-->
+<!--	<%# end %>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+
+
+<% @members.sort_by(&:last).reverse.each do |member| %>
+<%= member %>
+<% end %>
+
+
+
+

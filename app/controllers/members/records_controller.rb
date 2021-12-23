@@ -1,7 +1,7 @@
 class Members::RecordsController < ApplicationController
 
   def new
-   @record = Record.new(record_params)
+   @record = Record.new
    @record.rec_images.build
    @meal = @record.meals.build
    @workout = @record.workouts.build
@@ -75,10 +75,10 @@ class Members::RecordsController < ApplicationController
 
 
   def record_params
-    # params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+     params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
     # meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
     # workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
-    params.permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+   # params.permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
      meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
      workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
   end
