@@ -1,0 +1,11 @@
+<p><i class="far fa-comment"></i><%= @record.rec_comments.count %></p>
+<% @record.rec_comments.each do |rec_comment| %>
+<%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+  <%= rec_comment.member.name %>
+  <%= rec_comment.created_at.strftime('%Y/%m/%d') %><%= rec_comment.comment %>
+  <% if rec_comment.member == current_member %>
+  <div>
+  <%= link_to "削除", record_rec_comment_path(rec_comment.record, rec_comment), method: :delete %>
+  </div>
+  <% end %>
+<% end %>

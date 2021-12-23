@@ -1,15 +1,18 @@
 class Members::RecCommentsController < ApplicationController
+  
   def create
-    record = Record.find(params[:record_id])
-    comment = current_member.rec_comments.new(rec_comment_params)
-    comment.record_id = record.id
-    comment.save
-    redirect_to record_path(record)
+    @record = Record.find(params[:diary_id])
+    @rec_comment = RecComment.new
+    @comment = @record.rec_comments.build(rec_comment_params)
+    @comment.member_id = current_member.id
+    @comment.save
+    #redirect_to record_path(record)
   end
 
   def destroy
-    Record.find_by(id: params[:id]).destroy
-    redirect_to record_path(params[:record_id])
+    @record = Record.find(params[:record_id])
+    RecComment.find_by(id: params[:id],record_id:params[:record_id]).destroy
+    #redirect_to record_path(params[:record_id])
   end
 
 

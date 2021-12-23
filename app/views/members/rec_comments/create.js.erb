@@ -1,0 +1,2 @@
+$('#comment_create_<%= @record.id %>').html("<%= j(render "members/rec_comments/post", record: @record) %>");
+$("textarea").val('')

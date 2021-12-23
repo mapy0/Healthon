@@ -3,7 +3,7 @@
   <div class="row justify-content-center mb-4">
     <h1>Record</h1>
   </div>
-  
+
   <div class="row justify-content-center">
     <div class="col-sm6 mr-5">
     <!--< %= @my_meals.each do |my_meal| %>-->
@@ -15,8 +15,7 @@
     <!--  }-->
     <!--</script>-->
       <%= form_with model:@record, url: records_path, local:true do |f| %>
-      
-      
+  
         <h5>測定日</h5>
         <%= f.date_field :date %>
         
@@ -38,65 +37,61 @@
         <h5>骨格筋率</h5>
         <%= f.text_field :sm %>
       
-    
+      
         <div class="col-sm5 ml-5">
           <div class="parent">
             <div class="form-box">
               <div class="forms-item">
-               <h5>食事</h5>
+              <h5>食事</h5>
               </div>
-              <!-- １）追加ボタンの記述 -->
+            <!-- １）追加ボタンの記述 -->
               <div class="add-botton-box link">
                 <%= link_to_add_association "追加", f, :meals,
-                 class: 'add_fields',
-                 id: 'add-btn',
-                 data: {
-                   association_insertion_node: '#detail-association-insertion-point',
-                   # association_insertion_method: 'append'
-                    }
-                 %>
+                class: 'add_fields',
+                id: 'add-btn',
+                data: {
+                association_insertion_node: '#detail-association-insertion-point',
+                # association_insertion_method: 'append'
+                }
+                %>
                 <div id="detail-association-insertion-point">
-                  <%= f.fields_for :meals do |meal| %>
-                   <%= render "meal_fields", f: meal %>
-                  <% end %>
+                <%= f.fields_for :meals do |meal| %>
+                  <%= render "meal_fields", f: meal %>
+                <% end %>
                 </div>
               </div>
               <div class="forms-item">
-               <h5>Workout</h5>
+                <h5>Workout</h5>
               </div>
-              <!-- １）追加ボタンの記述 -->
+            <!-- １）追加ボタンの記述 -->
               <div class="add-botton-box link">
-                <%= link_to_add_association "追加", f, :workouts,
-                 class: 'add_fields',
-                 id: 'add-btn',
-                 data: {
-                   association_insertion_node: '#detail-association-insertion-pointWO',
-                   # association_insertion_method: 'append'
-                    }
-                 %>
+              <%= link_to_add_association "追加", f, :workouts,
+                class: 'add_fields',
+                id: 'add-btn',
+                data: {
+                association_insertion_node: '#detail-association-insertion-pointWO',
+                # association_insertion_method: 'append'
+                }
+                %>
                 <div id="detail-association-insertion-pointWO">
                   <%= f.fields_for :workouts do |workout| %>
-                   <%= render "workout_fields", f: workout %>
+                    <%= render "workout_fields", f: workout %>
                   <% end %>
                 </div>
               </div>
-              
-              
             </div>
           </div>
         </div>
-        
-        
-        
-        <div class="row">
-          <div class="col-sm-2 mt-4">
-            <%= f.attachment_field :rec_images_images, multiple: true %>
-          </div>
+      
+      <div class="row">
+        <div class="col-sm-2 mt-4">
+          <%= f.attachment_field :rec_images_images, multiple: true %>
         </div>
-        
+      </div>
+      
         <div class="row justify-content-center">
           <div class="col-sm3 mt-4">
-              <%= f.submit '記録' %>
+            <%= f.submit '記録' %>
           </div>
         </div>
       <% end %>

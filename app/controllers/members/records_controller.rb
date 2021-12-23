@@ -1,7 +1,7 @@
 class Members::RecordsController < ApplicationController
 
   def new
-   @record = Record.new
+   @record = Record.new(record_params)
    @record.rec_images.build
    @meal = @record.meals.build
    @workout = @record.workouts.build
@@ -10,20 +10,20 @@ class Members::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     @record.member_id = current_member.id
-    @record.save!
-    redirect_to records_path
+    if @record.save!
+      redirect_to records_path
+    end
   end
 
 
   def index
-  if params[:member_id].blank?
-      @member = Member.find(current_member.id)
-  else
-      @member = Member.find(params[:member_id])
-  end
-
-  @records = Record.where(member_id: @member.id).order(date: "ASC")
-  @last_record = @member.records.order(date: :asc).last
+    if params[:member_id].blank?
+        @member = Member.find(current_member.id)
+    else
+        @member = Member.find(params[:member_id])
+    end
+     @records = Record.where(member_id: @member.id).order(date: "ASC")
+     @last_record = @member.records.order(date: :asc).last
 
     # @records = Record.where(member_id: params[:member_id]).order(date: "ASC")
     # Coffee使用中止
@@ -50,6 +50,7 @@ class Members::RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
     @rec_comment = RecComment.new
+    @comments = @record.rec_comments.order(created_at: :desc)
   end
 
 
@@ -61,8 +62,7 @@ class Members::RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
     @record.update(record_params)
-    redirect_to records_path
-    #redirect_to record_path(@record.id)
+    redirect_to record_path(@record.id)
   end
 
   def destroy
@@ -73,18 +73,16 @@ class Members::RecordsController < ApplicationController
 
   private
 
-  # def record_params
-  #   params.permit(record: [:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
-  #   meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
-  #   workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]]).merge(member_id: current_member.id)
-  # end
-  
+
   def record_params
-    params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
-    meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
-    workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
-  end #こちらにするとNewが入らず、上にするとEditができない
-  
+    # params.require(:record).permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+    # meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
+    # workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
+    params.permit(:weight, :bmi, :bf, :mm, :mus, :tbw, :sm, :date, rec_images_images: [],
+     meals_attributes:[:id, :record_id, :my_meal_id, :date, :time, :name, :calorie, :_destroy],
+     workouts_attributes:[:id, :record_id, :my_workout_id, :date, :name, :burned_calorie, :_destroy]).merge(member_id: current_member.id)
+  end
+
 
 end
 

@@ -1,11 +1,11 @@
-  <p><i class="far fa-comment"></i><%= @diary.dia_comments.count %></p>
-  <% @diary.dia_comments.each do |dia_comment| %>
-      <%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-    <%= dia_comment.member.name %>
-    <%= dia_comment.created_at.strftime('%Y/%m/%d') %><%= dia_comment.comment %>
-     <% if dia_comment.member == current_member %>
-    <div>
-      <%= link_to "削除", diary_dia_comment_path(dia_comment.diary, dia_comment), method: :delete, remote: true %>
-    </div>
-    <% end %>
+<p><i class="far fa-comment"></i><%= @diary.dia_comments.count %></p>
+<% @diary.dia_comments.each do |dia_comment| %>
+  <%#= attachment_image_tag @dia_comment, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+  <%= dia_comment.member.name %>
+  <%= dia_comment.created_at.strftime('%Y/%m/%d') %><%= dia_comment.comment %>
+  <% if dia_comment.member == current_member %>
+  <div>
+    <%= link_to "削除", diary_dia_comment_path(dia_comment.diary, dia_comment), method: :delete, remote: true %>
+  </div>
   <% end %>
+<% end %>

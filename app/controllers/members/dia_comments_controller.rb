@@ -6,7 +6,6 @@ class Members::DiaCommentsController < ApplicationController
     @comment = @diary.dia_comments.build(dia_comment_params)
     @comment.member_id = current_member.id
     @comment.save
-    #redirect_to diary_path(@diary)
   end
 
   def destroy

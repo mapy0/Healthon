@@ -41,29 +41,24 @@ Rails.application.routes.draw do
   end
 
  scope module: :members do
-  # #member関係
-  # resources :members, only: [:show, :edit, :update] do
-  #   #record関係
-  #   resources :records do
-  #     resource :rec_goods, only: [:create, :destroy]
-  #     resources :rec_comments, only: [:create, :destroy]
-  #   end
-
-
   #member関係
   resources :members, only: [:show, :edit, :update] do
     #follow数表示のため
     member do
       get :followings, :followers
     end
-
   end
 
-     #record関係
+    #record関係
     resources :records do
       resource :rec_goods, only: [:create, :destroy]
       resources :rec_comments, only: [:create, :destroy]
     end
+    
+    #Ranking
+    get 'wo_rankings/monthly'
+    get 'wo_rankings/weekly'
+    get 'wo_rankings/daily'
 
 
     #profile
@@ -81,11 +76,11 @@ Rails.application.routes.draw do
       resources :dia_comments, only: [:create, :destroy]
     end
 
-  #circle関係
-  resources :circles do
-    resources :cir_comments, only: [:index, :create, :destroy]
-    get "join" => "circles#join" #circle参加機能
-  end
+    #circle関係
+    resources :circles do
+      resources :cir_comments, only: [:index, :create, :destroy]
+      get "join" => "circles#join" #circle参加機能
+    end
 
 
 

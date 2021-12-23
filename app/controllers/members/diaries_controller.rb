@@ -9,7 +9,7 @@ class Members::DiariesController < ApplicationController
     def create
      @diary = Diary.new(diary_params["diary"])
      @diary.member_id = current_member.id
-      if @diary.save
+      if @diary.save!
         redirect_to diaries_path
       end
     end
