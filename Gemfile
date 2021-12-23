@@ -105,3 +105,8 @@ end
 #バッチ処理
 gem 'whenever', require: false
 
+
+#Community name定義用
+gem 'enum_help'
+
+

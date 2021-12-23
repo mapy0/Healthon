@@ -1,5 +1,5 @@
-class Members::WoRankingsController < ApplicationController
-  
+体重を減らした順
+
   def monthly
     #ここがよくわからない
     if params[:pre_preview].present?
@@ -12,17 +12,16 @@ class Members::WoRankingsController < ApplicationController
     
     @wo_ranks = Record
                   .select("records.member_id
-                          ,sum(workouts.burned_calorie) as workout_calorie
-                          ,to_char(records.date,'YYYY') as workout_year 
-                          ,to_char(records.date,'MM') as workout_month
-                          ,round(sum(workouts.burned_calorie),1) as total_workout
+                          ,to_char(records.date,'YYYY') as record_year 
+                          ,to_char(records.date,'MM') as record_month
+                          ,round({(月初のrecord.weight)-(月末のrecord.weight)},1) as total_decreace ＃期間内の最初と最後のデータのとってき方がわからない…
                           ,RANK () OVER (PARTITION BY to_char(records.date,'YYYY'),to_char(records.date,'MM') 
-                                          order by (sum(workouts.burned_calorie) desc) as rank_number")
-                  .where(study_date: @target_month.all_month)
+                                          order by ({(月初のrecord.weight)-(月末のrecord.weight) desc} as rank_number")
+                  .where(date: @target_month.all_month)
                   .group("to_char(records.date,'YYYY')
                           ,to_char(records.date,'MM')
                           ,record.member_id")
-                  .order("(sum(workouts.burned_calorie))desc)")
+                  .order("{(月初のrecord.weight)-(月末のrecord.weight) desc}")
     @my_rank = 0
     @wo_ranks.each do |wo_rank|
       if wo_rank.member_id == current_member.id
@@ -32,31 +31,15 @@ class Members::WoRankingsController < ApplicationController
     end
   end
 
-  def weekly
-    @wo_ranks = Record
-                  .joins(:workouts)
-                  .select("records.member_id
-                          ,sum(workouts.burned_calorie) as workout_calorie
-                          ,to_char(records.date,'YYYY') as workout_year 
-                          ,to_char(records.date,'MM') as workout_month
-                          ,round(sum(workouts.burned_calorie),1) as total_workout
-                          ,RANK () OVER (PARTITION BY to_char(records.date,'YYYY'),to_char(records.date,'MM') 
-                                          order by (sum(workouts.burned_calorie) desc) as rank_number")
-                  .where(date:0.days.ago.prev_week..0.days.ago.prev_week(:sunday))
-                  .group("to_char(records.date,'YYYY')
-                          ,to_char(records.date,'MM')
-                          ,record.member_id")
-                  .order("(sum(workouts.burned_calorie))desc)")
-    @my_rank = 0
-    @wo_ranks.each do |wo_rank|
-      if wo_rank.member_id == current_member.id
-        @my_rank = wo_rank.rank_number
-        break #breakとは？
-      end
-    end
-  end
-  
-  def daily
+
+
+
+目標に近づいた順（だいぶ難しい？）
+Member has one aim
+Member has mamy record
+
+
+  def monthly
     #ここがよくわからない
     if params[:pre_preview].present?
       @target_month = Date.parse(params[:pre_preview]) << 1
@@ -66,22 +49,21 @@ class Members::WoRankingsController < ApplicationController
       @target_month = Time.current.to_date << 1
     end
     
-    @wo_ranks = Record
-                  .joins(:workouts)
+    @reach_ranks = Record
                   .select("records.member_id
-                          ,sum(workouts.burned_calorie) as workout_calorie
-                          ,to_char(records.date,'YYYY') as workout_year 
-                          ,to_char(records.date,'MM') as workout_month
-                          ,to_char(records.date,'DD') as workout_day
-                          ,round(sum(workouts.burned_calorie),1) as total_workout
-                          ,RANK () OVER (PARTITION BY to_char(records.date,'YYYY'),to_char(records.date,'MM') ,to_char(records.date,'DD') 
-                                          order by (sum(workouts.burned_calorie) desc) as rank_number")
-                  .where(study_date: @target_month.all_month)
+                          ,to_char(records.date,'YYYY') as record_year 
+                          ,to_char(records.date,'MM') as record_month
+                          
+                          
+                          ,round({(目標体重-月初の体重)-(目標体重-月末の体重)},1) as total_decreace ＃データのとってき方がわからない…
+                          
+                          ,RANK () OVER (PARTITION BY to_char(records.date,'YYYY'),to_char(records.date,'MM') 
+                                          order by ({roundと同じ？ desc} as rank_number")
+                  .where(date: @target_month.all_month)
                   .group("to_char(records.date,'YYYY')
                           ,to_char(records.date,'MM')
-                          ,to_char(records.date,'DD')
                           ,record.member_id")
-                  .order("(sum(workouts.burned_calorie))desc)")
+                  .order("{roundと同じ？ desc}")
     @my_rank = 0
     @wo_ranks.each do |wo_rank|
       if wo_rank.member_id == current_member.id
@@ -90,8 +72,3 @@ class Members::WoRankingsController < ApplicationController
       end
     end
   end
-  
-
-  
-  
-end

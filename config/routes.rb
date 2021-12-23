@@ -82,6 +82,10 @@ Rails.application.routes.draw do
       get "join" => "circles#join" #circle参加機能
     end
 
+    resources :communities, only: [:new, :create, :show] do
+      resources :com_comments, only: [:index, :create, :destroy]
+      get "join" => "communities#join" #circle参加機能
+    end
 
 
  end

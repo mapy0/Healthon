@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_105631) do
+ActiveRecord::Schema.define(version: 2021_12_23_083305) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_105631) do
 
   create_table "communities", force: :cascade do |t|
     t.string "name", null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_105631) do
     t.string "self_introduction"
     t.string "image_id"
     t.boolean "is_valid", default: true, null: false
+    t.integer "community_id"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
