@@ -1,5 +1,7 @@
-<table class="differences rounded" style="width:450px; height:300px; background-color:#607c8cbf">
-  <tr style="color:#544c7c">
+<div class="differences_box">
+  <div class="differences_tape text-center">To The Goal</div>
+<table class="differences rounded" style="width:450px; height:300px;">
+  <tr style="border-bottom: 1px dashed #e597b2;">
     <th></th>
     <th>Aim</th>
     <th>Now</th>
@@ -7,16 +9,16 @@
     <th></th>
   </tr>
   <% if @last_record.nil? %>
-    <tr style="color:#e4746c">
+    <tr style="border-bottom: 1px dashed #e597b2;">
     <th>weight</th>
     <td><%= @member.aim.aim_w %>kg</td>
     <td>Nothing</td>
     <td>your</td>
   </tr>
-  <tr style="color:#ec5c55">
+  <tr style="border-bottom: 1px dashed #e597b2">
     <th>Body fat</th>
     <td><%= @member.aim.aim_bf %>%</td>
-    <td>data!! </td>
+    <td>data!! </td>    
     <td></td>
     <td></td>
   </tr>
@@ -42,38 +44,38 @@
   
  </table>
   <% else %>
-  <tr style="color:#e4746c">
+  <tr style="border-bottom: 1px dashed #e597b2;">
     <th>weight</th>
     <td><%= @member.aim.aim_w %>kg</td>
     <td><%= @last_record.weight%>kg</td>
     <td><%= @last_record.weight  -  @member.aim.aim_w%>kg</td>
     <td>
       <% if  (@last_record.weight  -  @member.aim.aim_w) <= 0 %>
-        <i class="fab fa-angellist"></i>
+        <i class="fab fa-angellist faa-bounce animated" style=" color: #e597b2;"></i>
       <% end %>
     </td>
     <td></td>
   </tr>
-  <tr style="color:#ec5c55">
+  <tr style="border-bottom: 1px dashed #e597b2;">
     <th>Body fat</th>
     <td><%= @member.aim.aim_bf %>%</td>
     <td><%= @last_record.bf %>%</td>
     <td><%= @last_record.bf  -  @member.aim.aim_bf %>%</td>
      <td>
       <% if  (@last_record.bf  -  @member.aim.aim_bf) <= 0 %>
-        <i class="fab fa-angellist"></i>
+        <i class="fab fa-angellist faa-bounce animated" style=" color: #e597b2;"></i>
       <% end %>
     </td>
   </tr>
 
-  <tr>
+  <tr style="border-bottom: 1px dashed #e597b2">
     <th>Muscle</th>
     <td><%= @member.aim.aim_mus %>kg</td>
     <td><%= @last_record.mus %>kg</td>
     <td><%= @last_record.mus  -  @member.aim.aim_mus %>kg</td>
      <td>
       <% if  (@last_record.mus  -  @member.aim.aim_mus) <= 0 %>
-        <i class="fab fa-angellist"></i>
+        <i class="fab fa-angellist faa-bounce animated " style=" color: #e597b2;"></i>
       <% end %>
     </td>
   </tr>
@@ -85,10 +87,13 @@
     <td><%= @last_record.sm  -  @member.aim.aim_sm %>%</td>
     <td>
       <% if  (@last_record.sm  -  @member.aim.aim_sm) <= 0 %>
-        <i class="fab fa-angellist"></i>
+        <i class="fab fa-angellist faa-bounce animated" style=" color: #e597b2;"></i>
       <% end %>
     </td>
   </tr>
 </table>
 <% end %>
+</div>
+
+
 

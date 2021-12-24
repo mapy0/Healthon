@@ -9,11 +9,6 @@
 </div>
 <% end %>
 
-<h2>UsersDiary--></h2>
-<ul>
-    <% Member.all.each do |member| %>
-        <li>
-            <%= link_to "#{member.name} Diary", diaries_path(member_id: member.id) %>
-        </li>
-    <% end %>
-</ul>
+    <li>
+      <%= link_to "Diary", new_diary_path %>
+    </li>

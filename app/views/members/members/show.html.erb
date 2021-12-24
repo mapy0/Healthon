@@ -1,149 +1,130 @@
 <div class="bg_wrap">
-<div class="bg_space container-fluid">
-<div class="row">
-  <div class="col-sm-8 ml-5">
+  <div class="bg_space container-fluid" style="overflow:auto;">
     <div class="row">
-      <div class="col-sm-2 rounded" style="background-color:#ffffffd9">
-       <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-      </div>
+      <div class="col-sm-8 ml-5">
+        <div class="row">
+          <div class="col-sm-2 rounded-circle" style="background-color:#ffffffd9; size: '100x100'; object-fit: cover;">
+            <%= attachment_image_tag @member, :image, size: '150x150', format: 'jpeg', fallback: "sample-author1.jpg" %>
+          </div>
+          <div class="col-sm-7">
+            <div class="row">
+              <div class="col-sm-4 ml-4" style="  font-weight: 800; font-size: 25pt;">
+                <%= @member.name %>
+              </div>
+              <div class="col-sm-3">
+              <%= render 'members/relationships/follow_button', member: @member %>
+              </div>
+            </div>
 
-      <div class="col-sm-7">
-          <div class="row">
-            <div class="col-sm-4">
-              <%= @member.name %>
-              <%#= @member.workouts %>
-              <% @member.workouts.each do |workout| %>
-              <%= workout.burned_calorie %>
-              <% end %>
-
+          <div class="row text-center">
+            <div class="col-sm-3">
+            Follow
             </div>
             <div class="col-sm-3">
-              <%= render 'members/relationships/follow_button', member: @member %>
+            Follower
             </div>
           </div>
-
-           <div class="row">
-               <div class="col-sm-3">
-               Follow
-               </div>
-               <div class="col-sm-3">
-               Follower
-              </div>
+          <div class="row text-center">
+            <div class="col-sm-3 text-center">
+              <%= link_to followings_member_path, class: "follow_link" do %>
+               <%=@member.followings.count%>
+              <% end %>
+            </div>
+            <div class="col-sm-3 text-center">
+              <%= link_to followers_member_path, class: "follow_link"  do %>
+               <%= @member.followers.count%>
+              <% end %>
+            </div>
           </div>
-             <div class="row">
-              <div class="col-sm-3">
-                <%= link_to followings_member_path do %>
-                   <%=@member.followings.count%>
-                   <% end %>
-               </div>
-               <div class="col-sm-3">
-                <%= link_to followers_member_path do %>
-                   <%= @member.followers.count%>
-                <% end %>
-              </div>
-             </div>
-           </div>
-         </div>
-       </div>
-
-
-    <div class="col-sm-2">
-      <div class="row">
-
-       <div class="row">
-       <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-       </div>
-       </div>
-
-     <div class="row">
-     <nav class="globalMenuSp col-md-4 offset-md-8">
-      <% if @member.id == current_member.id %>
-      <ul>
-        <div class="row">
-        <%= link_to "Profile", edit_profile_path(@member) %>
+          </div>
         </div>
-        <div class="row">
-        <%= link_to "Member Infomation", edit_member_path(@member) %>
-        </div>
-        <div class="row">
-        <%= link_to "Aim", edit_aim_path(@member) %>
-        </div>
-      </ul>
-       <% end %>
-     </nav>
-    </div>
-
-  </div>
-
-
-      <div class="row">Diary</div>
-      <div class="row">Others</div>
-    </div>
-</div>
-
-  <div class="row">
-    <div class="col-sm-8">
-       <%= @member.self_introduction %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-11">
-       RANK表示
-    </div>
-  </div>
-
-    <div class="row">
-    <div class="col-sm-6">
-      <h5>Transition Chart</h5>
-
-       <%#= render 'members/records/mychart' %>
-       <%#= render 'members/records/mychart2' %>
-       <%= render 'members/records/mychart3' %>
-    </div>
-     <div class="col-sm-6">
-       Deffereces
-       <%= render 'differences' %>
-    </div>
-  </div>
-
-    <div class="row">
-    <div class="col-sm-6">
-       NewPost Diary
-    </div>
-    <div class="col-sm-5">
-      <div class="row">
-        OthersWorkout
       </div>
-       <div class="row">
-        Today's recoad
-       </div>
+
+      <div class="col-sm-2">
+      <div class="row">
+        <div class="row">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="row">
+          <nav class="globalMenuSp col-md-4 offset-md-8">
+            <% if @member.id == current_member.id %>
+            <ul>
+              <div class="row">
+                <%= link_to "Profile", edit_profile_path(@member) %>
+              </div>
+              <div class="row">
+                <%= link_to "Member Infomation", edit_member_path(@member) %>
+              </div>
+              <div class="row">
+                <%= link_to "Aim", edit_aim_path(@member) %>
+              </div>
+            </ul>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+        <div class="row">
+        </div>
+        <div class="row">Others</div>
+      </div>
     </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <%= @member.self_introduction %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-11">
+          RANK表示
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <h5>Transition Chart</h5>
+        <%= render 'members/records/mychart3' %>
+      </div>
+      <div class="col-sm-6">
+        <%= render 'differences' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render 'new_post_diaries' %>
+      </div>
+      <div class="col-sm-5">
+        <div class="row">
+          OthersWorkout
+        </div>
+        <div class="row">
+          Today's recoad
+        </div>
+      </div>
+    </div>
+
+
+
+    <li>
+      <%= link_to "#{@member.name} Record", records_path(member_id: @member.id) %>
+    </li>
+
+    <li>
+      <%= link_to "退会する", confirm_unsubscribe_path(@member) %>
+    </li>
+    <li>
+      <%= link_to "Ranking", wo_rankings_monthly_path %>
+    </li>
+
   </div>
-
-
-  <%= link_to "Record", new_record_path %>
-  <%= link_to "Diary", new_diary_path %>
-  <li>
-    <%= link_to "#{@member.name} Diary", diaries_path(member_id: @member.id) %>
-  </li>
-  <li>
-    <%= link_to "#{@member.name} Record", records_path(member_id: @member.id) %>
-  </li>
-
-  <li>
-    <%= link_to "退会する", confirm_unsubscribe_path(@member) %>
-  </li>
-
-<%= link_to "Ranking", wo_rankings_monthly_path %>
-
-
-
-  </div>
-  <%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>
+<%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>
 </div>
 
 

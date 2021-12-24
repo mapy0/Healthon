@@ -1,7 +1,7 @@
 class Members::DiariesController < ApplicationController
 
    def new
-     @diary = Diary.new(diary_params)
+     @diary = Diary.new
      @diary.dia_images.build
    end
 
@@ -47,11 +47,10 @@ class Members::DiariesController < ApplicationController
     end
 
 
-
   private
 
   def diary_params
-    params.permit(diary: [:date, :body, :title, dia_images_images: []])
+    params.require(:diary).permit(:date, :body, :title, dia_images_images: [])
   end
 
 end

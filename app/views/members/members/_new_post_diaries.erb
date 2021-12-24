@@ -1,0 +1,47 @@
+<div class="new_post_diaries_box">
+  <div class="new_post_diaries_tape text-center">New Post Diary</div>
+  
+  <table class="new_post_diaries" style="width:500px; height:300px;">
+    <% if @diaries.nil? %>
+      <tr style="color:#e4746c">
+      <td>not yet written :(</td>
+      </tr>
+  </table>
+    <% else %>
+      <% @diaries.each do |diary| %>
+      <tr style="color:#fff; font-size:20px; ">
+          <td style="width:100px;"><%= diary.date %></td>
+          <td><%= diary.title %></td>
+      <tr style="color:#fff; border-bottom: 1px dashed #fef263; font-size:18px;">
+          <td></td>
+          <td><%= truncate(diary.body, length: 25)%></td>
+          <td><%= link_to diary_path(@member), class: "diary_link" do%>
+            <i class="fas fa-angle-double-right"></i>
+            <% end %>
+          </td>
+      </tr>
+      <% end %>
+    <% end %>
+    <tr style="color:#fff;">
+          <td></td>
+          <td>
+            <%= link_to diaries_path(member_id: @member.id), class: "diary_link" do %>
+            <%= "#{@member.name}'s Diary " %><i class="fas fa-book-open"></i>
+            <% end %>
+          </td>
+          <td></td>
+      </tr>
+  
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 // Place all the styles related to the members/members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 /*　ハンバーガーボタン　*/
 .hamburger {
   display : block;
@@ -138,18 +140,8 @@ nav.globalMenuSp.active {
 }
 
 
-// /* ↓ここから下は、ブラウザがデフォルトで持っているCSSを打ち消すCSS↓ */
-// html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
-//   margin: 0;
-//   padding: 0;
-//   border: 0;
-//   font-weight: normal;
-//   font-size: 100%;
-//   vertical-align:baseline;
-//   list-style: none;
-// }
-/* ↑ブラウザがデフォルトで持っているCSSを打ち消すCSSここまで↑ */
 
+//Graph/
 /* ↓外枠↓ */
 .container {
   margin: 10px;
@@ -188,4 +180,72 @@ nav.globalMenuSp.active {
 /* ↓このクラスがついている時だけタブの中身を表示↓ */
 .box-show {
   display: block;
+}
+
+//Follow
+.follow_link{
+  font-weight: 800;
+  font-size: 20pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.follow_link:hover {
+  font-weight: 800;
+  font-size: 20pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fca4a4 ;
+}
+
+
+.new_post_diaries_box {
+   width: 100%;
+   padding: 15px;
+   margin: 2em auto;
+   background: #274a78e6;
+   color: #000;
+   box-shadow: 4px 4px 4px rgba(0,0,0,0.03);transform:rotate(-1deg);
+   word-break: break-all;
+}
+.new_post_diaries_tape {
+    width: 50%;
+    height: 35px;
+    margin: -25px auto 0;
+    background: #f7f092ED;
+    color: #274a78;
+    font-weight:1000;
+    transform: rotate(4deg);
+
+}
+.new_post_diaries_box_title {
+    text-align: center;
+    font-size: 1.3em!important;
+    margin-top: 10px!important;
+}
+
+.differences_box {
+   width: 100%;
+   padding: 15px;
+   margin: 2em auto;
+   background: #a0d8efe6;
+   color: #fff;
+   box-shadow: 4px 4px 4px rgba(0,0,0,0.03);transform:rotate(2deg);
+   word-break: break-all;
+}
+.differences_tape {
+    width: 50%;
+    height: 35px;
+    margin: -25px auto 0;
+    background: #e597b2ED;
+    color: #274a78;
+    font-weight:1000;
+    transform: rotate(-3deg);
+
+}
+.differences_title {
+    text-align: center;
+    font-size: 1.3em!important;
+    margin-top: 10px!important;
 }

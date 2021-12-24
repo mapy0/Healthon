@@ -19,6 +19,8 @@ class Members::MembersController < ApplicationController
       @record_sm.push(record.sm)
 
     @last_record = @member.records.order(date: :asc).last
+    @diaries = @member.diaries.order(created_at: :desc).limit(3)
+
     end
  end
 

@@ -1,3 +1,16 @@
 // Place all the styles related to the members/Diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.diary_link{
+  text-decoration: none;
+  color: #fff ;
+  text-decoration:none
+}
+
+.diary_link:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: #fca4a4 ;
+}
+
+
