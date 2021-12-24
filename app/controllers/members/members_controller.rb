@@ -20,7 +20,7 @@ class Members::MembersController < ApplicationController
 
     @last_record = @member.records.order(date: :asc).last
     @diaries = @member.diaries.order(created_at: :desc).limit(3)
-
+    @workouts = Workout.all.order(created_at: :desc).limit(3)
     end
  end
 

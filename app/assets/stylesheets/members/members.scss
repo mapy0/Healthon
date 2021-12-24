@@ -107,14 +107,14 @@ nav.globalMenuSp.active {
 
 }
 /* 背景を動画に */
-.bg_wrap {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+// .bg_wrap {
+//     position: relative;
+//     height: 100%;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
 .bg_wrap p,
 .bg_wrap ul{
     margin:0;
@@ -122,8 +122,18 @@ nav.globalMenuSp.active {
     list-style: none;
 }
 .bg_wrap video,
-.bg_wrap img {
+　　{
     width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+  　min-width: 100%;
+  　min-height: 100%;
+  　width: auto; height: auto; z-index: -100;
+  　background-size: cover;
+
 }
 .bg_wrap .bg_space {
     color: #fff;
@@ -132,6 +142,8 @@ nav.globalMenuSp.active {
     z-index: 1;
     margin:0;
     padding-top:0px;
+    display: inline-block;
+    vertical-align: top;
 }
 .bg_wrap .bg_space ul{
     text-align: right;
@@ -156,6 +168,7 @@ nav.globalMenuSp.active {
 /* ↓タブのデザイン↓ */
 .tab {
   width: 100%;
+  height: 100%;
   padding: 10px;
   cursor: pointer;
   border-left: solid 1px #CCC;
@@ -225,11 +238,17 @@ nav.globalMenuSp.active {
     margin-top: 10px!important;
 }
 
+.new_post_diaries {
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+
 .differences_box {
-   width: 100%;
+   width: 90%;
    padding: 15px;
    margin: 2em auto;
-   background: #a0d8efe6;
+   background: #c0c6c9e6;
    color: #fff;
    box-shadow: 4px 4px 4px rgba(0,0,0,0.03);transform:rotate(2deg);
    word-break: break-all;
@@ -241,7 +260,7 @@ nav.globalMenuSp.active {
     background: #e597b2ED;
     color: #274a78;
     font-weight:1000;
-    transform: rotate(-3deg);
+    transform: rotate(3deg);
 
 }
 .differences_title {
@@ -249,3 +268,69 @@ nav.globalMenuSp.active {
     font-size: 1.3em!important;
     margin-top: 10px!important;
 }
+
+.differences {
+    width: 100%;
+    height: 350px;
+    margin: 5px;
+}
+
+
+.new_workouts_box {
+   width: 100%;
+   padding: 15px;
+   margin: 2em auto;
+   background: #b33e5ce6;
+   color: #000;
+   box-shadow: 4px 4px 4px rgba(0,0,0,0.03);transform:rotate(1deg);
+   word-break: break-all;
+}
+.new_workouts_tape {
+    width: 50%;
+    height: 35px;
+    margin: -25px auto 0;
+    background: #001e43ED;
+    color: #fff;
+    font-weight:1000;
+    transform: rotate(-2deg);
+}
+.new_workouts_box_title {
+    text-align: center;
+    font-size: 1.3em!important;
+    margin-top: 10px!important;
+}
+
+.new_workouts {
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+
+.recoad_link{
+  font-weight: 800;
+  font-size: 18pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none;
+  
+}
+
+.recoad_link:hover {
+  font-weight: 800;
+  font-size: 18pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fca4a4 ;
+}
+
+.recoad_link_tape {
+    width: 50%;
+    height: 35px;
+    margin: -15px auto 0;
+    background: #418b89ED;
+    color: #fff;
+    font-weight:1000;
+    transform: rotate(1deg);
+    text-align:center;
+}
+

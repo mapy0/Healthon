@@ -1,0 +1,35 @@
+<div class="new_workouts_box">
+  <div class="new_workouts_tape text-center">New Workout</div>
+
+  <table class="new_workouts">
+    <% if @workouts.nil? %>
+      <tr style="color:#e4746c">
+      <td>not yet :(</td>
+      </tr>
+  </table>
+    <% else %>
+      <% @workouts.each do |workout| %>
+      <tr style="color:#fff; font-size:20px;">
+          <td style="width:100px;"><%= workout.created_at.strftime('%m/%d %H:%m') %></td>
+          <td><%= workout.name %></td>
+          <td><%= workout.burned_calorie %> kcal</td>
+      <tr style="color:#fff; border-bottom: 1px dashed #fef263; font-size:18px;">
+          <td></td>
+          <td></td>
+          <td></td></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+

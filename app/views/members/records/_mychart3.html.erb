@@ -6,7 +6,7 @@
 
   <div class="tabbox-contents">
     <div class="tabbox box-show">
-        <div class="rounded" style="width:500px; height:300px; background-color:#ffffffbf">
+        <div class="graph rounded">
           <canvas id="myChart"></canvas>
         </div>
         <script>
@@ -26,8 +26,8 @@
                 },{
                     label: "体脂肪率",
                     data: <%= @record_bf %>, //縦軸データ埋込
-                    backgroundColor: 'rgba(255, 80, 120, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 0.2)',
+                    backgroundColor: 'rgba(255, 206, 86, 1.0)',
+                    borderColor: 'rgba(255, 206, 86, 1.0)',
                     type: 'line'
                 }]
             },
@@ -36,7 +36,7 @@
 
     </div>
     <div class="tabbox">
-        <div class="rounded" style="width:500px; height:300px; background-color:#ffffffbf">
+        <div class="graph rounded">
             <canvas id="myChart2"></canvas>
         </div>
 
@@ -51,14 +51,14 @@
                 datasets: [{
                     label: "筋肉量",
                     data: <%= @record_mus %>,
-                    backgroundColor: 'rgba(255, 80, 120, 1.0)',
-                    borderColor: 'rgba(255, 80, 120, 1.0)',
+                    backgroundColor: 'rgba(160, 216, 239, 1)',
+                    borderColor: 'rgba(160, 216, 239, 1)',
                     fill: false
                 },{
                     label: "骨格筋率",
                     data: <%= @record_sm %>, //縦軸データ埋込
-                    backgroundColor: 'rgba(255, 80, 120, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 0.2)',
+                    backgroundColor: 'rgba(137, 201, 151, 1)',
+                    borderColor: 'rgba(137, 201, 151, 1)',
                     type: 'line'
                 }]
             },

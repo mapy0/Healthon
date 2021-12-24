@@ -1,7 +1,7 @@
 <div class="new_post_diaries_box">
   <div class="new_post_diaries_tape text-center">New Post Diary</div>
-  
-  <table class="new_post_diaries" style="width:500px; height:300px;">
+
+  <table class="new_post_diaries">
     <% if @diaries.nil? %>
       <tr style="color:#e4746c">
       <td>not yet written :(</td>
@@ -9,7 +9,7 @@
   </table>
     <% else %>
       <% @diaries.each do |diary| %>
-      <tr style="color:#fff; font-size:20px; ">
+      <tr style="color:#fff; font-size:20px;">
           <td style="width:100px;"><%= diary.date %></td>
           <td><%= diary.title %></td>
       <tr style="color:#fff; border-bottom: 1px dashed #fef263; font-size:18px;">
@@ -26,12 +26,12 @@
           <td></td>
           <td>
             <%= link_to diaries_path(member_id: @member.id), class: "diary_link" do %>
-            <%= "#{@member.name}'s Diary " %><i class="fas fa-book-open"></i>
+            <%= "#{@member.name}'s Diary " %><i class="fas fa-book-open"><%= " >>>" %></i>
             <% end %>
           </td>
           <td></td>
       </tr>
-  
+
   </table>
 </div>
 

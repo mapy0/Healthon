@@ -2,12 +2,18 @@
   <% if current_member.following?(member) %>
     <%= form_for(current_member.relationships.find_by(follow_id: member.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, member.id %>
-      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+       <%= f.button :type => "submit", style: 'border-style: none; background-color: transparent;' do %>
+       <i class="fas fa-hand-paper faa-shake animated-hover fa-2x" style="color: #f8f4e6;"></i>
+        <% end %>
     <% end %>
   <% else %>
     <%= form_for(current_member.relationships.build) do |f| %>
       <%= hidden_field_tag :follow_id, member.id %>
-      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+      <%= f.button :type => "submit", style: 'border-style: none; background-color: transparent;' do %>
+       <i class="far fa-handshake faa-bounce animated-hover fa-2x" style="color: #f8f4e6;"></i>
+
+        <% end %>
+      
     <% end %>
   <% end %>
 <% end %>

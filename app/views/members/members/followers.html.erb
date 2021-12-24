@@ -1,15 +1,27 @@
-<h1>Follower</h1>
-
-<table>
-  <% @followers.each do |member| %>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <h1>Follower</h1>
+    <div class="row">
+      <div class ="col-3 rounded" style="background-color:#ffffffd9;" id ="follow">
+    <table style= "overflow:auto;">
+    <% @followers.each do |member| %>
     <tr>
-      <td>
-      <%= attachment_image_tag member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-      </td>
-      <td><%= link_to member.name, member_path(member) %></td>
-      <td><%= member.self_introduction %></td>
+    <td>
+    <%= attachment_image_tag member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+    </td>
+    <td><%= link_to member.name, member_path(member) %></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
+ 
 
-<%= link_to "<<", member_path(@member) %>
+<div class="row">
+    <%= link_to "<<", member_path(@member) %>
+</div>
+
+
+  </div>
+
+  </div>
+<%= video_tag("#{request.base_url}/video/follow_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+</div>

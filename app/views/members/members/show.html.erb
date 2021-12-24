@@ -70,7 +70,7 @@
       </div>
         <div class="row">
         </div>
-        <div class="row">Others</div>
+        <div class="row"></div>
       </div>
     </div>
 
@@ -82,14 +82,20 @@
 
       <div class="row">
         <div class="col-sm-11">
-          RANK表示
+          <!--RANK表示-->
         </div>
       </div>
 
     <div class="row">
       <div class="col-sm-6">
-        <h5>Transition Chart</h5>
         <%= render 'members/records/mychart3' %>
+        
+          <div  class= "recoad_link_tape">
+            <%= link_to records_path(member_id: @member.id), class: "recoad_link" do %>
+            <%= "#{@member.name}'s Record " %><i class="fas fa-book-open"><%= " >>>" %></i>
+            <% end %>
+          </div>
+
       </div>
       <div class="col-sm-6">
         <%= render 'differences' %>
@@ -102,29 +108,23 @@
       </div>
       <div class="col-sm-5">
         <div class="row">
-          OthersWorkout
+          <%= render 'new_workouts' %>
         </div>
         <div class="row">
-          Today's recoad
+          <!--Today's recoad-->
         </div>
       </div>
     </div>
 
-
-
-    <li>
-      <%= link_to "#{@member.name} Record", records_path(member_id: @member.id) %>
-    </li>
-
-    <li>
-      <%= link_to "退会する", confirm_unsubscribe_path(@member) %>
-    </li>
-    <li>
-      <%= link_to "Ranking", wo_rankings_monthly_path %>
-    </li>
+    <!--<li>-->
+    <!--  <%#= link_to "退会する", confirm_unsubscribe_path(@member) %>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--  <%#= link_to "Ranking", wo_rankings_monthly_path %>-->
+    <!--</li>-->
 
   </div>
-<%= video_tag("#{request.base_url}/video/member_bg.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true) %>
+<%= video_tag("#{request.base_url}/video/member_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
 </div>
 
 
