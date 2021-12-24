@@ -1,51 +1,45 @@
-<div class="circle_show">
-    <div class="show_group">
-      <span class="back_to_circle_index">
-      <%= link_to circles_path do %>
-      <<<
-      <% end %>
-      </span>
+<div class="circle_show container-fluid">
+  <div class="row" style="height: 100%; ">
+    <div class="col-6">
+      <div class="show_group">
+        <div class="row">
+          <div class="col-5 circle_icon rounded-circle">
+            <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+        </div>
+        <div class="col-7 circle_information">
+          <div class="row circle_show_name">
+            <%= @circle.name%>
+          </div>
+          <div class="row circle_infomation_content">
+            <%= @circle.infomation %>
+          </div>
+          <div class="circle_create small">
+            <i class="fas fa-crown"></i> <%= @owner.name %>
+            <i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %></i>
+          </div>
+          
+          
+          
+        </div>
 
-      <div class="circle_icon">
-      アイコン
-      <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-      </div>
 
-      <span class="circle_show_name">
-      サークル名
-      <%= @circle.name%>
-      </span>
-
-      <span class="circle_owner_name">
-      作成者
-      <%# if @circle.members.include? @circle.members.name : "不明" %>
-      <%#= else %>
-      <%= @owner.name %>が
-  　　<i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %>に作成</i>
+          
+          
+        </div>
 
 
-      <div class="member_icon">
-      参加中のメンバー！
+
+      <div class="member_icon rounded-circle">
+      <% @members.count %>
+      
       <% @members.each do |member| %>
-      <%= attachment_image_tag @member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
+      <%= attachment_image_tag @member, :image, size: '35x35', format: 'jpeg', fallback: "sample-author1.jpg" %>
       <% end %>
       </div>
-  </div>
+      </div>
 
-  <%#= if !@circle.infomation.nil? %>
-  <!--<div class="chat-group-show__none">-->
-  <!--Let's tailk together!!-->
-  <!--</div>-->
-  <%# else %>
-    <div class="circle_show_information">
-      <span class="circle_infomation_content">
-        説明
-      <%= @circle.infomation %>
-      </span>
-    </div>
-  <%# end %>
 
-  <% if @circle.owner_id == current_member.id %>
+    <% if @circle.owner_id == current_member.id %>
     <%= link_to 'Edit', edit_circle_path(@circle), class: "btn btn-sm btn-success" %>
 
     <% elsif @circle.members.include?(current_member) %>
@@ -53,31 +47,45 @@
 
     <% else %>
     <%= link_to 'Join this group', circle_join_path(@circle), class: "btn btn-sm btn-success" %>
-              <% end %>
+    <% end %>
 
 
 
     <%= link_to "削除", circle_path(@circle), method: :delete %>
-</div>
 
- <div class="circle_talk_in">
-    talk
- </div>
-<div class="circle_chat" id="comments">
+
+    </div>
+  <div class="col-6">
+  <div class="circle_talk_in">
+  talk
+  </div>
+  <div class="circle_chat" id="comments">
   <%= render 'comments' %>
-  <%#= render 'comment',locals:{comment: ""} %>
+  </div>
+
+
+  <input type="text" class="form-control" id="chat-input" />
+  <input type="hidden" value="<%= params[:id] %>" id="circle_id" />
+  <input type="hidden" value="<%= current_member.id %>" id="member_id" />
+  <button id="button" class="btn btn-primary">送信</button>
+
+  </div>
 </div>
 
+  </div>
 
-<input type="text" class="form-control" id="chat-input" />
-<input type="hidden" value="<%= params[:id] %>" id="circle_id" />
-<input type="hidden" value="<%= current_member.id %>" id="member_id" />
-<button id="button" class="btn btn-primary">送信</button>
-<!--<%#= form_with(model:[@circle, @cir_comment]) do |f| %>-->
-<!--<%#= f.text_area :comment, rows:'5',placeholder: "whrite your comment" %>-->
-<!--  <div id="button">-->
 
-<!--  <%#= f.submit "GO!"%>-->
-<!--  </div>-->
-<!--<%# end %>-->
+
+
+
+
+
+        <span class="back_to_circle_index">
+        <%= link_to circles_path do %>
+        <<<
+        <% end %>
+        </span>
+
+
+
 

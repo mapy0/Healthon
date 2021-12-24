@@ -1,38 +1,45 @@
 <% if member_signed_in? %>
-<nav class="navbar navbar-expand-lg">
-<footer class="container">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav ml-auto">
+<div class="footer">
+<div id="button"></div>
+<div id="container">
+<div id="cont">
+<div class="footer_center">
+
+　<div class="row">
+　  <div class="col"><%= link_to member_path(current_member), class: "footer_link" do %>
+　   <i class="fas fa-home fa-2x"><p>Home</p></i>
+　  <% end %>
+　  </div>
+　  <div class="col"><%= link_to diaries_path(member_id: current_member), class: "footer_link" do %>
+　  <i class="far fa-edit fa-2x"><p>Diary</p></i>
+　  <% end %>
+　  </div>
+　  <div class="col"><%= link_to records_path(member_id: current_member), class: "footer_link" do %>
+　  <i class="fas fa-chart-line fa-2x"><p>Record</p></i>
+　  <% end %>
+　  </div>
+　  <div class="col"><%= link_to circles_path, class: "footer_link" do%>
+　  <i class="fab fa-grav fa-2x"><p>Circle</p></i>
+　  <% end %>
+　  </div>
+　  <div class="col"><%= link_to destroy_member_session_path, method: :delete, class: "footer_link" do %>
+　  <i class="fas fa-sign-out-alt fa-2x"> <p>Logout</p></i>
+　  <% end %>
+　  </div>
+</div>
 
 
-  <li class="nav-item">
-    <%= link_to "マイページ", member_path(current_member), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Diary", diaries_path(member_id: current_member), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Record", records_path(member_id: current_member), class: "nav-link" %>
-  </li>
+  </div>
 
-　<li class="nav-item">
-　<%= link_to "Circle", circles_path %>
-  </li>
+
+
+</div>
+</div>
+</div>
 </div>
 
 
 
-  <li class="nav-item">
-    <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link" %>
-  </li>
-
-  </ul>
-  </div>
-  </footer>
-</nav>
   <% else %>
   <% end %>

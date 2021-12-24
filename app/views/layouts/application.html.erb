@@ -13,10 +13,14 @@
   </head>
 
   <body>
+    <div id="wrapper">
+      <main>
+        <%= yield %>
+      </main>
+      　<%= render 'layouts/footer' %>
+    </div>
 
-    <%= yield %>
 
-    <%= render 'layouts/footer' %>
     
     
     

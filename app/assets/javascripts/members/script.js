@@ -1,3 +1,5 @@
+
+//ハンバーガーメニュー
 $(function() {
     $('.hamburger').click(function() {
         $(this).toggleClass('active');
@@ -13,7 +15,7 @@ $(function() {
 });
 
 
-
+//グラフ
 $(function() {
     // ↓タブをクリックした時の処理↓
     $('.tab').click(function(){
@@ -29,3 +31,5 @@ $(function() {
         $('.tabbox').eq(index).addClass('box-show');
     });
 });
+
+
