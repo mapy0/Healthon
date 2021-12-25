@@ -1,14 +1,12 @@
-<div class="container-fluid">
+<div class="login" style="color:#fff; text-align: center; font-size: 20px;">
 <h2>Sign up</h2>
 
 <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
-  <%= render "members/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
-
 
   <div class="field">
     <%= f.label :email %><br />
@@ -18,7 +16,6 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -28,7 +25,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-<%= f.submit 'next', class: "btn-default btn-red", url: "profile_path" %>
+ <div class="actions">
+  <button type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" onclick="loction.href='/profiles'" >
+  NEXT<i class="fas fa-sign-in-alt faa-passing animated-hover fa-lg"></i>
+  </button>
+
+<%= render "members/shared/error_messages", resource: resource %>
 <%= render "members/shared/links" %>
 
 <% end %>

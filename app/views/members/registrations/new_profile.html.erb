@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Plofile</h2>
 
 <%= form_with model: @profile, url: profiles_path, local: true do |f| %>
   <%= render "members/shared/error_messages", resource: @profile %>
@@ -36,9 +36,12 @@
    <%= f.radio_button :sex, 3 %>その他
  </div>
 
-<%= f.submit 'next', class: "btn-default btn-red", url: "aim_path" %>
+<div class="actions">
+  <button type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" onclick="loction.href='/aims'" >
+  <i class="fas fa-sign-in-alt faa-passing animated-hover fa-lg"></i>
+  </button>
   <%#= render "registration_footer" %>
-  <%= render "members/shared/links" %>
+  <%#= render "members/shared/links" %>
 <% end %>
 
 
