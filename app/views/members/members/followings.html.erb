@@ -1,16 +1,26 @@
-<h1>Follow</h1>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <h1 style="margin:15px">Follow</h1>
+      <div class="row follow_list">
+        <div class ="col-3 rounded" id ="follow">
+          <table style= "overflow:auto;">
+            <% @followings.each do |member| %>
+              <tr class= "follow_list_row" style="border-bottom: 1px dashed #fff">
+                <td style=" background-color: #ffffffd9;" class="rounded-circle">
+                  <%= attachment_image_tag member, :image, size: '80x80', format: 'jpeg', fallback: "sample-author1.jpg" %>
+                </td>
+                <td><%= link_to member.name, member_path(member), class: "follow_list_link"%></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <%= link_to member_path(@member), class: "follow_list_link" do %>
+        <i class="fas fa-fast-backward faa-passing-reverse animated-hover fa-2x" style="margin: 10px"></i>
+        <% end %>
+      </div>
+    <%= video_tag("#{request.base_url}/video/follow_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
+</div>
 
-<div class="row" style="">
-<table>
-  <% @followings.each do |member| %>
-    <tr>
-      <td>
-      <%= attachment_image_tag member, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-      </td>
-      <td><%= link_to member.name, member_path(member) %></td>
-      <td><%= member.self_introduction %></td>
-    </tr>
-  <% end %>
-</table>
-
-<%= link_to "<<", member_path(@member) %>

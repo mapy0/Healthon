@@ -109,4 +109,5 @@ gem 'whenever', require: false
 #Community name定義用
 gem 'enum_help'
 
-
+#pagination
+gem 'kaminari','~> 1.2.1'

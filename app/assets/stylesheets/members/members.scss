@@ -312,7 +312,7 @@ nav.globalMenuSp.active {
   text-decoration: none;
   color: #ffffff;
   text-decoration:none;
-  
+
 }
 
 .recoad_link:hover {
@@ -334,3 +334,28 @@ nav.globalMenuSp.active {
     text-align:center;
 }
 
+
+
+.follow_list{
+  height: 400px;
+  width: 25%;
+  margin: 10px;
+  
+}
+
+.follow_list_link{
+  font-weight: 800;
+  font-size: 15pt;
+  margin: 5px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.follow_list_link:hover {
+  font-weight: 800;
+  font-size: 18pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #83ccd2;
+}
