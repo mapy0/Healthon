@@ -116,7 +116,12 @@ body {
   width: 50%;
 }
 
-.cir_comment_member_name{
+.cir_comment_member_name, .cir_comment_time{
   font-size: 10pt;
   margin-left: 5px;
+  margin-top: 5px;
+}
+
+.cir_comment{
+  margin-left: 8px;
 }

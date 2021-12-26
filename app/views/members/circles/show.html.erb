@@ -56,9 +56,6 @@
       </div>
       </div>
       <div class="col-6">
-        <div class="circle_talk_in">
-        talk
-        </div>
         <div class="circle_chat" id="comments" style="height:80%;">
           <%= render 'comments' %>
         </div>
@@ -72,8 +69,9 @@
       </div>
     </div>
   </div>
-
+  <div class="bg_video">
     <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>
 
 

@@ -14,7 +14,7 @@ connected: function() {
     console.log(comment)
     console.log(comment.message)
     var comments = document.getElementById('comments')
-    comments.innerHTML += comment.message
+    comments.innerHTML = comment.message
     //# Called when there's incoming data on the websocket for this channel
   },
 
