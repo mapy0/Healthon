@@ -1,14 +1,30 @@
-<h2>日記</h2>
-<%= form_with model:@diary, local:true do |f| %>
-  <h4>日付</h4>
-  <%= f.datetime_field :date %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :body %>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <h1 style="text-align: center; color:#426579;">Edit Diary<h1>
+      <div class="diary_box">
+        <div class="diary_new_field">
+          <%= form_with model:@diary, local:true do |f| %>
+          <h4>Date</h4>
+          <%= f.datetime_field :date, class: "circle_fild", style:"width:100%; margin-bottom:15px" %>
+          <h4>Title</h4>
+             <%= f.text_field :title, class: "circle_fild", style:"width:100%; margin-bottom:15px" %>
+          <h4>Boby</h4>
+            <%= f.text_area :body, class: "circle_fild", style:"width:100%; height:150px; margin-bottom:15px" %>
+            <%= f.attachment_field :dia_images_images, multiple: true %>
+          <button type="submit", style="font-size:20px; color:#fff; margin:10px; margin-left:170px;">
+            <i class="fas fa-file-signature faa-pulse animated-hover"></i>Edit</button>
+          <% end %>
+        </div>
+    </div>
+  <%#= link_to "<", diaries_path(member_id: current_member), class: "nav-link" %>
+    <span class="lign-self-end back_to_circle_index">
+      <%= link_to diary_path(@diary) do %>
+        <i class="far fa-hand-point-left" style="color:#426579;"></i>
+      <% end %>
+    </span>
+    <div class="bg_video">
+    <%= video_tag("#{request.base_url}/video/diary_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+    </div>
+  </div>
+</div>
 
-  <%= f.submit "保存" %>
-<% end %>
-
-
-<%= link_to '<---', diary_path(@diary) %>

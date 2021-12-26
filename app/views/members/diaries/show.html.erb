@@ -1,41 +1,67 @@
-<div>
-  <p>記録日：<%= @diary.date %></p>
-  <p>タイトル：<%= @diary.title %></p>
-  <p>本文：<%= @diary.body %></p>
-  
-  <% @diary.dia_images.each do |t| %>
-    <!--Refile特有の記述↓-->
-    <%= attachment_image_tag t, :image, size: "300x300", class: "diary_image rounded" %>
-    <%#= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
-  <% end %>
-  
-  　<div id="good_buttons_<%= @diary.id %>">
-  　　<%= render "members/dia_goods/goods", diary: @diary %>
-  　</div>
-  　
-  <div class="row">
-    <div id="comment_create_<%= @diary.id %>">
-    <%= render partial: 'members/dia_comments/post', locals: { comment: @comment, diary: @diary } %>
-    </div>
-  </div>
-  
-  
-  <% if member_signed_in? %>
-    <div class="comment-create">
-      <h3 class="text-left">Comment</h3>
-      <div>
-        <%= form_with(model:[@diary, @dia_comment], remote: true) do |f| %>
-        <%= f.text_area :comment, rows:'5',placeholder: "Comment" %>
-        <%= f.submit "送信" %>
-        <% end %>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <div class="row" style="height: 100%;">
+      <div class="col-7" style="height: 100%;">
+       
+        <div class="diary_box">
+          <div class="diary_new_field" style="overflow:auto;">
+            <div class="row circle_show_name" style="font-size:30px;">
+              <%= @diary.title %>
+            </div>
+            <div class="row circle_creater" style="border-bottom: 1px dashed #426579;">
+              <div class="row circle_creater_name" >
+                <%= @diary.date %>
+              </div>
+              <% if @diary.member == current_member %>
+                <%= link_to edit_diary_path(@diary), class: "circle_edit" do %>
+                  <i class="fas fa-wrench"> <%=" Edit"%></i>
+                <% end %>
+                <%= link_to diary_path(@diary), method: :delete, class: "circle_delete" do %>
+                  <i class="fas fa-backspace"><%=" delete"%></i>
+                <% end %>
+              <% end %>
+            </div>
+            <p><%= @diary.body %></p>
+            <% @diary.dia_images.each do |t| %>
+            <!--Refile特有の記述↓-->
+              <%= attachment_image_tag t, :image, size: "150x150", class: "diary_image rounded" %>
+            <%#= image_tag t.image.to_s,width:300,height:300,class: "diary_image rounded" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <span class="lign-self-end back_to_circle_index">
+          <%= link_to diaries_path do %>
+            <i class="far fa-hand-point-left" style="color:#426579;"></i>
+          <% end %>
+       </span>
+      </div>
+        <div class="col-5" style="height: 550px; color:#426579;">
+        　<div id="good_buttons_<%= @diary.id %>">
+        　　<%= render "members/dia_goods/goods", diary: @diary %>
+        　</div>
+          <div class="diary_comment_index">
+          <div id="comment_create_<%= @diary.id %>">
+            <%= render partial: 'members/dia_comments/post', locals: { comment: @comment, diary: @diary } %>
+          </div>
+          </div>
+          <% if member_signed_in? %>
+          <div class="comment-create">
+            <h5 class="text-left">Comment</h5>
+            <div>
+              <%= form_with(model:[@diary, @dia_comment], remote: true) do |f| %>
+                <%= f.text_area :comment, rows:'5', class: "diary_comment_fild" %>
+                <button type="submit", style="font-size:20px; color:#426579; display:inline-block">
+                <i class="far fa-paper-plane faa-float animated-hover"></i></button>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
+  <div class="bg_video">
+  <%= video_tag("#{request.base_url}/video/diary_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>
-  
-<% if @diary.member == current_member %>
-  <%= link_to "削除", diary_path(@diary), method: :delete %>
-  <%= link_to "編集", edit_diary_path(@diary) %>
-<% end %>
-
-<%= link_to "<---", diaries_path(@member), class: "nav-link" %>

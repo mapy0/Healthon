@@ -16,8 +16,8 @@
               <div class="row circle_creater">
                 <div class="row circle_creater_name">
                    <i class="fas fa-crown"></i> <%= @owner.name %>
-                    <% if @circle.owner_id == current_member.id %>
                 </div>
+                <% if @circle.owner_id == current_member.id %>
                 <%= link_to  edit_circle_path(@circle), class: "circle_edit" do %>
                 <i class="fas fa-wrench faa-shake animated-hover"> <%=" Edit"%></i>
                 <% end %>
