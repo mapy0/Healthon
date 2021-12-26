@@ -9,8 +9,9 @@
            </ul>
          </div>
        </div>
-    </div>
-    <div class="video">
-     <%= video_tag("#{request.base_url}/video/toppage.mp4", poster: "backdround1.jpg", autoplay: :true,  loop: :true,  muted: :true, class: 'top-content') %>
-    </div>
+   </div>
+  <div class="bg_video">
+    <%= video_tag("#{request.base_url}/video/toppage.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>
+

@@ -1,14 +1,38 @@
-<% @diaries.each do |diary| %>
-<div>
-    <table>
-        <td><%= diary.date %></td>
-        <td><%= diary.title %></td>
-         <td><%= link_to "#{diary.dia_comments.count} Comment" %><td>
-        <td><%= link_to 'Show', diary %></td>
-    </table>
-</div>
-<% end %>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <div class="diary">
+    　<h1 class="diary_index">Diary index</h1>
+    　 　<div class="diary_new">
+    　   <%= link_to new_diary_path, class:"circle_new" do %>
+    　    <i>Create Diary</i> <i class= "fas fa-plus"></i>
+    　  <% end %>
+        </div>
 
-    <li>
-      <%= link_to "Diary", new_diary_path %>
-    </li>
+        <div class="diary_box">
+    　    <table class="circle_list_table">
+          <% @diaries.each do |diary| %>
+            <tr class="circle_list_table_each_group">
+              <td style="padding: 10px"><%= diary.date %></td>
+              <td>
+                <%= link_to diary_path(diary), class:"diary_show" do %>
+                  <%= diary.title %>
+                <% end %>
+              </td>
+              <td><i class="far fa-comment"></i><%= "#{diary.dia_comments.count}" %><td>
+              <td><i class="fas fa-thumbs-up"></i><%= "#{diary.dia_goods.count}" %><td>
+            </tr>
+            <tr class="circle_list_table_each_group" style="border-bottom: 1px dashed #426579;">
+              <td></td>
+              <td><%= diary.body.truncate(20) %></td>
+              <td><td>
+              <td></td>
+            </tr>
+          <% end %>
+         </table>
+        </div>
+      </div>
+    </div>
+  <div class="bg_video">
+  <%= video_tag("#{request.base_url}/video/diary_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
+</div>

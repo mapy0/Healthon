@@ -50,13 +50,6 @@ class Members::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-
-
-
-
-
-
-
   private
 
   def member_params
