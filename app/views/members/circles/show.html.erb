@@ -1,91 +1,80 @@
-<div class="circle_show container-fluid">
-  <div class="row" style="height: 100%; ">
-    <div class="col-6">
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <div class="row" style="height: 100%;">
+      <div class="col-6 circle_left">
       <div class="show_group">
         <div class="row">
-          <div class="col-5 circle_icon rounded-circle">
-            <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg" %>
-        </div>
-        <div class="col-7 circle_information">
-          <div class="row circle_show_name">
-            <%= @circle.name%>
+          <div class="col-5 circle_icon">
+            <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
           </div>
-          <div class="row circle_infomation_content">
-            <%= @circle.infomation %>
+          <div class="col-7 circle_information">
+            <div class="row circle_show_name">
+              <%= @circle.name%>
+            </div>
+            <div class="row circle_infomation_content">
+              <%= @circle.infomation %>
+            </div>
+            <div class="circle_create small">
+              <div class="row circle_creater">
+              <i class="fas fa-crown"></i> <%= @owner.name %>
+              <% if @circle.owner_id == current_member.id %>
+                <%= link_to  edit_circle_path(@circle), class: "circle_edit" do %>
+                <i class="fas fa-wrench faa-shake animated-hover"> <%=" Edit"%></i>
+                <% end %>
+                <%= link_to circle_path(@circle), method: :delete, class: "circle_delete" do %>
+                <i class="fas fa-backspace  faa-burst animated-hover"><%=" delete"%></i>
+                <% end %>
+              <% elsif @circle.members.include?(current_member) %>
+              
+                <%= link_to 'Leave this group', circle_path(@circle), method: :delete, class: "circle_join"%>
+                <i class="fas fa-hand-paper faa-shake animated-hover" style="color: #f8f4e6;"></i>
+              <% else %>
+                <%= link_to 'Join this group', circle_join_path(@circle), class: "btn btn-sm btn-success" %>
+              <% end %>
+              </div>
+              
+              <div class="row">
+              <i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %> <%=" cleate"%></i>
+              </div>
+            </div>
           </div>
-          <div class="circle_create small">
-            <i class="fas fa-crown"></i> <%= @owner.name %>
-            <i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %></i>
-          </div>
-          
-          
-          
         </div>
-
-
-          
-          
+        <div class="member_icon rounded-circle">
+          <% @members.count %>
+          <% @members.each do |member| %>
+            <%= attachment_image_tag @member, :image, size: '35x35', format: 'jpeg', fallback: "sample-author1.jpg",style:"background:#fff;", class:"rounded-circle" %>
+          <% end %>
         </div>
+      </div>
+      </div>
+      <div class="col-6">
+        <div class="circle_talk_in">
+        talk
+        </div>
+        <div class="circle_chat" id="comments">
+          <%= render 'comments' %>
+        </div>
+        <input type="text" class="form-control" id="chat-input" />
+        <input type="hidden" value="<%= params[:id] %>" id="circle_id" />
+        <input type="hidden" value="<%= current_member.id %>" id="member_id" />
 
-
-
-      <div class="member_icon rounded-circle">
-      <% @members.count %>
-      
-      <% @members.each do |member| %>
-      <%= attachment_image_tag @member, :image, size: '35x35', format: 'jpeg', fallback: "sample-author1.jpg" %>
+        <button id="button" type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" >
+        <i class="far fa-paper-plane faa-float animated-hover fa-lg"></i>
+        <!--<button id="button" class="btn btn-primary">送信</button>-->
+            <span class="back_to_circle_index">
+      <%= link_to circles_path do %>
+      <<<
       <% end %>
+    </span>
+        
+        
+        
+        
       </div>
-      </div>
-
-
-    <% if @circle.owner_id == current_member.id %>
-    <%= link_to 'Edit', edit_circle_path(@circle), class: "btn btn-sm btn-success" %>
-
-    <% elsif @circle.members.include?(current_member) %>
-    <%= link_to 'Leave this group', circle_path(@circle), method: :delete, class: "btn btn-sm btn-danger" %>
-
-    <% else %>
-    <%= link_to 'Join this group', circle_join_path(@circle), class: "btn btn-sm btn-success" %>
-    <% end %>
-
-
-
-    <%= link_to "削除", circle_path(@circle), method: :delete %>
-
-
     </div>
-  <div class="col-6">
-  <div class="circle_talk_in">
-  talk
-  </div>
-  <div class="circle_chat" id="comments">
-  <%= render 'comments' %>
   </div>
 
-
-  <input type="text" class="form-control" id="chat-input" />
-  <input type="hidden" value="<%= params[:id] %>" id="circle_id" />
-  <input type="hidden" value="<%= current_member.id %>" id="member_id" />
-  <button id="button" class="btn btn-primary">送信</button>
-
-  </div>
+    <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
 </div>
-
-  </div>
-
-
-
-
-
-
-
-        <span class="back_to_circle_index">
-        <%= link_to circles_path do %>
-        <<<
-        <% end %>
-        </span>
-
-
 
 

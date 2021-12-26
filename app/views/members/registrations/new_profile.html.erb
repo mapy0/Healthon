@@ -1,3 +1,4 @@
+<div class="plofile" style="color:#fff; text-align: center; font-size: 20px;" >
 <h2>Plofile</h2>
 
 <%= form_with model: @profile, url: profiles_path, local: true do |f| %>
@@ -7,7 +8,7 @@
   <%= hidden_field_tag 'member[password]', @member.password %>
   <%= hidden_field_tag 'member[password_confirmation]', @member.password_confirmation %>
 
-  <div class="height_field">
+  <div class="height_field" style="border:none">
     <%= f.label :height %><br />
     <%= f.number_field :height, autofocus: true %>
   </div>
@@ -38,10 +39,11 @@
 
 <div class="actions">
   <button type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" onclick="loction.href='/aims'" >
-  <i class="fas fa-sign-in-alt faa-passing animated-hover fa-lg"></i>
+  NEXT<i class="far fa-arrow-alt-circle-right animated-hover fa-lg"></i>
   </button>
   <%#= render "registration_footer" %>
   <%#= render "members/shared/links" %>
 <% end %>
 
+ </div>
 

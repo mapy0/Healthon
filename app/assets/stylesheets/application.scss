@@ -124,7 +124,6 @@ p{
   margin: auto;
   background-size: cover;
   border: none;
-
 }
 
 
@@ -273,4 +272,47 @@ input:-webkit-autofill {
 
 input:focus {
     outline: none;
+}
+
+.sign_up {
+  position: relative;
+  height: 560px;
+  width: 560px;
+  margin: auto;
+  padding: 60px 60px;
+  background:#4c6cb369;
+  background-size: cover;
+  border-radius: 50% 20% 40% 60%/50% 30% 40% 20%;
+}
+
+.sign_up_fild{
+  background-color: transparent;
+  position: relative;
+  height: 30px;
+  width: 300px;
+  margin: auto;
+  background-size: cover;
+  border: 0px;
+}
+
+.plofile {
+  position: relative;
+  height: 560px;
+  width: 560px;
+  margin: auto;
+  padding: 60px 60px;
+  background:#274a78;
+  background-size: cover;
+  border-radius: 70% 25% 80% 60%/40% 40% 80% 70%;
+}
+
+.aim {
+  position: relative;
+  height: 560px;
+  width: 560px;
+  margin: auto;
+  padding: 60px 60px;
+  background:#867ba9;
+  background-size: cover;
+  border-radius: 70% 95% 90% 60%/40% 60% 80% 70%;
 }

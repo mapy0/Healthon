@@ -1,3 +1,4 @@
+<div class="aim" style="color:#fff; text-align: center; font-size: 20px;" >
 <h2>Sign up</h2>
 
 <%= form_with model: @aim, url: aims_path, local: true, method: :post do |f| %>
@@ -35,12 +36,13 @@
   </div>
 
 <%#= f.submit "registration", class: "btn-default btn-red", url: "aims_path", method: :post %>
-<%= render "members/shared/links" %>
+<%#= render "members/shared/links" %>
 <%#= render "/registration/registration_footer" %>
   <div class="actions">
-    
-    <%= f.submit "Sign up" %>
-  </div>
+  <button type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" >
+  Sign UP!!!<i class="fas fa-sign-in-alt faa-passing animated-hover fa-lg"></i>
+  </button>
 <% end %>
+</div>
 
 

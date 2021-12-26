@@ -8,5 +8,74 @@ html {
 
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
+}
+
+.circle_left{
+  height: 100vh;
+  margin: 0;
+  background:#0d0015CC;
+  border-radius: 70% 25% 20% 60%/40% 60% 20% 70%;
+}
+
+
+
+.circle_join{
+  margin: 10px;
+  font-weight: 800;
+  font-size: 15pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.circle_join:hover {
+  font-weight: 800;
+  font-size: 15pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fcc800;
+}
+
+.circle_edit{
+  margin: 10px;
+  font-weight: 800;
+  font-size: 10pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.circle_edit:hover {
+  font-weight: 800;
+  font-size: 12pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fcc800;
+}
+
+.circle_delete{
+  margin: 10px;
+  font-weight: 800;
+  font-size: 10pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.circle_delete:hover {
+  font-weight: 800;
+  font-size: 12pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #e2041b;
+}
+
+.circle_show_name{
+  margin: 5px;
+  
+}
+.circle_creater{
+    margin: 10px;
 }
