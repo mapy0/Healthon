@@ -12,7 +12,7 @@
               <%= @circle.name%>
               </div>
               <div class="circle_create small">
-              
+
               <div class="row circle_creater">
                 <div class="row circle_creater_name">
                    <i class="fas fa-crown"></i> <%= @owner.name %>
@@ -25,14 +25,14 @@
                 <i class="fas fa-backspace  faa-burst animated-hover"><%=" delete"%></i>
                 <% end %>
               <% elsif @circle.members.include?(current_member) %>
-              
+
                 <%= link_to 'Leave this group', circle_path(@circle), method: :delete, class: "circle_join"%>
                 <i class="fas fa-hand-paper faa-shake animated-hover" style="color: #f8f4e6;"></i>
               <% else %>
                 <%= link_to 'Join this group', circle_join_path(@circle), class: "btn btn-sm btn-success" %>
               <% end %>
               </div>
-              
+
               <div class="row">
               <i class="far fa-clock"><%=@circle.created_at.strftime('%Y/%m/%d') %> <%=" cleate"%></i>
               </div>
@@ -50,13 +50,13 @@
         </div>
         <span class="lign-self-end back_to_circle_index">
         <%= link_to circles_path do %>
-        <i class="far fa-hand-point-left"></i>
+        <i class="far fa-hand-point-left" style="color: #ffffff"></i>
         <% end %>
        </span>
       </div>
       </div>
-      <div class="col-6">
-        <div class="circle_chat" id="comments" style="height:80%;">
+      <div class="col-6" style="height:780px; overflow:auto;">
+        <div class="circle_chat" id="comments" style="height:80%; overflow:auto;">
           <%= render 'comments' %>
         </div>
         <input type="text" class="form-control" id="chat-input" style="width: 80%; display:inline-block; margin:15px" />
@@ -65,7 +65,6 @@
 
         <button id="button" style="color:#fff; display:inline-block;" >
         <i class="far fa-paper-plane faa-float animated-hover fa-lg" style="margin-top:20px;" ></i>
-        <!--<button id="button" class="btn btn-primary">送信</button>-->
       </div>
     </div>
   </div>

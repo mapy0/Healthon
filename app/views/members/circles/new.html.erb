@@ -1,33 +1,36 @@
 <div class="bg_wrap">
   <div class="bg_space container-fluid" style="overflow:auto;">
-    <div class="row" style="height: 100%;">
-      <div class="col-7 align-self-center" style="weight:60%">
-  <h4> Circle 新規作成<h4>
-  
-  <%= form_with model: @circle, url: circles_path, local:true do |f| %>
-  <!--circle_membersテーブルに作成したmemberの情報を送信-->
-  <!--text_field_tag (テキストボックス名, 初期文字列, {オプション1, オプション2,,,})-->
-  <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
-  
-  <h4>Circle名</h4>
-  <%= f.text_field :name %>
-  <h4>Circleの説明</h4>
-  <%= f.text_area :infomation %>
-  <h4>上限人数</h4>
-  <%= f.text_field :maximam_member %>
-  <h4>image</h4>
-  <%= f.attachment_field :image %>
-  
-  <%= f.submit 'Create!' %>
-  <% end %>
-  
-  
-  <%= link_to circles_path do %>
-  <<<
-  <% end %>
-  </div>
-  </div>
-  </div>
+      <h1 style="text-align: center;"> Create Circle!<h1>
+        <div class="circle_new_field">
+      <%= form_with model: @circle, url: circles_path, local:true do |f| %>
+      <!--circle_membersテーブルに作成したmemberの情報を送信-->
+      <!--text_field_tag (テキストボックス名, 初期文字列, {オプション1, オプション2,,,})-->
+      <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
+      <h6>Name</h6>
+      <%= f.text_field :name, class: "circle_fild", style:"width:100%; margin-bottom:15px" %>
+      <h6>infomation</h6>
+      <%= f.text_area :infomation, class: "circle_fild", style:"height:100px; width:100%; margin-bottom:15px" %>
+      <h6>上限人数</h6>
+      <%= f.text_field :maximam_member, class: "circle_fild", style:"width:100%; margin-bottom:15px"  %>
+      <h6>image</h6>
+      <%= f.attachment_field :image, style:"font-size:15px;" %></br>
 
-  <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+
+      <button type="submit", style="font-size:20px; color:#fff; margin:10px; margin-left:170px;"><i class="fas fa-file-signature faa-pulse animated-hover"></i>Create</button>
+      <% end %>
+      </div>
+      
+      <span class="lign-self-end back_to_circle_index">
+        <%= link_to circles_path do %>
+        <i class="far fa-hand-point-left" style="color:#ffffff;"></i>
+        <% end %>
+       </span>
+    </div>
+  </div>
+  <div class="bg_video">
+    <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>
+
+
+

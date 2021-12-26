@@ -1,34 +1,50 @@
-<div class="circle">
-　<h1>Circle一覧</h1>
-　 <div class="circle_search">
-　   <div class="circle_search_form">
-　     <%= form_with url: circles_path do |f| %>
-　     <%= f.text_field :keyword, pleaseholder: "Circle 検索", class: "circle_search_form_input" %>
-　     <%= f.submit 'Search!' %>
-　     <% end %>
-　   </div>
-　 </div>
-　 <div class="circle_new">
-　   <%= link_to "Create Circle", new_circle_path %>
-   </div>
-
-  <% if @circle_joininig == [] %>
-     <%= @circle_lists_none %>
-  <% else %>
-
-  <div class="circle_list">
-    <ul class="circle_list_table">
-     <% @circles.each do |circle| %>
-       <%# if circle.circle_members.map(&:id).include?(current_member.id)%> <!--全体・自分の所属しているもののみで分ける-->
-        <li class="circle_list_table_each_group">
-          <%= link_to circle do%>
-           <%= circle.name %>
-          <% end %>
-          <%= circle.member_ids.count - 1%> <!--Onerが重複してカウントされるため-1-->
-        </li>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <div class="circle">
+    　<h1 class="circle_index">Circle index</h1>
+      　<div class="circle_new">
+      　   <%= link_to new_circle_path, class:"circle_new" do %>
+      　    <i>Create Circle</i> <i class= "fas fa-plus"></i>
+      　  <% end %>
+        </div>
+    　<!--<div class="circle_search">-->
+    　<!--   <div class="circle_search_form">-->
+    　<!--     <%#= form_with url: circles_path do |f| %>-->
+    　<!--     <%#= f.text_field :keyword, pleaseholder: "Circle 検索", class: "circle_search_form_input" %>-->
+    　<!--     <%#= f.submit 'Search!' %>-->
+    　<!--     <%# end %>-->
+    　<!--   </div>-->
+    　<!--</div>-->
+    <div class="circle_box">
+      <% if @circle_joininig == [] %>
+        <%= @circle_lists_none %>
+      <% else %>
+          <div class="circle_list">
+            <table class="circle_list_table">
+              <% @circles.each do |circle| %>
+                <%# if circle.circle_members.map(&:id).include?(current_member.id)%> <!--全体・自分の所属しているもののみで分ける-->
+                <tr class="circle_list_table_each_group">
+                  　<td style="padding: 10px">
+                  　  <%= attachment_image_tag circle, :image, size: '70x70', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#ffffffc4;",class:"rounded-circle" %>
+                    </td>
+                    <td>
+                      <%= link_to circle, class:"circle_show" do%>
+                        <%= circle.name %>
+                      <% end %>
+                    </td>
+                  <td>
+                  <%="participating:"%><%= circle.member_ids.count - 1%> <!--Onerが重複してカウントされるため-1-->
+                  </td>
+                </tr>
+              <% end %>
+            <%# end %>
+          </table>
+        </div>
         <% end %>
-      <%# end %>
-    </ul>
-   </div>
-  <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="bg_video">
+  <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>

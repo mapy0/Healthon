@@ -1,23 +1,29 @@
 <% circle.cir_comments.each do |cir_comment| %>
-  <div class="row">
+   <div class="" style="margin-top:10px; display: flex;">
     <div class="cir_comment_member_image">
-      <%= attachment_image_tag cir_comment.member, :image, size: '30x30', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
-   </div>
-     <div class="cir_comment_member_name">
-      <%=cir_comment.member.name %>
-      </div>
-    <div class="cir_comment_time">
-      <%= cir_comment.created_at.strftime('%m/%d %H:%M') %>
+      <%= attachment_image_tag cir_comment.member, :image, size: '40x40', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
     </div>
-  </div>
-  <div class="row">
+
     <div class="cir_comment">
     <%= cir_comment.comment %>
    </div>
+
   </div>
-  <div class="row">
+  <div class="" style="display: flex;">
+    <div class="cir_comment_member_name">
+      <%=cir_comment.member.name %>
+    </div>
+
+    <div class="cir_comment_time">
+      <%= cir_comment.created_at.strftime('%m/%d %H:%M') %>
+    </div>
+
     <% if cir_comment.member == current_member %>
-      <%= link_to "delete", circle_cir_comment_path(cir_comment.circle, cir_comment), method: :delete %>
+      <%= link_to circle_cir_comment_path(cir_comment.circle, cir_comment), method: :delete, class: "circle_delete" do %>
+      <i class="fas fa-eraser faa-passing animated-hover"></i>
+      <% end %>
     <% end %>
   </div>
 <% end %>
+
+<div class="row"></div>
