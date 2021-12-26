@@ -10,14 +10,16 @@ connected: function() {
   },
 
   received: function(comment) {
+    console.log("-----recieved-----")
     console.log(comment)
+    console.log(comment.message)
     var comments = document.getElementById('comments')
     comments.innerHTML += comment.message
     //# Called when there's incoming data on the websocket for this channel
   },
 
   speak: function(comment, circle_id, member_id) {
-    console.log(comment)
+    // console.log(comment)
     return this.perform ('speak',{comment: comment,circle_id: circle_id,member_id: member_id});
 
   }

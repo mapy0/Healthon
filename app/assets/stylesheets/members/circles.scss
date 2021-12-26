@@ -79,3 +79,44 @@ body {
 .circle_creater{
     margin: 10px;
 }
+
+.circle_creater_name{
+    margin: 5px;
+}
+
+.circle_infomation_content{
+  height: 400px;
+  margin: 25px;
+}
+
+.show_group{
+  margin: auto;   
+  justify-content: center;
+  align-items: center;
+}
+
+.back_to_circle_index{
+  margin: 10px;
+  font-weight: 800;
+  font-size: 30pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+.back_to_circle_index:hover {
+  font-weight: 800;
+  font-size: 30pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #dd800;
+}
+
+.chat-input{
+  width: 50%;
+}
+
+.cir_comment_member_name{
+  font-size: 10pt;
+  margin-left: 5px;
+}

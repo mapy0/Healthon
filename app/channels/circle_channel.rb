@@ -17,7 +17,7 @@ class CircleChannel < ApplicationCable::Channel
   p comment
   p user
   # comment = CirComment.create!(comment: data['comment'])
-   template = ApplicationController.renderer.render(partial: 'members/circles/comment', locals: {comment: comment})
+   template = ApplicationController.render_with_signed_in_member(user, partial: 'members/circles/comment', locals: {comment: comment, circle: circle})
    ActionCable.server.broadcast 'circle_channel', message: template
   end
 end

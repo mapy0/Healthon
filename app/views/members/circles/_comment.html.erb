@@ -1,3 +1,23 @@
-<%= comment.member.name %>
-<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-<%= comment.comment %>
+<% circle.cir_comments.each do |cir_comment| %>
+  <div class="row" style="overflow:auto;">
+    <div class="cir_comment_member_image">
+
+    </div>
+     <div class="cir_comment_member_name">
+      <%=cir_comment.member.name %>
+      </div>
+    <div class="cir_comment_time">
+      <%= cir_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cir_comment">
+    <%= cir_comment.comment %>
+   </div>
+  </div>
+  <div class="row">
+    <% if cir_comment.member == current_member %>
+      <%= link_to "delete", circle_cir_comment_path(cir_comment.circle, cir_comment), method: :delete %>
+    <% end %>
+  </div>
+<% end %>

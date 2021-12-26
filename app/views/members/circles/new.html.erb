@@ -1,10 +1,14 @@
-<h1> Circle 新規作成<h1>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <div class="row" style="height: 100%;">
+      <div class="col-7 align-self-center" style="weight:60%">
+  <h4> Circle 新規作成<h4>
   
   <%= form_with model: @circle, url: circles_path, local:true do |f| %>
- <!--circle_membersテーブルに作成したmemberの情報を送信-->
- <!--text_field_tag (テキストボックス名, 初期文字列, {オプション1, オプション2,,,})-->
- <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
- 
+  <!--circle_membersテーブルに作成したmemberの情報を送信-->
+  <!--text_field_tag (テキストボックス名, 初期文字列, {オプション1, オプション2,,,})-->
+  <%= text_field_tag 'circle[member_ids]', "#{current_member.id}", type: 'hidden' %>
+  
   <h4>Circle名</h4>
   <%= f.text_field :name %>
   <h4>Circleの説明</h4>
@@ -15,9 +19,15 @@
   <%= f.attachment_field :image %>
   
   <%= f.submit 'Create!' %>
-<% end %>
-
-
-<%= link_to circles_path do %>
+  <% end %>
+  
+  
+  <%= link_to circles_path do %>
   <<<
-<% end %>
+  <% end %>
+  </div>
+  </div>
+  </div>
+
+  <%= video_tag("#{request.base_url}/video/circle.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+</div>

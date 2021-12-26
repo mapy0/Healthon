@@ -2,22 +2,22 @@
   <div class="bg_space container-fluid" style="overflow:auto;">
     <div class="row" style="height: 100%;">
       <div class="col-6 circle_left">
-      <div class="show_group">
-        <div class="row">
-          <div class="col-5 circle_icon">
-            <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
-          </div>
-          <div class="col-7 circle_information">
-            <div class="row circle_show_name">
+        <div class="show_group">
+          <div class="row">
+            <div class="col-3 circle_icon align-self-center">
+              <%= attachment_image_tag @circle, :image, size: '100x100', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
+            </div>
+            <div class="col-9 circle_information">
+              <div class="row circle_show_name" style="font-size:30px;">
               <%= @circle.name%>
-            </div>
-            <div class="row circle_infomation_content">
-              <%= @circle.infomation %>
-            </div>
-            <div class="circle_create small">
+              </div>
+              <div class="circle_create small">
+              
               <div class="row circle_creater">
-              <i class="fas fa-crown"></i> <%= @owner.name %>
-              <% if @circle.owner_id == current_member.id %>
+                <div class="row circle_creater_name">
+                   <i class="fas fa-crown"></i> <%= @owner.name %>
+                    <% if @circle.owner_id == current_member.id %>
+                </div>
                 <%= link_to  edit_circle_path(@circle), class: "circle_edit" do %>
                 <i class="fas fa-wrench faa-shake animated-hover"> <%=" Edit"%></i>
                 <% end %>
@@ -42,34 +42,33 @@
         <div class="member_icon rounded-circle">
           <% @members.count %>
           <% @members.each do |member| %>
-            <%= attachment_image_tag @member, :image, size: '35x35', format: 'jpeg', fallback: "sample-author1.jpg",style:"background:#fff;", class:"rounded-circle" %>
+          member<%= attachment_image_tag @member, :image, size: '35x35', format: 'jpeg', fallback: "sample-author1.jpg",style:"background:#fff; margin: 10px", class:"rounded-circle" %>
           <% end %>
         </div>
+        <div class="row circle_infomation_content">
+          <%= @circle.infomation %>
+        </div>
+        <span class="lign-self-end back_to_circle_index">
+        <%= link_to circles_path do %>
+        <i class="far fa-hand-point-left"></i>
+        <% end %>
+       </span>
       </div>
       </div>
       <div class="col-6">
         <div class="circle_talk_in">
         talk
         </div>
-        <div class="circle_chat" id="comments">
+        <div class="circle_chat" id="comments" style="height:80%;">
           <%= render 'comments' %>
         </div>
-        <input type="text" class="form-control" id="chat-input" />
+        <input type="text" class="form-control" id="chat-input" style="width: 80%; display:inline-block; margin:15px" />
         <input type="hidden" value="<%= params[:id] %>" id="circle_id" />
         <input type="hidden" value="<%= current_member.id %>" id="member_id" />
 
-        <button id="button" type="submit" start="border: none; outline: none;  background: transparent;" style="color:#fff;" >
-        <i class="far fa-paper-plane faa-float animated-hover fa-lg"></i>
+        <button id="button" style="color:#fff; display:inline-block;" >
+        <i class="far fa-paper-plane faa-float animated-hover fa-lg" style="margin-top:20px;" ></i>
         <!--<button id="button" class="btn btn-primary">送信</button>-->
-            <span class="back_to_circle_index">
-      <%= link_to circles_path do %>
-      <<<
-      <% end %>
-    </span>
-        
-        
-        
-        
       </div>
     </div>
   </div>
