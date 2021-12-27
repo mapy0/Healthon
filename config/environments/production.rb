@@ -45,7 +45,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   #config.action_cable.url = 'wss://example.com/cable'
   config.action_cable.url = 'ws://3.114.236.76/cable'
-  config.action_cable.allowed_request_origins = [ 'https://3.114.236.76', 'http://3.114.236.76' ]
+  config.action_cable.allowed_request_origins = [ 'http://3.114.236.76' ]
   ActionCable.server.config.disable_request_forgery_protection = true
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
