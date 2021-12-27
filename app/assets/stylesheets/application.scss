@@ -316,3 +316,63 @@ input:focus {
   background-size: cover;
   border-radius: 70% 95% 90% 60%/40% 60% 80% 70%;
 }
+
+.circle-1 {
+  background: #ea5550d4;
+  width: 350px;
+  height: 350px;
+  color: #fff;
+  text-align:center;
+  padding:20px 0;
+  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 600px, -300px;
+}
+.circle-2 {
+  background: #bcbaced4;
+  border-radius: 80% 30% 50% 50%/50%;
+  width: 350px;
+  height: 350px;
+  color: #fff;
+  position:relative;
+  top: 150px;
+  left: 280px;
+  text-align:center;
+  padding:20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.circle-3 {
+  background: #6e4a55D4;
+  border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
+  width: 350px;
+  height: 350px;
+  color: #fff;
+  text-align:center;
+  padding:20px 0;
+  display: flex;
+  position: absolute;
+  left: 60%;
+  align-items: center;
+  justify-content: center;
+  margin: 50px,50px;
+}
+
+.about_box {
+    background-color: transparent;
+    position: relative;
+    height: 80%;
+    width: 80%;
+    margin: auto;
+    background-size: cover;
+    border: none;
+}
+
+.form-box{
+  width: 33%;
+}

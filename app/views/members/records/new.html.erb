@@ -2,10 +2,10 @@
   <div class="bg_space container-fluid" style="overflow:auto;">
     <h1 style="text-align: center; color:#00533f66;">Record<h1>
     <div class="rec_box">
-      <div class="diary_new_field">
+      <div class="rec_new_field">
         <%= form_with model:@record, url: records_path, local:true do |f| %>
-          <div class="row">
-            <div class="col-4">
+           <div class="parent">
+            <div class="form-box">
             <h5>DATE</h5>
             <%= f.date_field :date, class: "circle_fild" %>
             <h5>WEIGHT</h5>
@@ -19,16 +19,15 @@
             <h5>MUS</h5>
             <%= f.text_field :mus , class: "circle_fild"%>
             <h5>SM</h5>
-            <%= f.text_field :sm , class: "circle_fild"%>
-            
+            <%= f.text_field :sm , class: "circle_fild"%><br><br>
+
             <%= f.attachment_field :rec_images_images, multiple: true %>
-            </div>
-            <div class="parent">
-              <div class="form-box">
-                <div class="col-4">
+          </div>
+
+        <div class="form-box">
                   <h5>食事</h5>
                 <!-- １）追加ボタンの記述 -->
-                  <div class="add-botton-box link" style="overflow:auto; width:200px">
+                  <div class="add-botton-box link" style="overflow:auto;">
                     <%= link_to_add_association f, :meals,
                     class: 'add_fields',
                     id: 'add-btn',
@@ -44,10 +43,10 @@
                       <% end %>
                     </div>
                   </div>
-                </div>
-                <div class="col-4">
+              </div>
+          <div class="form-box">
                 <h5>Workout</h5>
-                
+
                 <!-- １）追加ボタンの記述 -->
                   <div class="add-botton-box link">
                     <%= link_to_add_association f, :workouts,
@@ -59,7 +58,7 @@
                     } do %>
                     <i class="fas fa-plus-circle"></i>
                     <% end %>
-                    
+
                     <div id="detail-association-insertion-pointWO">
                       <%= f.fields_for :workouts do |workout| %>
                         <%= render "workout_fields", f: workout %>
@@ -73,13 +72,18 @@
         <div class="row text-center">
           <button type="submit", style="font-size:20px; color:#fff; margin:10px; text-align:center;">
           POST<i class="far fa-paper-plane faa-float animated-hover"></i></button>
-          <%#= f.submit '記録' %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-  <%= link_to "<--", records_path(member_id: current_member), class: "nav-link" %>
+      <span class="back_to_circle_index">
+      <%= link_to records_path do %>
+        <i class="far fa-hand-point-left" style="color:#426579;"></i>
+      <% end %>
+    </span>
+
+
   <div class="bg_video">
     <%= video_tag("#{request.base_url}/video/rec_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
   </div>

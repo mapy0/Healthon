@@ -4,11 +4,11 @@
             <div class="col-6">
                 <h3 style="text-align:center; color:#00533f66;">Record</h3>
                     <div class="diary_new">
-    　               <%= link_to new_record_path, class:"circle_new" do %>
+    　               <%= link_to new_record_path, class:"circle_new", data: { "turbolinks"=> false } do %>
     　                    <i>Create Record</i> <i class= "fas fa-plus"></i>
     　               <% end %>
                     </div>
-                
+
                 <div class="rec_box" style="padding-top:10px">
                     <% @records.each do |record| %>
                     <table  class="circle_list_table" style="width:80%; margin-top:10px">
