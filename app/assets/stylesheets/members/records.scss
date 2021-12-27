@@ -57,3 +57,70 @@
 .box-show {
   display: block;
 }
+
+ .rec_box{
+  background-color: #00533f66;
+  margin-right: auto;
+  margin-left : auto;
+  margin: auto;
+  width: 100%;
+  height: 550px;
+  border-radius: 30px;
+}
+
+.rec_show{
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  text-decoration:none
+}
+
+.rec_show:hover {
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 30px;
+  color: #fca4a4 ;
+}
+
+.rec_fild{
+  color: #fff;
+  background-color: transparent;
+  position: relative;
+  height: 30px;
+  width: 300px;
+  margin: auto;
+  background-size: cover;
+  border: none;
+  border-bottom: solid 1px #fff
+}
+
+.rec_item{
+  display: flex;
+  justify-content: space-between;
+}
+
+.rec_right{
+  background-color: #ffffffE6;
+  margin-right: auto;
+  margin-left : auto;
+  margin-top: 102px;
+  width: 100%;
+  height: 550px;
+  border-radius: 30px;
+  padding: 10px;
+
+}
+
+.delete_fields{
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  text-decoration:none
+}
+
+.delete_fields:hover {
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  color: #e8383d ;
+}

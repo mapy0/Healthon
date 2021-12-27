@@ -1,26 +1,31 @@
-<h2>Aim 編集<</h2>
+<div class="aim" style="color:#fff; text-align: center; font-size: 20px;" >
+<h2>Aim 編集</h2>
 
 <%= form_with model:@aim, url: aim_path(@aim.id), local: true,method: :patch do |f| %>
 
   <div class="aim_w_field">
     <%= f.label :aim_w %><br />
-    <%= f.number_field :aim_w %>
+    <%= f.number_field :aim_w %>kg
   </div>
 
   <div class="aim_bf_field">
     <%= f.label :aim_bf %><br />
-    <%= f.number_field :aim_bf %>
+    <%= f.number_field :aim_bf %>%
   </div>
 
    <div class="aim_mus_field">
     <%= f.label :aim_mus %><br />
-    <%= f.number_field :aim_mus %>
+    <%= f.number_field :aim_mus %>kg
   </div>
 
   <div class="aim_sm_field">
     <%= f.label :aim_sm %><br />
-    <%= f.number_field :aim_sm %>
+    <%= f.number_field :aim_sm %>%
   </div>
 
-    <%= f.submit "保存" %>
+    <%#= f.submit "保存" %>
+    <button type="submit", style="font-size:20px; color:#fff; margin:10px; margin-left:170px;">
+  <i class="fas fa-file-signature faa-pulse animated-hover"></i>Edit</button>
 <% end %>
+    
+

@@ -1,13 +1,13 @@
    <% if @record.gooded_by?(current_member) %>
     <p>
-      <%= link_to record_rec_goods_path(@record), method: :delete, remote: true do %>
-        <i class="fas fa-thumbs-up"></i> <%= @record.rec_goods.count %>
-      <% end %>いいね
-    </p>
+      <%= link_to record_rec_goods_path(@record), method: :delete, remote: true, style:"text-decoration: none;" do %>
+        <i class="fas fa-thumbs-up" style="color:#426579;"></i> <%= @record.rec_goods.count %>
+      <% end %>good
+    </p> 
   <% else %>
     <p>
-      <%= link_to record_rec_goods_path(@record), method: :post, remote: true do %>
-        <i class="far fa-thumbs-up"></i><%= @record.rec_goods.count %>
-      <% end %>いいね
+      <%= link_to record_rec_goods_path(@record), method: :post, remote: true, style:"text-decoration: none;" do %>
+        <i class="far fa-thumbs-up" style="color:#426579;"></i><%= @record.rec_goods.count %>
+      <% end %>good
     </p>
   <% end %>

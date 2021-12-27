@@ -1,104 +1,87 @@
-<div class="bg_space container-fluid">
-
-  <div class="row justify-content-center mb-4">
-    <h1>Record</h1>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-sm6 mr-5">
-    <!--< %= @my_meals.each do |my_meal| %>-->
-    <!--  my_meal-->
-    <!--< % end %>-->
-    <!--<script>-->
-    <!--  $(document).funciton() {-->
-    <!--    document.getElementbyId('itemlistname_0');-->
-    <!--  }-->
-    <!--</script>-->
-      <%= form_with model:@record, url: records_path, local:true do |f| %>
-  
-        <h5>測定日</h5>
-        <%= f.date_field :date %>
-        
-        <h5>体重</h5>
-        <%= f.text_field :weight %>
-        
-        <h5>BMI</h5>
-        <%= f.text_field :bmi %>
-        
-        <h5>体脂肪率</h5>
-        <%= f.text_field :bf %>
-        
-        <h5>筋肉量</h5>
-        <%= f.text_field :mm %>
-        
-        <h5>筋肉率</h5>
-        <%= f.text_field :mus %>
-        
-        <h5>骨格筋率</h5>
-        <%= f.text_field :sm %>
-      
-      
-        <div class="col-sm5 ml-5">
-          <div class="parent">
-            <div class="form-box">
-              <div class="forms-item">
-              <h5>食事</h5>
-              </div>
-            <!-- １）追加ボタンの記述 -->
-              <div class="add-botton-box link">
-                <%= link_to_add_association "追加", f, :meals,
-                class: 'add_fields',
-                id: 'add-btn',
-                data: {
-                association_insertion_node: '#detail-association-insertion-point',
-                # association_insertion_method: 'append'
-                }
-                %>
-                <div id="detail-association-insertion-point">
-                <%= f.fields_for :meals do |meal| %>
-                  <%= render "meal_fields", f: meal %>
-                <% end %>
+<div class="bg_wrap">
+  <div class="bg_space container-fluid" style="overflow:auto;">
+    <h1 style="text-align: center; color:#00533f66;">Record<h1>
+    <div class="rec_box">
+      <div class="diary_new_field">
+        <%= form_with model:@record, url: records_path, local:true do |f| %>
+          <div class="row">
+            <div class="col-4">
+            <h5>DATE</h5>
+            <%= f.date_field :date, class: "circle_fild" %>
+            <h5>WEIGHT</h5>
+            <%= f.text_field :weight, class: "circle_fild" %>
+            <h5>BMI</h5>
+            <%= f.text_field :bmi, class: "circle_fild" %>
+            <h5>FAT</h5>
+            <%= f.text_field :bf , class: "circle_fild"%>
+            <h5>MM</h5>
+            <%= f.text_field :mm , class: "circle_fild"%>
+            <h5>MUS</h5>
+            <%= f.text_field :mus , class: "circle_fild"%>
+            <h5>SM</h5>
+            <%= f.text_field :sm , class: "circle_fild"%>
+            
+            <%= f.attachment_field :rec_images_images, multiple: true %>
+            </div>
+            <div class="parent">
+              <div class="form-box">
+                <div class="col-4">
+                  <h5>食事</h5>
+                <!-- １）追加ボタンの記述 -->
+                  <div class="add-botton-box link" style="overflow:auto; width:200px">
+                    <%= link_to_add_association f, :meals,
+                    class: 'add_fields',
+                    id: 'add-btn',
+                    data: {
+                    association_insertion_node: '#detail-association-insertion-point',
+                    # association_insertion_method: 'append'
+                    } do %>
+                    <i class="fas fa-plus-circle"></i>
+                    <% end %>
+                    <div id="detail-association-insertion-point">
+                      <%= f.fields_for :meals do |meal| %>
+                        <%= render "meal_fields", f: meal %>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="forms-item">
+                <div class="col-4">
                 <h5>Workout</h5>
-              </div>
-            <!-- １）追加ボタンの記述 -->
-              <div class="add-botton-box link">
-              <%= link_to_add_association "追加", f, :workouts,
-                class: 'add_fields',
-                id: 'add-btn',
-                data: {
-                association_insertion_node: '#detail-association-insertion-pointWO',
-                # association_insertion_method: 'append'
-                }
-                %>
-                <div id="detail-association-insertion-pointWO">
-                  <%= f.fields_for :workouts do |workout| %>
-                    <%= render "workout_fields", f: workout %>
-                  <% end %>
+                
+                <!-- １）追加ボタンの記述 -->
+                  <div class="add-botton-box link">
+                    <%= link_to_add_association f, :workouts,
+                    class: 'add_fields',
+                    id: 'add-btn',
+                    data: {
+                    association_insertion_node: '#detail-association-insertion-pointWO',
+                    # association_insertion_method: 'append'
+                    } do %>
+                    <i class="fas fa-plus-circle"></i>
+                    <% end %>
+                    
+                    <div id="detail-association-insertion-pointWO">
+                      <%= f.fields_for :workouts do |workout| %>
+                        <%= render "workout_fields", f: workout %>
+                      <% end %>
+                      </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      
-      <div class="row">
-        <div class="col-sm-2 mt-4">
-          <%= f.attachment_field :rec_images_images, multiple: true %>
+        <div class="row text-center">
+          <button type="submit", style="font-size:20px; color:#fff; margin:10px; text-align:center;">
+          POST<i class="far fa-paper-plane faa-float animated-hover"></i></button>
+          <%#= f.submit '記録' %>
+          <% end %>
         </div>
       </div>
-      
-        <div class="row justify-content-center">
-          <div class="col-sm3 mt-4">
-            <%= f.submit '記録' %>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
+  <%= link_to "<--", records_path(member_id: current_member), class: "nav-link" %>
+  <div class="bg_video">
+    <%= video_tag("#{request.base_url}/video/rec_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+  </div>
 </div>
-
-<%= link_to "<--", records_path(member_id: current_member), class: "nav-link" %>
-
 

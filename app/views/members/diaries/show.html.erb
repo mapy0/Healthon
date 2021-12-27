@@ -2,7 +2,6 @@
   <div class="bg_space container-fluid" style="overflow:auto;">
     <div class="row" style="height: 100%;">
       <div class="col-7" style="height: 100%;">
-       
         <div class="diary_box">
           <div class="diary_new_field" style="overflow:auto;">
             <div class="row circle_show_name" style="font-size:30px;">
@@ -37,9 +36,9 @@
        </span>
       </div>
         <div class="col-5" style="height: 550px; color:#426579;">
-        　<div id="good_buttons_<%= @diary.id %>">
-        　　<%= render "members/dia_goods/goods", diary: @diary %>
-        　</div>
+          <div id="good_buttons_<%= @diary.id %>">
+            <%= render "members/dia_goods/goods", diary: @diary %>
+          </div>
           <div class="diary_comment_index">
           <div id="comment_create_<%= @diary.id %>">
             <%= render partial: 'members/dia_comments/post', locals: { comment: @comment, diary: @diary } %>

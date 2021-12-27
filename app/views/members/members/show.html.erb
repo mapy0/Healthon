@@ -92,7 +92,7 @@
 
           <div  class= "recoad_link_tape">
             <%= link_to records_path(member_id: @member.id), class: "recoad_link" do %>
-            <%= "#{@member.name}'s Record " %><i class="fas fa-book-open"><%= " >>>" %></i>
+            <%= "#{@member.name}'s Record " %><i class="fas fa-chart-line"><%= " >>>" %></i>
             <% end %>
           </div>
 
@@ -124,7 +124,9 @@
     <!--</li>-->
 
   </div>
+  <div class="bg_video">
 <%= video_tag("#{request.base_url}/video/member_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+</div>
 </div>
 
 

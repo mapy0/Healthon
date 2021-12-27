@@ -1,15 +1,43 @@
-
-<%= link_to "Write!!", new_record_path %>
-
-<% @records.each do |record| %>
-<div>
-    <td><%= record.date %></td>
-    <td><%= link_to 'Show',record_path(id: record.id)%></td>
+<div class="bg_wrap">
+    <div class="bg_space container-fluid" style="overflow:auto;">
+        <div class="row">
+            <div class="col-6">
+                <h3 style="text-align:center; color:#00533f66;">Record</h3>
+                    <div class="diary_new">
+    　               <%= link_to new_record_path, class:"circle_new" do %>
+    　                    <i>Create Record</i> <i class= "fas fa-plus"></i>
+    　               <% end %>
+                    </div>
+                
+                <div class="rec_box" style="padding-top:10px">
+                    <% @records.each do |record| %>
+                    <table  class="circle_list_table" style="width:80%; margin-top:10px">
+                        <thead>
+                            <th></th>
+                            <th style="font-size:15px; text-align:center">DATE</th>
+                            <th style="font-size:15px; text-align:center">Weight</th>
+                            <th></th>
+                        </thead>
+                        <tr class="circle_list_table_each_group" style="border-bottom: 1px dashed #426579; text-align:center">
+                            <td style="border-bottom: 1px dashed #426579;"><i class="far fa-clock"></i></td>
+                            <td ><%= record.date %></td>
+                            <td><%= record.weight %>kg</td>
+                            <td><%= link_to record_path(id: record.id), class:"rec_show" do %>
+                            <i class="far fa-arrow-alt-circle-right"></i>
+                            <% end %>
+                            </td>
+                        </tr>
+                    </table>
+                  <% end %>
+                </div>
+            </div>
+            <div class="col-6" style="height:40%;">
+                <%= render 'mychart3' %>
+                <%= render 'members/members/differences' %>
+            </div>
+        </div>
+    </div>
+    <div class="bg_video">
+        <%= video_tag("#{request.base_url}/video/rec_bg.mp4", autoplay: :true,  loop: :true,  muted: :true) %>
+    </div>
 </div>
-<% end %>
-
-<%= render 'mychart3' %>
-
-
-<%= render 'members/members/differences' %>
-

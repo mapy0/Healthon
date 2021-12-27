@@ -1,17 +1,7 @@
 // Place all the styles related to the members/Diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.diary_link{
-  text-decoration: none;
-  color: #fff ;
-  text-decoration:none
-}
 
-.diary_link:hover {
-  background-color: transparent;
-  text-decoration: none;
-  color: #fca4a4 ;
-}
 
 .diary_list_table{
    margin: auto;
@@ -111,11 +101,30 @@
   overflow:auto;
 }
 
-.circle_join{
+.dia_goods{
   margin: 10px;
+  font-weight: 800;
+  font-size: 10pt;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration:none
+}
+
+
+.add_fields{
+  text-align: center;
   font-weight: 800;
   font-size: 15pt;
   text-decoration: none;
-  color: #ffffff;
+  color: #426579;
+  text-decoration:none
 }
 
+.add_fields:hover {
+  text-align: center;
+  font-weight: 800;
+  font-size: 15pt;
+  background-color: transparent;
+  text-decoration: none;
+  color: #f8b862;
+}
