@@ -3,10 +3,11 @@
   <div class="" style="margin-top:10px; display: flex;">
     <div class="cir_comment_member_image">
       <%= attachment_image_tag rec_comment.member, :image, size: '40x40', format: 'jpeg', fallback: "sample-author1.jpg", style:"background:#fff;",class:"rounded-circle" %>
-    </div> 
+    </div>
     <div class="cir_comment">
       <%= rec_comment.comment %>
     </div>
+    <span class="sentiment-score">感情分析スコア<%= rec_comment.score %></span>
   </div>
   <div class="" style="display: flex;">
     <div class="cir_comment_member_name">
@@ -15,11 +16,11 @@
     <div class="cir_comment_time">
       <%= rec_comment.created_at.strftime('%Y/%m/%d') %><%= rec_comment.comment %>
     </div>
-    
+
     <% if rec_comment.member == current_member %>
      <%= link_to record_rec_comment_path(rec_comment.record, rec_comment), method: :delete, remote: true, class: "circle_delete" do %>
         <i class="fas fa-eraser faa-passing animated-hover"></i>
-      <% end %> 
+      <% end %>
     <% end %>
   </div>
 <% end %>

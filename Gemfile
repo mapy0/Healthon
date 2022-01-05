@@ -111,3 +111,6 @@ gem 'enum_help'
 
 #pagination
 gem 'kaminari','~> 1.2.1'
+
+
+gem 'dotenv-rails'

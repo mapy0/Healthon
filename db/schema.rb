@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_23_083305) do
+ActiveRecord::Schema.define(version: 2022_01_05_140127) do
 
   create_table "aims", force: :cascade do |t|
     t.float "aim_w"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_12_23_083305) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "rec_goods", force: :cascade do |t|
